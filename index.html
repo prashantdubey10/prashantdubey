@@ -11,11 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 
 <style>
-/* ════════════════════════════════════════
-   CSS CUSTOM PROPERTIES — easy to update
-   ════════════════════════════════════════ */
 :root {
-  /* Brand colours */
   --saffron:       #D4730A;
   --saffron-light: #F0A04A;
   --saffron-pale:  #FDF3E7;
@@ -33,15 +29,11 @@
   --border-strong: rgba(180,140,90,0.40);
   --gold:          #C19A3A;
   --gold-light:    #E8C870;
-
-  /* Spacing */
   --section-pad: 5.5rem;
   --container:   1140px;
   --radius-sm:   4px;
   --radius-md:   8px;
   --radius-lg:   16px;
-
-  /* Shadows */
   --shadow-card: 0 4px 24px rgba(100,60,10,0.08);
   --shadow-hover: 0 8px 40px rgba(100,60,10,0.14);
 }
@@ -58,7 +50,6 @@ body {
   line-height: 1.6;
 }
 
-/* ─── UTILITIES ─── */
 .container { max-width: var(--container); margin: 0 auto; padding: 0 1.5rem; }
 .text-center { text-align: center; }
 .section-label {
@@ -103,10 +94,7 @@ body {
 .divider-ornament::after {
   background: linear-gradient(90deg, var(--gold), transparent);
 }
-.divider-ornament span {
-  color: var(--gold);
-  font-size: 1.1rem;
-}
+.divider-ornament span { color: var(--gold); font-size: 1.1rem; }
 .btn {
   display: inline-block;
   font-family: 'DM Sans', sans-serif;
@@ -120,24 +108,14 @@ body {
   border: none;
   padding: 0.78rem 2rem;
 }
-.btn-saffron {
-  background: var(--saffron);
-  color: #fff;
-}
+.btn-saffron { background: var(--saffron); color: #fff; }
 .btn-saffron:hover { background: #B8620A; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,115,10,0.30); }
-.btn-outline {
-  background: transparent;
-  color: var(--saffron);
-  border: 1.5px solid var(--saffron);
-}
+.btn-outline { background: transparent; color: var(--saffron); border: 1.5px solid var(--saffron); }
 .btn-outline:hover { background: var(--saffron); color: #fff; transform: translateY(-2px); }
-.btn-maroon {
-  background: var(--maroon);
-  color: #fff;
-}
+.btn-maroon { background: var(--maroon); color: #fff; }
 .btn-maroon:hover { background: #6E1515; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139,26,26,0.28); }
 
-/* ─── ANNOUNCEMENT BAR ─── */
+/* ANNOUNCEMENT BAR */
 .ann-bar {
   background: var(--saffron);
   color: #fff;
@@ -149,7 +127,7 @@ body {
 }
 .ann-bar a { color: #FFE09A; text-decoration: underline; }
 
-/* ─── NAV ─── */
+/* NAV */
 nav {
   background: rgba(253,250,245,0.96);
   backdrop-filter: blur(10px);
@@ -196,7 +174,6 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   white-space: nowrap;
 }
 .nav-links > li > a:hover { color: var(--saffron); }
-/* Dropdown */
 .dropdown { display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); min-width: 200px; box-shadow: var(--shadow-card); z-index: 300; padding: 0.4rem 0; }
 .nav-links > li:hover .dropdown { display: block; animation: fadeDown 0.2s ease; }
 .dropdown a { display: block; padding: 0.55rem 1.2rem; font-size: 0.83rem; color: var(--text-mid); text-decoration: none; }
@@ -218,7 +195,22 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
 .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 4px; background: none; border: none; }
 .hamburger span { width: 22px; height: 2px; background: var(--text-mid); border-radius: 2px; transition: all 0.3s; display: block; }
 
-/* ─── HERO ─── */
+/* LANG TOGGLE */
+.lang-toggle {
+  background: var(--saffron);
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 1rem;
+  transition: 0.3s;
+}
+.lang-toggle:hover { background: #B8620A; }
+
+/* HERO */
 #hero {
   background: var(--cream);
   padding: 4.5rem 0 0;
@@ -233,7 +225,6 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
     radial-gradient(circle at 85% 30%, rgba(139,26,26,0.05) 0%, transparent 50%);
   pointer-events: none;
 }
-/* Subtle mandala-like circle decoration */
 .hero-circle {
   position: absolute;
   border-radius: 50%;
@@ -273,10 +264,7 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   color: var(--text-dark);
   margin-bottom: 1.2rem;
 }
-.hero-title em {
-  font-style: italic;
-  color: var(--maroon);
-}
+.hero-title em { font-style: italic; color: var(--maroon); }
 .hero-subtitle {
   font-size: 1rem;
   color: var(--text-muted);
@@ -299,11 +287,7 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   color: var(--maroon);
   line-height: 1;
 }
-.hero-stat-label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-top: 0.25rem;
-}
+.hero-stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
 .hero-img-wrap {
   position: relative;
   display: flex;
@@ -346,11 +330,8 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
 .hero-card-title { font-weight: 500; color: var(--text-dark); font-size: 0.82rem; }
 .hero-card-sub { color: var(--text-muted); font-size: 0.72rem; }
 
-/* ─── TRUST BAR ─── */
-.trust-bar {
-  background: var(--maroon);
-  padding: 1rem 0;
-}
+/* TRUST BAR */
+.trust-bar { background: var(--maroon); padding: 1rem 0; }
 .trust-bar-inner {
   display: flex;
   justify-content: center;
@@ -358,23 +339,12 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   flex-wrap: wrap;
   align-items: center;
 }
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: rgba(255,255,255,0.90);
-  font-size: 0.83rem;
-}
+.trust-item { display: flex; align-items: center; gap: 0.7rem; color: rgba(255,255,255,0.90); font-size: 0.83rem; }
 .trust-item-icon { font-size: 1.2rem; opacity: 0.9; }
 
-/* ─── ABOUT ─── */
+/* ABOUT */
 #about { padding: var(--section-pad) 0; background: var(--warm-white); }
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-}
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .about-img-col { position: relative; }
 .about-img-bg {
   width: 100%;
@@ -400,14 +370,8 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   box-shadow: var(--shadow-hover);
   max-width: 200px;
 }
-.about-award-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  font-weight: 600;
-  line-height: 1;
-}
+.about-award-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600; line-height: 1; }
 .about-award-txt { font-size: 0.75rem; opacity: 0.85; margin-top: 0.3rem; line-height: 1.4; }
-.about-text { }
 .about-text h2 { margin-bottom: 0.5rem; }
 .about-text .intro {
   font-family: 'Cormorant Garamond', serif;
@@ -418,32 +382,11 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   margin-bottom: 1.5rem;
   font-weight: 300;
 }
-.about-text p {
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  line-height: 1.85;
-  margin-bottom: 1.2rem;
-}
-.about-credentials {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-  margin: 1.8rem 0;
-}
-.about-cred {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.7rem;
-  font-size: 0.83rem;
-  color: var(--text-mid);
-}
+.about-text p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.85; margin-bottom: 1.2rem; }
+.about-credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.8rem 0; }
+.about-cred { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.83rem; color: var(--text-mid); }
 .about-cred-icon { color: var(--gold); font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
-.about-specialisms {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
+.about-specialisms { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
 .specialism-tag {
   background: var(--saffron-pale);
   color: var(--saffron);
@@ -454,13 +397,9 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   font-weight: 500;
 }
 
-/* ─── SERVICES ─── */
+/* SERVICES */
 #services { padding: var(--section-pad) 0; background: var(--cream2); }
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .service-card {
   background: var(--warm-white);
   border: 1px solid var(--border);
@@ -486,8 +425,7 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
 .service-card.featured::before { transform: scaleX(1); }
 .service-badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1rem; right: 1rem;
   background: var(--saffron);
   color: #fff;
   font-size: 0.62rem;
@@ -498,8 +436,7 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   border-radius: 100px;
 }
 .service-icon {
-  width: 52px;
-  height: 52px;
+  width: 52px; height: 52px;
   background: var(--saffron-pale);
   border-radius: var(--radius-md);
   display: flex;
@@ -508,30 +445,10 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   font-size: 1.6rem;
   margin-bottom: 1.2rem;
 }
-.service-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-dark);
-  margin-bottom: 0.6rem;
-}
-.service-desc {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  line-height: 1.78;
-  margin-bottom: 1.5rem;
-}
-.service-price {
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-}
-.price-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--maroon);
-}
+.service-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 500; color: var(--text-dark); margin-bottom: 0.6rem; }
+.service-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.78; margin-bottom: 1.5rem; }
+.service-price { display: flex; align-items: baseline; gap: 0.4rem; }
+.price-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 500; color: var(--maroon); }
 .price-dur { font-size: 0.78rem; color: var(--text-light); }
 .service-link {
   display: inline-flex;
@@ -547,38 +464,23 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
 .service-link:hover { gap: 0.6rem; }
 .service-link::after { content: '→'; }
 
-/* ─── STATS / NUMBERS ─── */
+/* STATS */
 #stats { background: var(--saffron-pale); padding: 3.5rem 0; border-top: 1px solid rgba(212,115,10,0.15); border-bottom: 1px solid rgba(212,115,10,0.15); }
 .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; text-align: center; }
 .stat-num { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 600; color: var(--maroon); line-height: 1; }
 .stat-label { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem; }
 
-/* ─── BOOKING ─── */
+/* BOOKING */
 #booking { padding: var(--section-pad) 0; background: var(--warm-white); }
 .booking-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; }
 .booking-info h2 { margin-bottom: 0.4rem; }
-.booking-intro {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  font-style: italic;
-  color: var(--text-mid);
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-}
+.booking-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--text-mid); margin-bottom: 1.5rem; line-height: 1.7; }
 .booking-info p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 2rem; }
 .process-steps { list-style: none; }
-.process-step {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  margin-bottom: 1.4rem;
-  padding-bottom: 1.4rem;
-  border-bottom: 1px solid var(--border);
-}
+.process-step { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
 .process-step:last-child { border-bottom: none; }
 .step-circle {
-  width: 36px;
-  height: 36px;
+  width: 36px; height: 36px;
   border-radius: 50%;
   background: var(--saffron-pale);
   border: 1.5px solid rgba(212,115,10,0.3);
@@ -591,13 +493,7 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   flex-shrink: 0;
   font-weight: 500;
 }
-.step-body strong {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-dark);
-  margin-bottom: 0.2rem;
-}
+.step-body strong { display: block; font-size: 0.9rem; font-weight: 500; color: var(--text-dark); margin-bottom: 0.2rem; }
 .step-body span { font-size: 0.83rem; color: var(--text-muted); }
 .booking-form-card {
   background: var(--cream);
@@ -606,67 +502,8 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   padding: 2.5rem;
   box-shadow: var(--shadow-card);
 }
-.form-header {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--text-dark);
-  margin-bottom: 0.4rem;
-}
-.form-sub { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.8rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-group { margin-bottom: 1.1rem; }
-.form-group label {
-  display: block;
-  font-size: 0.74rem;
-  font-weight: 500;
-  color: var(--text-mid);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 0.45rem;
-}
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 0.72rem 1rem;
-  background: var(--warm-white);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
-  color: var(--text-dark);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color 0.25s, box-shadow 0.25s;
-  -webkit-appearance: none;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--saffron);
-  box-shadow: 0 0 0 3px rgba(212,115,10,0.10);
-}
-.form-group textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
-.form-group select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A6A5A' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
-.form-group select option { background: #fff; color: var(--text-dark); }
-.form-submit {
-  width: 100%;
-  padding: 0.9rem;
-  background: var(--saffron);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius-sm);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.28s;
-  letter-spacing: 0.04em;
-  margin-top: 0.4rem;
-}
-.form-submit:hover { background: #B8620A; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(212,115,10,0.30); }
 
-/* ─── HOROSCOPE ─── */
+/* HOROSCOPE */
 #horoscope { padding: var(--section-pad) 0; background: var(--cream2); }
 .signs-wheel {
   display: grid;
@@ -713,8 +550,7 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   border-bottom: 1px solid var(--border);
 }
 .reading-glyph {
-  width: 70px;
-  height: 70px;
+  width: 70px; height: 70px;
   background: var(--saffron-pale);
   border-radius: 50%;
   display: flex;
@@ -724,33 +560,11 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
   border: 1px solid rgba(212,115,10,0.2);
   flex-shrink: 0;
 }
-.reading-sign-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--text-dark);
-}
+.reading-sign-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 500; color: var(--text-dark); }
 .reading-week { font-size: 0.78rem; color: var(--saffron); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.2rem; }
-.reading-cats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 1.8rem;
-}
-.reading-cat-card {
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 1.2rem;
-}
-.reading-cat-title {
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--saffron);
-  margin-bottom: 0.6rem;
-}
+.reading-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.8rem; }
+.reading-cat-card { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.2rem; }
+.reading-cat-title { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--saffron); margin-bottom: 0.6rem; }
 .reading-cat-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.72; }
 .lucky-strip {
   background: var(--saffron-pale);
@@ -765,172 +579,88 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(100,60,10,0.10); }
 .lucky-piece { font-size: 0.83rem; color: var(--text-mid); }
 .lucky-piece strong { color: var(--maroon); font-weight: 500; }
 
-/* ─── TESTIMONIALS ─── */
+/* TESTIMONIALS */
 #testimonials { padding: var(--section-pad) 0; background: var(--warm-white); }
 .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-.testi-card {
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  transition: box-shadow 0.3s;
-}
+.testi-card { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; transition: box-shadow 0.3s; }
 .testi-card:hover { box-shadow: var(--shadow-hover); }
 .testi-stars { color: var(--gold); font-size: 0.95rem; letter-spacing: 0.15em; margin-bottom: 1rem; }
-.testi-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.08rem;
-  font-style: italic;
-  color: var(--text-mid);
-  line-height: 1.78;
-  margin-bottom: 1.5rem;
-}
-.testi-author-name {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-dark);
-}
+.testi-text { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; font-style: italic; color: var(--text-mid); line-height: 1.78; margin-bottom: 1.5rem; }
+.testi-author-name { font-size: 0.88rem; font-weight: 500; color: var(--text-dark); }
 .testi-author-loc { font-size: 0.75rem; color: var(--text-light); margin-top: 0.15rem; }
 
-/* ─── BLOG ─── */
-#blog { padding: var(--section-pad) 0; background: var(--cream2); }
-.blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-.blog-card {
-  background: var(--warm-white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+/* VIDEOS */
+#videos { padding: 5rem 0; }
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; }
+.video-card {
+  background: #fff;
+  border-radius: 16px;
   overflow: hidden;
-  transition: all 0.3s;
-  cursor: pointer;
-  text-decoration: none;
-  display: block;
-  color: inherit;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  border: 1px solid rgba(180,140,90,0.15);
+  transition: transform .28s ease, box-shadow .28s ease;
 }
-.blog-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
-.blog-thumb {
-  height: 190px;
+.video-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.13); }
+.video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #f0ede8; }
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.video-thumb { position: absolute; inset: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform .4s ease; }
+.video-card:hover .video-thumb img { transform: scale(1.04); }
+.play-btn {
+  position: relative; z-index: 2;
+  width: 62px; height: 62px;
+  background: rgba(212,115,10,0.92);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4.5rem;
-  background: var(--cream2);
-  border-bottom: 1px solid var(--border);
+  transition: transform .2s, background .2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.30);
+  flex-shrink: 0;
 }
-.blog-body { padding: 1.4rem; }
-.blog-tag {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--saffron);
-  margin-bottom: 0.5rem;
-}
-.blog-title-sm {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--text-dark);
-  line-height: 1.4;
-  margin-bottom: 0.6rem;
-}
-.blog-excerpt { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
-.blog-meta-row { display: flex; justify-content: space-between; margin-top: 1rem; font-size: 0.72rem; color: var(--text-light); }
+.play-btn::after { content: ''; border-style: solid; border-width: 11px 0 11px 22px; border-color: transparent transparent transparent #fff; margin-left: 5px; }
+.video-thumb:hover .play-btn { transform: scale(1.12); background: rgba(139,26,26,0.95); }
+.video-body { padding: 1.3rem 1.4rem; }
+.video-tag { color: var(--saffron); font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .45rem; }
+.video-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 500; color: var(--text-dark); margin-bottom: .5rem; line-height: 1.35; }
+.video-desc { color: var(--text-muted); font-size: .83rem; line-height: 1.65; }
 
-/* ─── CONTACT ─── */
+/* CONTACT */
 #contact { padding: var(--section-pad) 0; background: var(--warm-white); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
 .contact-info h2 { margin-bottom: 0.5rem; }
 .contact-info .intro { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--text-mid); margin-bottom: 1.2rem; line-height: 1.7; }
 .contact-info p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 2rem; }
 .contact-items { list-style: none; margin-bottom: 2rem; }
-.contact-item {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  padding: 0.9rem 0;
-  border-bottom: 1px solid var(--border);
-}
+.contact-item { display: flex; gap: 1rem; align-items: flex-start; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
 .contact-item:first-child { border-top: 1px solid var(--border); }
-.contact-item-icon {
-  width: 38px;
-  height: 38px;
-  background: var(--saffron-pale);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
+.contact-item-icon { width: 38px; height: 38px; background: var(--saffron-pale); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
 .contact-item-label { font-size: 0.72rem; color: var(--text-light); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
 .contact-item-val { font-size: 0.9rem; color: var(--text-dark); margin-top: 0.15rem; }
 .social-row { display: flex; gap: 0.7rem; margin-top: 1rem; }
-.social-link {
-  width: 38px;
-  height: 38px;
-  background: var(--cream2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: all 0.2s;
-}
+.social-link { width: 38px; height: 38px; background: var(--cream2); border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1rem; text-decoration: none; transition: all 0.2s; }
 .social-link:hover { background: var(--saffron); border-color: var(--saffron); }
 
-/* ─── FOOTER ─── */
-footer {
-  background: var(--text-dark);
-  color: rgba(255,255,255,0.75);
-  padding: 4rem 0 0;
-}
+/* FOOTER */
+footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4rem 0 0; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-.footer-brand .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  color: #fff;
-  margin-bottom: 1rem;
-  display: block;
-}
+.footer-brand .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 1rem; display: block; }
 .footer-brand .logo span { color: var(--saffron-light); }
 .footer-brand p { font-size: 0.83rem; line-height: 1.8; margin-bottom: 1.5rem; }
-.footer-col h4 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 1.2rem;
-}
+.footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1.2rem; }
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: 0.65rem; }
-.footer-col ul li a {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.65);
-  text-decoration: none;
-  transition: color 0.2s;
-}
+.footer-col ul li a { font-size: 0.85rem; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
 .footer-col ul li a:hover { color: var(--saffron-light); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.10);
-  padding: 1.5rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.78rem;
-}
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.10); padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
 .footer-bottom-links { display: flex; gap: 1.5rem; }
 .footer-bottom-links a { color: rgba(255,255,255,0.45); text-decoration: none; }
 .footer-bottom-links a:hover { color: rgba(255,255,255,0.75); }
 
-/* ─── TOAST ─── */
+/* TOAST */
 .toast {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 2rem; right: 2rem;
   background: var(--warm-white);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
@@ -946,7 +676,7 @@ footer {
 .toast-title { font-weight: 500; font-size: 0.88rem; color: var(--saffron); margin-bottom: 0.2rem; }
 .toast-msg { font-size: 0.82rem; color: var(--text-muted); }
 
-/* ─── MOBILE NAV DRAWER ─── */
+/* MOBILE NAV */
 .mobile-nav {
   display: none;
   position: fixed;
@@ -961,26 +691,10 @@ footer {
 }
 .mobile-nav.open { transform: translateX(0); }
 .mobile-nav ul { list-style: none; }
-.mobile-nav ul li a {
-  display: block;
-  padding: 0.8rem 0;
-  color: var(--text-mid);
-  font-size: 1rem;
-  text-decoration: none;
-  border-bottom: 1px solid var(--border);
-}
-.mobile-close {
-  position: absolute;
-  top: 1.2rem;
-  right: 1.5rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--text-mid);
-}
+.mobile-nav ul li a { display: block; padding: 0.8rem 0; color: var(--text-mid); font-size: 1rem; text-decoration: none; border-bottom: 1px solid var(--border); }
+.mobile-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-mid); }
 
-/* ─── RESPONSIVE ─── */
+/* RESPONSIVE */
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: repeat(2,1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -996,205 +710,34 @@ footer {
   .signs-wheel { grid-template-columns: repeat(4,1fr); }
   .reading-cats { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr 1fr; }
-  .blog-grid { grid-template-columns: 1fr 1fr; }
   .trust-bar-inner { gap: 1.5rem; }
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .hamburger { display: flex; }
   .mobile-nav { display: block; }
   .hero-card-1, .hero-card-2 { display: none; }
-  .form-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 540px) {
   .services-grid { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
-  .blog-grid { grid-template-columns: 1fr; }
   .signs-wheel { grid-template-columns: repeat(3,1fr); }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero-stats { flex-wrap: wrap; gap: 1.2rem; }
   .about-credentials { grid-template-columns: 1fr; }
   .trust-bar-inner { flex-direction: column; gap: 0.8rem; }
-}
-    
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'DM Sans', sans-serif; background: #FDFAF5; color: #1C1410; }
-
-#videos { padding: 5rem 0; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-
-.section-label {
-  display: block;
-  font-size: .68rem;
-  letter-spacing: .26em;
-  text-transform: uppercase;
-  color: #D4730A;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: .8rem;
-}
-.section-title {
-  font-family: Georgia, serif;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 500;
-  color: #1C1410;
-  text-align: center;
-  margin-bottom: .8rem;
-}
-.divider-ornament {
-  display: flex;
-  align-items: center;
-  gap: .7rem;
-  justify-content: center;
-  margin: .6rem auto 1.2rem;
-}
-.divider-ornament::before,
-.divider-ornament::after {
-  content: '';
-  width: 50px;
-  height: 1px;
-  background: #C19A3A;
-}
-.divider-ornament span { color: #C19A3A; }
-.section-subtitle {
-  text-align: center;
-  color: #7A6A5A;
-  font-size: .92rem;
-  max-width: 540px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.8;
-}
-
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.8rem;
-}
-
-.video-card {
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-  border: 1px solid rgba(180,140,90,0.15);
-  transition: transform .28s ease, box-shadow .28s ease;
-}
-.video-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 36px rgba(0,0,0,0.13);
-}
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  background: #f0ede8;
-}
-.video-wrapper iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  border: none;
-}
-
-.video-thumb {
-  position: absolute;
-  inset: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.video-thumb img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  position: absolute;
-  inset: 0;
-  transition: transform .4s ease;
-}
-.video-card:hover .video-thumb img { transform: scale(1.04); }
-
-.play-btn {
-  position: relative;
-  z-index: 2;
-  width: 62px;
-  height: 62px;
-  background: rgba(212,115,10,0.92);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform .2s, background .2s;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.30);
-  flex-shrink: 0;
-}
-.play-btn::after {
-  content: '';
-  border-style: solid;
-  border-width: 11px 0 11px 22px;
-  border-color: transparent transparent transparent #fff;
-  margin-left: 5px;
-}
-.video-thumb:hover .play-btn {
-  transform: scale(1.12);
-  background: rgba(139,26,26,0.95);
-}
-
-.video-body { padding: 1.3rem 1.4rem; }
-.video-tag {
-  color: #D4730A;
-  font-size: .72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  margin-bottom: .45rem;
-}
-.video-title {
-  font-family: Georgia, serif;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #1C1410;
-  margin-bottom: .5rem;
-  line-height: 1.35;
-}
-.video-desc {
-  color: #7A6A5A;
-  font-size: .83rem;
-  line-height: 1.65;
-}
-
-@media (max-width: 600px) {
   .video-grid { grid-template-columns: 1fr; }
-}
-    
-    .lang-toggle{
-  background: var(--saffron);
-  color:#fff;
-  border:none;
-  padding:0.55rem 1rem;
-  border-radius:6px;
-  cursor:pointer;
-  font-size:0.8rem;
-  font-weight:500;
-  margin-left:1rem;
-  transition:0.3s;
-}
-
-.lang-toggle:hover{
-  background:#B8620A;
 }
 </style>
 </head>
 <body>
-<!-- ═══ ANNOUNCEMENT BAR ═══ -->
+
+<!-- ANNOUNCEMENT BAR -->
 <div class="ann-bar">
   ✦ First consultation question for only ₹550 — <a href="#booking">Book now</a> &nbsp;|&nbsp; Available on Microsoft Teams &amp; In-Person (Varanasi)
 </div>
 
-<!-- ═══ NAV ═══ -->
+<!-- NAV -->
 <nav id="mainNav">
   <div class="nav-inner">
     <a class="nav-logo" href="#hero">Pt. Prashant Dubey <span>✦</span></a>
@@ -1208,20 +751,17 @@ body { font-family: 'DM Sans', sans-serif; background: #FDFAF5; color: #1C1410; 
           <a href="#services" data-i18n="vastu">Vastu Shastra</a>
           <a href="#services" data-i18n="palmistry">Palmistry &amp; Face Reading</a>
           <a href="#services" data-i18n="synastry">Synastry &amp; Compatibility</a>
-           <a href="#services" data-i18n="gemstone">Gemstone Guidance</a>
+          <a href="#services" data-i18n="gemstone">Gemstone Guidance</a>
         </div>
       </li>
       <li><a href="#horoscope" data-i18n="horoscope">Horoscope</a></li>
-      <li><a href="#blog" data-i18n="blog">Blog</a></li>
       <li><a href="#contact" data-i18n="contact">Contact</a></li>
     </ul>
     <a class="nav-cta" href="#booking" data-i18n="book">Book Consultation</a>
     <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-      <button class="lang-toggle" onclick="toggleLanguage()">
-  हिंदी
-</button>
+    <button class="lang-toggle" id="langBtn" onclick="toggleLanguage()">हिंदी</button>
   </div>
 </nav>
 
@@ -1232,23 +772,21 @@ body { font-family: 'DM Sans', sans-serif; background: #FDFAF5; color: #1C1410; 
     <li><a href="#about" data-i18n="about" onclick="toggleMobileNav()">About</a></li>
     <li><a href="#services" data-i18n="services" onclick="toggleMobileNav()">Services</a></li>
     <li><a href="#horoscope" data-i18n="horoscope" onclick="toggleMobileNav()">Horoscope</a></li>
-    <li><a href="#blog" data-i18n="blog" onclick="toggleMobileNav()">Blog</a></li>
     <li><a href="#contact" data-i18n="contact" onclick="toggleMobileNav()">Contact</a></li>
     <li><a href="#booking" data-i18n="book" onclick="toggleMobileNav()" style="color:var(--saffron);font-weight:500;">Book Consultation →</a></li>
   </ul>
 </div>
 
-<!-- ═══ HERO ═══ -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-bg-pattern"></div>
-  <!-- Decorative circles -->
   <div class="hero-circle" style="width:600px;height:600px;top:-200px;right:-100px;opacity:0.5;"></div>
   <div class="hero-circle" style="width:300px;height:300px;bottom:50px;left:-80px;opacity:0.4;"></div>
   <div class="container">
     <div class="hero-inner">
       <div class="hero-text">
         <div class="hero-badge" data-i18n="trustedAstrologer">India's Most Trusted Astrologer</div>
-        <h1 class="hero-title" data-i18n="heroTitle" >
+        <h1 class="hero-title" data-i18n="heroTitle">
           Clarity, Timing &amp;<br><em>Cosmic Guidance</em><br>for Your Life
         </h1>
         <p class="hero-subtitle" data-i18n="heroSubtitle">
@@ -1274,270 +812,220 @@ body { font-family: 'DM Sans', sans-serif; background: #FDFAF5; color: #1C1410; 
         </div>
       </div>
       <div class="hero-img-wrap">
-        <div class="hero-img-placeholder"><img src="images/hero.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
-        <!-- Replace 🔭 with <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"> -->
+        <div class="hero-img-placeholder">
+          <img src="images/hero.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+        </div>
         <div class="hero-floating-card hero-card-1">
           <div class="hero-card-icon">🌟</div>
           <div class="hero-card-title" data-i18n="ratingTitle">5.0 Rating</div>
           <div class="hero-card-sub" data-i18n="verifiedConsultations">Verified Consultations</div>
         </div>
-<!--
-        <div class="hero-floating-card hero-card-2">
-          <div class="hero-card-icon">📅</div>
-          <div class="hero-card-title">Next Available</div>
-          <div class="hero-card-sub">Today · 3:00 PM IST</div>
-        </div>
--->
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ TRUST BAR ═══ -->
+<!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="container">
     <div class="trust-bar-inner">
-        <div class="trust-item"><span class="trust-item-icon" >🏆</span> <span data-i18n="yuvaAward"> Yuva Pratibha Awardee </span> </div>
-<!--      <div class="trust-item"><span class="trust-item-icon">📺</span> Featured on Zee News &amp; BBC</div>-->
-<!--      <div class="trust-item"><span class="trust-item-icon">🎤</span> TEDx Speaker</div>-->
-        <div class="trust-item"><span class="trust-item-icon" >🌍</span> <span data-i18n="worldwideClients"> Serving Clients Worldwide </span> </div>
-        <div class="trust-item"><span class="trust-item-icon" >⭐</span> <span data-i18n="renownedAstrologer"> Renowned Astrologer </span></div>
+      <div class="trust-item"><span class="trust-item-icon">🏆</span> <span data-i18n="yuvaAward">Yuva Pratibha Awardee</span></div>
+      <div class="trust-item"><span class="trust-item-icon">🌍</span> <span data-i18n="worldwideClients">Serving Clients Worldwide</span></div>
+      <div class="trust-item"><span class="trust-item-icon">⭐</span> <span data-i18n="renownedAstrologer">Renowned Astrologer</span></div>
     </div>
   </div>
 </div>
 
-<!-- ═══ ABOUT ═══ -->
+<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
       <div class="about-img-col">
         <div class="about-img-bg">
-        
-            <img src="images/about.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit;">
-          <!-- Replace emoji with: <img src="astrologer-photo.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit;"> -->
+          <img src="images/about.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit;">
         </div>
         <div class="about-award-card">
           <div class="about-award-num">26+</div>
-          <div class="about-award-txt">Years of Trusted Astrological Practice</div>
+          <div class="about-award-txt" data-i18n="trustedPractice">Years of Trusted Astrological Practice</div>
         </div>
       </div>
       <div class="about-text">
-        <p class="section-label">About Me</p>
-        <h2 class="section-title">India's Leading Vedic Astrologer &amp; Life Coach</h2>
-        <p class="intro">I believe in clarity and timing — not fear. The stars are a map, not a cage.</p>
-        <p>With over two decades of deep study in Vedic Jyotish, Western astrology, numerology, Vastu Shastra and palmistry, I have guided more than 50,000 individuals across 15 countries toward meaningful, informed decisions in their careers, relationships and personal lives.</p>
-        <p>My approach bridges the ancient wisdom of our rishis with the practical realities of modern life — giving you tools to understand not just what the planets say, but how to work with them skillfully.</p>
-          
-          
-          
-          
-<!--
-          <p>
-Pandit Prashant Kumar Dubey is a renowned astrologer with over two decades of expertise in Vedic Jyotish, Western astrology, numerology, Vastu Shastra, and palmistry. Based in India and serving clients worldwide, he has guided more than 50,000 individuals across 15 countries toward clarity in careers, relationships, and personal growth. His consultations are trusted for blending ancient wisdom with practical solutions, making him a sought‑after name in the global astrology community. </p>
-
- <p>
-Through personalized readings and guidance, Pandit Dubey helps people understand planetary influences and apply them meaningfully in everyday life. His approach bridges the timeless teachings of the rishis with modern realities, offering tools to navigate challenges and opportunities with confidence. Whether it is career planning, relationship harmony, or personal well‑being, his insights have empowered thousands to make informed decisions and live with purpose.</p>
-
-<p>
-In recognition of his remarkable contributions to the field of astrology, Pandit Prashant Kumar Dubey was honored in 2011 with the Yuva Pratibha Award by the Akhil Bharatiya Vidvat Parishad in Kashi. This prestigious award highlights his dedication to advancing astrological knowledge and his impact on seekers across India and abroad. Today, he continues to serve as a guiding light for those seeking wisdom through astrology, numerology, Vastu, and palmistry.</p>
-          
--->
-          
-          
-          
+        <p class="section-label" data-i18n="aboutLabel">About Me</p>
+        <h2 class="section-title" data-i18n="aboutTitle">India's Leading Vedic Astrologer &amp; Life Coach</h2>
+        <p class="intro" data-i18n="aboutPara1">I believe in clarity and timing — not fear. The stars are a map, not a cage.</p>
+        <p data-i18n="aboutPara2">With over two decades of deep study in Vedic Jyotish, Western astrology, numerology, Vastu Shastra and palmistry, I have guided more than 50,000 individuals across 15 countries toward meaningful, informed decisions in their careers, relationships and personal lives.</p>
+        <p data-i18n="aboutPara3">My approach bridges the ancient wisdom of our rishis with the practical realities of modern life — giving you tools to understand not just what the planets say, but how to work with them skillfully.</p>
         <div class="about-credentials">
-          <div class="about-cred"><span class="about-cred-icon">✦</span> Yuva Pratibha Award by the Akhil Bharatiya Vidvat Parishad in Kashi</div>
-<!--
-          <div class="about-cred"><span class="about-cred-icon">✦</span> First Indian Astrologer to deliver a TEDx Talk</div>
-          <div class="about-cred"><span class="about-cred-icon">✦</span> Felicitated with Global Brand Impact Award, Dubai</div>
-          <div class="about-cred"><span class="about-cred-icon">✦</span> Featured on BBC London, Zee News, Aaj Tak</div>
--->
+          <div class="about-cred"><span class="about-cred-icon">✦</span><span data-i18n="awardCredential">Yuva Pratibha Award by the Akhil Bharatiya Vidvat Parishad in Kashi</span></div>
         </div>
         <div class="about-specialisms">
-          <span class="specialism-tag">Vedic Jyotish</span>
-          <span class="specialism-tag">Western Astrology</span>
-          <span class="specialism-tag">Numerology</span>
-          <span class="specialism-tag">Vastu Shastra</span>
-          <span class="specialism-tag">Palmistry</span>
-          <span class="specialism-tag">Gemstones</span>
-          <span class="specialism-tag">Face Reading</span>
-          <span class="specialism-tag">Couple Counselling</span>
+          <span class="specialism-tag" data-i18n="vedicJyotish">Vedic Jyotish</span>
+          <span class="specialism-tag" data-i18n="westernAstrology">Western Astrology</span>
+          <span class="specialism-tag" data-i18n="numerology">Numerology</span>
+          <span class="specialism-tag" data-i18n="vastu">Vastu Shastra</span>
+          <span class="specialism-tag" data-i18n="palmistryTag">Palmistry</span>
+          <span class="specialism-tag" data-i18n="gemstones">Gemstones</span>
+          <span class="specialism-tag" data-i18n="faceReading">Face Reading</span>
+          <span class="specialism-tag" data-i18n="coupleCounselling">Couple Counselling</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ STATS ═══ -->
+<!-- STATS -->
 <section id="stats">
   <div class="container">
     <div class="stats-grid">
       <div class="text-center">
         <div class="stat-num" id="cnt1">0</div>
-        <div class="stat-label">Happy Clients</div>
+        <div class="stat-label" data-i18n="happyClients">Happy Clients</div>
       </div>
       <div class="text-center">
         <div class="stat-num" id="cnt2">0</div>
-        <div class="stat-label">Years of Expertise</div>
+        <div class="stat-label" data-i18n="yearsExpertise">Years of Expertise</div>
       </div>
       <div class="text-center">
         <div class="stat-num" id="cnt3">0</div>
-        <div class="stat-label">Countries Served</div>
+        <div class="stat-label" data-i18n="countriesServed">Countries Served</div>
       </div>
       <div class="text-center">
         <div class="stat-num" id="cnt4">0</div>
-        <div class="stat-label">Couple Counselling Sessions</div>
+        <div class="stat-label" data-i18n="coupleSessions">Couple Counselling Sessions</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SERVICES ═══ -->
+<!-- SERVICES -->
 <section id="services">
   <div class="container">
     <div class="text-center">
-      <p class="section-label">What I Offer</p>
-      <h2 class="section-title">Consultations &amp; Services</h2>
+      <p class="section-label" data-i18n="servicesLabel">What I Offer</p>
+      <h2 class="section-title" data-i18n="servicesTitle">Consultations &amp; Services</h2>
       <div class="divider-ornament"><span>✦</span></div>
-      <p class="section-subtitle">Each session is deeply personal — tailored to your unique planetary map and life questions.</p>
+      <p class="section-subtitle" data-i18n="servicesSubtitle">Each session is deeply personal — tailored to your unique planetary map and life questions.</p>
     </div>
     <div class="services-grid">
       <div class="service-card featured">
-        <div class="service-badge">Most Popular</div>
+        <div class="service-badge" data-i18n="mostPopular">Most Popular</div>
         <div class="service-icon">🌟</div>
-        <p class="service-name">Natal Chart Reading</p>
-        <p class="service-desc">A comprehensive birth chart exploration — your sun, moon, rising, and all planetary placements decoded to reveal your strengths, challenges and soul's purpose.</p>
+        <p class="service-name" data-i18n="natalTitle">Natal Chart Reading</p>
+        <p class="service-desc" data-i18n="natalDesc">A comprehensive birth chart exploration — your sun, moon, rising, and all planetary placements decoded to reveal your strengths, challenges and soul's purpose.</p>
         <div class="service-price"><span class="price-num">₹2,500</span><span class="price-dur">/ 60 min</span></div>
-        <a href="#booking" class="service-link">Book this session</a>
+        <a href="#booking" class="service-link" data-i18n="bookSession">Book this session</a>
       </div>
       <div class="service-card">
         <div class="service-icon">📿</div>
-        <p class="service-name">Vedic Jyotish</p>
-        <p class="service-desc">Traditional Vedic reading with Lagna, Nakshatra analysis, Dasha periods and personalised remedial measures for karmic alignment and life harmony.</p>
+        <p class="service-name" data-i18n="vedicTitle">Vedic Jyotish</p>
+        <p class="service-desc" data-i18n="vedicDesc">Traditional Vedic reading with Lagna, Nakshatra analysis, Dasha periods and personalised remedial measures for karmic alignment and life harmony.</p>
         <div class="service-price"><span class="price-num">₹4,000</span><span class="price-dur">/ 90 min</span></div>
-        <a href="#booking" class="service-link">Book this session</a>
+        <a href="#booking" class="service-link" data-i18n="bookSession">Book this session</a>
       </div>
       <div class="service-card">
         <div class="service-icon">🔮</div>
-        <p class="service-name">Predictive Astrology</p>
-        <p class="service-desc">Using transits, progressions and Dasha periods to illuminate major life themes for the year ahead — helping you move with the cosmic tide, not against it.</p>
+        <p class="service-name" data-i18n="predictiveTitle">Predictive Astrology</p>
+        <p class="service-desc" data-i18n="predictiveDesc">Using transits, progressions and Dasha periods to illuminate major life themes for the year ahead — helping you move with the cosmic tide, not against it.</p>
         <div class="service-price"><span class="price-num">₹3,200</span><span class="price-dur">/ 75 min</span></div>
-        <a href="#booking" class="service-link">Book this session</a>
+        <a href="#booking" class="service-link" data-i18n="bookSession">Book this session</a>
       </div>
       <div class="service-card">
         <div class="service-icon">🏠</div>
-        <p class="service-name">Vastu Shastra</p>
-        <p class="service-desc">Balance energy in your home, office or workspace with expert Vastu consultations designed to attract peace, health and prosperity into your environment.</p>
+        <p class="service-name" data-i18n="vastuTitle">Vastu Shastra</p>
+        <p class="service-desc" data-i18n="vastuDesc">Balance energy in your home, office or workspace with expert Vastu consultations designed to attract peace, health and prosperity into your environment.</p>
         <div class="service-price"><span class="price-num">₹3,500</span><span class="price-dur">/ 60 min</span></div>
-        <a href="#booking" class="service-link">Book this session</a>
+        <a href="#booking" class="service-link" data-i18n="bookSession">Book this session</a>
       </div>
       <div class="service-card">
         <div class="service-icon">💑</div>
-        <p class="service-name">Synastry &amp; Matchmaking</p>
-        <p class="service-desc">Explore cosmic compatibility between two souls — ideal for romantic partners, pre-marital counselling or understanding any significant personal relationship.</p>
+        <p class="service-name" data-i18n="synastryTitle">Synastry &amp; Matchmaking</p>
+        <p class="service-desc" data-i18n="synastryDesc">Explore cosmic compatibility between two souls — ideal for romantic partners, pre-marital counselling or understanding any significant personal relationship.</p>
         <div class="service-price"><span class="price-num">₹3,800</span><span class="price-dur">/ 90 min</span></div>
-        <a href="#booking" class="service-link">Book this session</a>
+        <a href="#booking" class="service-link" data-i18n="bookSession">Book this session</a>
       </div>
       <div class="service-card">
         <div class="service-icon">🔢</div>
-        <p class="service-name">Numerology Reading</p>
-        <p class="service-desc">Unlock the vibrational power of your name and birth date. Discover your life path number, destiny, and how to align your energy for maximum success.</p>
+        <p class="service-name" data-i18n="numerologyTitle">Numerology Reading</p>
+        <p class="service-desc" data-i18n="numerologyDesc">Unlock the vibrational power of your name and birth date. Discover your life path number, destiny, and how to align your energy for maximum success.</p>
         <div class="service-price"><span class="price-num">₹2,000</span><span class="price-dur">/ 45 min</span></div>
-        <a href="#booking" class="service-link">Book this session</a>
+        <a href="#booking" class="service-link" data-i18n="bookSession">Book this session</a>
       </div>
       <div class="service-card">
         <div class="service-icon">✋</div>
-        <p class="service-name">Palmistry &amp; Face Reading</p>
-        <p class="service-desc">Ancient arts of palmistry and physiognomy (face reading) combined to reveal your character, potential, health patterns and life trajectory.</p>
+        <p class="service-name" data-i18n="palmistryTitle">Palmistry &amp; Face Reading</p>
+        <p class="service-desc" data-i18n="palmistryDesc">Ancient arts of palmistry and physiognomy (face reading) combined to reveal your character, potential, health patterns and life trajectory.</p>
         <div class="service-price"><span class="price-num">₹2,500</span><span class="price-dur">/ 60 min</span></div>
-        <a href="#booking" class="service-link">Book this session</a>
+        <a href="#booking" class="service-link" data-i18n="bookSession">Book this session</a>
       </div>
       <div class="service-card">
         <div class="service-icon">💎</div>
-        <p class="service-name">Gemstone Consultation</p>
-        <p class="service-desc">Personalised gemstone recommendations based on your chart and planetary positions — to strengthen weak planets and attract favourable energies.</p>
+        <p class="service-name" data-i18n="gemstoneTitle">Gemstone Consultation</p>
+        <p class="service-desc" data-i18n="gemstoneDesc">Personalised gemstone recommendations based on your chart and planetary positions — to strengthen weak planets and attract favourable energies.</p>
         <div class="service-price"><span class="price-num">₹1,800</span><span class="price-dur">/ 45 min</span></div>
-        <a href="#booking" class="service-link">Book this session</a>
+        <a href="#booking" class="service-link" data-i18n="bookSession">Book this session</a>
       </div>
       <div class="service-card">
         <div class="service-icon">⚡</div>
-        <p class="service-name">Quick Guidance (First Question)</p>
-        <p class="service-desc">A focused introductory session on one specific question — career, love, health, business or timing. The ideal starting point for new clients.</p>
+        <p class="service-name" data-i18n="quickGuidanceTitle">Quick Guidance (First Question)</p>
+        <p class="service-desc" data-i18n="quickGuidanceDesc">A focused introductory session on one specific question — career, love, health, business or timing. The ideal starting point for new clients.</p>
         <div class="service-price"><span class="price-num">₹550</span><span class="price-dur">/ 30 min</span></div>
-        <a href="#booking" class="service-link">Book this session</a>
+        <a href="#booking" class="service-link" data-i18n="bookSession">Book this session</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ BOOKING ═══ -->
+<!-- BOOKING -->
 <section id="booking">
   <div class="container">
     <div class="text-center">
-      <p class="section-label">Reserve Your Session</p>
-      <h2 class="section-title">Book a Consultation</h2>
+      <p class="section-label" data-i18n="bookingLabel">Reserve Your Session</p>
+      <h2 class="section-title" data-i18n="bookingTitle">Book a Consultation</h2>
       <div class="divider-ornament"><span>✦</span></div>
-      <p class="section-subtitle">Fill in your details and I will confirm your session within 24 hours with a Microsoft Teams link or in-person address.</p>
+      <p class="section-subtitle" data-i18n="bookingSubtitle">Fill in your details and I will confirm your session within 24 hours with a Microsoft Teams link or in-person address.</p>
     </div>
     <div class="booking-grid">
       <div class="booking-info">
-        <h2 class="section-title" style="text-align:left;font-size:1.7rem;">How it works</h2>
-        <p class="booking-intro">Every session begins with careful preparation. Your chart is studied before we meet.</p>
-        <p>I spend time with your birth data before every consultation so our time together is pure insight — not data collection. Sessions are available via Microsoft Teams, WhatsApp Video or in-person in Varanasi.</p>
+        <h2 class="section-title" data-i18n="howItWorks" style="text-align:left;font-size:1.7rem;">How it works</h2>
+        <p class="booking-intro" data-i18n="bookingIntro">Every session begins with careful preparation. Your chart is studied before we meet.</p>
+        <p data-i18n="bookingPara">I spend time with your birth data before every consultation so our time together is pure insight — not data collection. Sessions are available via Microsoft Teams, WhatsApp Video or in-person in Varanasi.</p>
         <ul class="process-steps">
           <li class="process-step">
             <div class="step-circle">1</div>
-            <div class="step-body"><strong>Submit your booking request</strong><span>Complete the form with your birth details and preferred time slot.</span></div>
+            <div class="step-body"><strong data-i18n="step1Title">Submit your booking request</strong><span data-i18n="step1Desc">Complete the form with your birth details and preferred time slot.</span></div>
           </li>
           <li class="process-step">
             <div class="step-circle">2</div>
-            <div class="step-body"><strong>Confirmation within 24 hours</strong><span>You'll receive a confirmation with meeting link and a short intake questionnaire.</span></div>
+            <div class="step-body"><strong data-i18n="step2Title">Confirmation within 24 hours</strong><span data-i18n="step2Desc">You'll receive a confirmation with meeting link and a short intake questionnaire.</span></div>
           </li>
           <li class="process-step">
             <div class="step-circle">3</div>
-            <div class="step-body"><strong>Chart preparation</strong><span>I cast and deeply study your chart 1–2 days before our session.</span></div>
+            <div class="step-body"><strong data-i18n="step3Title">Chart preparation</strong><span data-i18n="step3Desc">I cast and deeply study your chart 1–2 days before our session.</span></div>
           </li>
           <li class="process-step">
             <div class="step-circle">4</div>
-            <div class="step-body"><strong>Your reading</strong><span>We meet live for an in-depth, dialogue-based session. Recording provided.</span></div>
+            <div class="step-body"><strong data-i18n="step4Title">Your reading</strong><span data-i18n="step4Desc">We meet live for an in-depth, dialogue-based session. Recording provided.</span></div>
           </li>
         </ul>
       </div>
-        
-        <div class="booking-form-card">
-  <iframe
-    id="tfIframe"
-    src="https://form.typeform.com/to/gkJ1OpBq"
-    style="width:100%; min-height:500px; border:none; border-radius:8px; display:block;"
-    loading="eager"
-    allow="camera; microphone; autoplay; encrypted-media;"
-    title="Book a Consultation">
-  </iframe>
-</div>
-
-<script>
-(function(){
-  var iframe = document.getElementById('tfIframe');
-
-  window.addEventListener('message', function(e) {
-    if (e.data && e.data.type === 'embed-height' && e.data.height) {
-      iframe.style.minHeight = Math.max(e.data.height, 300) + 'px';
-    }
-  });
-})();
-</script>
+      <div class="booking-form-card">
+        <iframe id="tfIframe" src="https://form.typeform.com/to/gkJ1OpBq"
+          style="width:100%; min-height:500px; border:none; border-radius:8px; display:block;"
+          loading="eager" allow="camera; microphone; autoplay; encrypted-media;"
+          title="Book a Consultation"></iframe>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ HOROSCOPE ═══ -->
+<!-- HOROSCOPE -->
 <section id="horoscope">
   <div class="container">
     <div class="text-center">
-      <p class="section-label">Weekly Horoscope</p>
-      <h2 class="section-title">What the Stars Say This Week</h2>
+      <p class="section-label" data-i18n="horoscopeLabel">Weekly Horoscope</p>
+      <h2 class="section-title" data-i18n="horoscopeTitle">What the Stars Say This Week</h2>
       <div class="divider-ornament"><span>✦</span></div>
-      <p class="section-subtitle">Select your sun sign for personalised cosmic guidance.</p>
+      <p class="section-subtitle" data-i18n="horoscopeSubtitle">Select your sun sign for personalised cosmic guidance.</p>
     </div>
     <div class="signs-wheel" id="signsWheel"></div>
     <div class="reading-box" id="readingBox">
@@ -1554,7 +1042,7 @@ In recognition of his remarkable contributions to the field of astrology, Pandit
   </div>
 </section>
 
-<!-- ═══ TESTIMONIALS ═══ -->
+<!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="container">
     <div class="text-center">
@@ -1603,130 +1091,58 @@ In recognition of his remarkable contributions to the field of astrology, Pandit
   </div>
 </section>
 
-<!-- ═══ BLOG ═══ -->
-<!--
-<section id="blog">
-  <div class="container">
-    <div class="text-center">
-      <p class="section-label">Celestial Insights</p>
-      <h2 class="section-title">From the Journal</h2>
-      <div class="divider-ornament"><span>✦</span></div>
-      <p class="section-subtitle">Musings on planetary movements, ancient wisdom and how the cosmos shapes everyday life.</p>
-    </div>
-    <div class="blog-grid">
-      <a class="blog-card" href="#">
-        <div class="blog-thumb" style="background:var(--saffron-pale);">🪐</div>
-        <div class="blog-body">
-          <p class="blog-tag">Vedic Astrology</p>
-          <p class="blog-title-sm">Saturn's Return and the Art of Becoming</p>
-          <p class="blog-excerpt">Every 29 years, Saturn completes its orbit and returns to where it stood at your birth — and nothing is ever quite the same again.</p>
-          <div class="blog-meta-row"><span>May 2025</span><span>7 min read</span></div>
-        </div>
-      </a>
-      <a class="blog-card" href="#">
-        <div class="blog-thumb" style="background:#F0EDE8;">🌑</div>
-        <div class="blog-body">
-          <p class="blog-tag">Lunar Cycles</p>
-          <p class="blog-title-sm">New Moon Rituals for Every Zodiac Sign</p>
-          <p class="blog-excerpt">The new moon is the universe's fresh page. Set intentions that align with the current lunation and your specific chart placements.</p>
-          <div class="blog-meta-row"><span>April 2025</span><span>5 min read</span></div>
-        </div>
-      </a>
-      <a class="blog-card" href="#">
-        <div class="blog-thumb" style="background:#EFF2F0;">☿</div>
-        <div class="blog-body">
-          <p class="blog-tag">Transits</p>
-          <p class="blog-title-sm">Mercury Retrograde — Myth vs Reality</p>
-          <p class="blog-excerpt">Is Mercury retrograde really responsible for every missed email and delayed flight? A grounded look at what this transit actually means for you.</p>
-          <div class="blog-meta-row"><span>March 2025</span><span>4 min read</span></div>
-        </div>
-      </a>
-    </div>
-    <div style="text-align:center;margin-top:2.5rem;">
-      <a href="#" class="btn btn-outline">Read All Articles</a>
-    </div>
-  </div>
-</section>
--->
+<!-- VIDEOS -->
 <section id="videos">
   <div class="container">
-
-    <p class="section-label">Celestial Guidance</p>
-    <h2 class="section-title">Latest Astrology Videos</h2>
+    <p class="section-label" style="display:block;text-align:center;">Celestial Guidance</p>
+    <h2 class="section-title" style="text-align:center;">Latest Astrology Videos</h2>
     <div class="divider-ornament"><span>✦</span></div>
-    <p class="section-subtitle">
-      Watch spiritual insights, horoscope guidance, remedies and cosmic wisdom directly from our YouTube channel.
-    </p>
-
+    <p class="section-subtitle">Watch spiritual insights, horoscope guidance, remedies and cosmic wisdom directly from our YouTube channel.</p>
     <div class="video-grid">
-
-      <!-- VIDEO 1 -->
       <div class="video-card">
         <div class="video-wrapper">
           <div class="video-thumb" onclick="loadVideo(this,'XWdm7wmb7OA')">
-            <img src="https://i.ytimg.com/vi/XWdm7wmb7OA/hqdefault.jpg"
-                 alt="Saturn Return & Life Transformation" loading="lazy"/>
+            <img src="https://i.ytimg.com/vi/XWdm7wmb7OA/hqdefault.jpg" alt="Saturn Return" loading="lazy"/>
             <div class="play-btn"></div>
           </div>
         </div>
         <div class="video-body">
-<p class="video-tag">वैदिक ज्योतिष</p>
-<h3 class="video-title">मंगल ग्रह का सिंह राशि में प्रवेश</h3>
-<p class="video-desc">मंगलग्रह का अन्य राशियों में संचरण व ग्रहों से युतिफल — जानें इसका आपकी राशि पर क्या प्रभाव पड़ेगा।</p>
+          <p class="video-tag">वैदिक ज्योतिष</p>
+          <h3 class="video-title">मंगल ग्रह का सिंह राशि में प्रवेश</h3>
+          <p class="video-desc">मंगलग्रह का अन्य राशियों में संचरण व ग्रहों से युतिफल — जानें इसका आपकी राशि पर क्या प्रभाव पड़ेगा।</p>
         </div>
       </div>
-
-      <!-- VIDEO 2 -->
       <div class="video-card">
         <div class="video-wrapper">
           <div class="video-thumb" onclick="loadVideo(this,'yn9tiJR_RsU')">
-            <img src="https://i.ytimg.com/vi/yn9tiJR_RsU/hqdefault.jpg"
-                 alt="Weekly Horoscope Predictions" loading="lazy"/>
+            <img src="https://i.ytimg.com/vi/yn9tiJR_RsU/hqdefault.jpg" alt="Weekly Horoscope" loading="lazy"/>
             <div class="play-btn"></div>
           </div>
         </div>
         <div class="video-body">
-<p class="video-tag">पाक्षिक राशिफल</p>
-<h3 class="video-title">पाक्षिक राशिफल: 25 June – 10 July 2025</h3>
-<p class="video-desc">27 नक्षत्रों पर चर्चा, सभी राशियों का विस्तृत फल और विभिन्न उपाय।</p>
+          <p class="video-tag">पाक्षिक राशिफल</p>
+          <h3 class="video-title">पाक्षिक राशिफल: 25 June – 10 July 2025</h3>
+          <p class="video-desc">27 नक्षत्रों पर चर्चा, सभी राशियों का विस्तृत फल और विभिन्न उपाय।</p>
         </div>
       </div>
-
-      <!-- VIDEO 3 -->
       <div class="video-card">
         <div class="video-wrapper">
           <div class="video-thumb" onclick="loadVideo(this,'GWPDxZlUEtM')">
-            <img src="https://i.ytimg.com/vi/GWPDxZlUEtM/hqdefault.jpg"
-                 alt="Powerful Remedies for Rahu & Ketu" loading="lazy"/>
+            <img src="https://i.ytimg.com/vi/GWPDxZlUEtM/hqdefault.jpg" alt="Remedies Rahu Ketu" loading="lazy"/>
             <div class="play-btn"></div>
           </div>
         </div>
         <div class="video-body">
-        <p class="video-tag">साप्ताहिक राशिफल</p>
-<h3 class="video-title">साप्ताहिक राशिफल: 9 June – 15 June 2025</h3>
-<p class="video-desc">इस सप्ताह का राशिफल — सभी राशियों के लिए At a Glance ग्रह स्थिति और फल।</p>
+          <p class="video-tag">साप्ताहिक राशिफल</p>
+          <h3 class="video-title">साप्ताहिक राशिफल: 9 June – 15 June 2025</h3>
+          <p class="video-desc">इस सप्ताह का राशिफल — सभी राशियों के लिए At a Glance ग्रह स्थिति और फल।</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<script>
-function loadVideo(thumb, id) {
-  var iframe = document.createElement('iframe');
-  // origin= prevents Error 153 — dynamically uses your actual domain
-  iframe.src = 'https://www.youtube.com/embed/' + id
-             + '?autoplay=1&rel=0&modestbranding=1&origin=' + window.location.origin;
-  iframe.title           = 'YouTube video player';
-  iframe.allow           = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
-  iframe.allowFullscreen = true;
-  iframe.style.cssText   = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
-  thumb.replaceWith(iframe);
-}
-</script>
-
-<!-- ═══ CONTACT ═══ -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="text-center">
@@ -1743,12 +1159,6 @@ function loadVideo(thumb, id) {
             <div class="contact-item-icon">✉️</div>
             <div><div class="contact-item-label">Email</div><div class="contact-item-val">prashant.dubey10@outlook.com</div></div>
           </li>
-<!--
-          <li class="contact-item">
-            <div class="contact-item-icon">📞</div>
-            <div><div class="contact-item-label">Phone / WhatsApp</div><div class="contact-item-val">+91 98765 43210</div></div>
-          </li>
--->
           <li class="contact-item">
             <div class="contact-item-icon">🕐</div>
             <div><div class="contact-item-label">Office Hours</div><div class="contact-item-val">Mon – Sat, 10:00 AM – 7:00 PM IST</div></div>
@@ -1759,41 +1169,20 @@ function loadVideo(thumb, id) {
           </li>
         </ul>
         <div class="social-row">
-<!--          <a class="social-link" href="#" title="Instagram">📸</a>-->
           <a class="social-link" href="https://www.youtube.com/@ShastriJiKashivale235" title="YouTube">▶️</a>
-<!--          <a class="social-link" href="#" title="WhatsApp">💬</a>-->
-<!--          <a class="social-link" href="#" title="Facebook">👤</a>-->
         </div>
       </div>
-        
-  <div class="booking-form-card">
-  <iframe
-    id="tfIframe"
-    src="https://form.typeform.com/to/nqfG5aJM"
-    style="width:100%; min-height:500px; border:none; border-radius:8px; display:block;"
-    loading="eager"
-    allow="camera; microphone; autoplay; encrypted-media;"
-    title="Book a Consultation">
-  </iframe>
-</div>
-
-<script>
-(function(){
-  var iframe = document.getElementById('tfIframe');
-
-  window.addEventListener('message', function(e) {
-    if (e.data && e.data.type === 'embed-height' && e.data.height) {
-      iframe.style.minHeight = Math.max(e.data.height, 300) + 'px';
-    }
-  });
-})();
-</script>
-        
+      <div class="booking-form-card">
+        <iframe id="tfIframe2" src="https://form.typeform.com/to/nqfG5aJM"
+          style="width:100%; min-height:500px; border:none; border-radius:8px; display:block;"
+          loading="eager" allow="camera; microphone; autoplay; encrypted-media;"
+          title="Contact Form"></iframe>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -1801,9 +1190,7 @@ function loadVideo(thumb, id) {
         <span class="logo">Pt. Prashant Dubey <span>✦</span></span>
         <p>Bridging ancient celestial wisdom with modern life guidance. Every chart tells a story — let us read yours together with clarity, compassion and precision.</p>
         <div class="social-row">
-          <a class="social-link" href="#" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);" title="Instagram">📸</a>
           <a class="social-link" href="#" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);" title="YouTube">▶️</a>
-          <a class="social-link" href="#" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);" title="WhatsApp">💬</a>
         </div>
       </div>
       <div class="footer-col">
@@ -1823,7 +1210,6 @@ function loadVideo(thumb, id) {
         <ul>
           <li><a href="#about">About Me</a></li>
           <li><a href="#horoscope">Weekly Horoscope</a></li>
-          <li><a href="#blog">Astrology Blog</a></li>
           <li><a href="#booking">Book a Session</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -1832,7 +1218,6 @@ function loadVideo(thumb, id) {
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-<!--          <li><a href="tel:+919876543210">+91 98765 43210</a></li>-->
           <li><a href="mailto:prashant.dubey10@outlook.com">prashant.dubey10@outlook.com</a></li>
           <li><a href="#">Varanasi</a></li>
           <li><a href="#">Online via Microsoft Teams</a></li>
@@ -1841,7 +1226,7 @@ function loadVideo(thumb, id) {
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Pt. Prashant Dubey Astrology. All rights reserved.</p>
+      <p>© 2026 Pt. Prashant Dubey Astrology. All rights reserved.</p>
       <div class="footer-bottom-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
@@ -1858,21 +1243,26 @@ function loadVideo(thumb, id) {
 </div>
 
 <script>
-/* ─── NAV SCROLL ─── */
+/* ── NAV SCROLL ── */
 window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
 });
 
-/* ─── MOBILE NAV ─── */
+/* ── MOBILE NAV ── */
 function toggleMobileNav() {
   document.getElementById('mobileNav').classList.toggle('open');
 }
+document.addEventListener('click', e => {
+  const nav = document.getElementById('mobileNav');
+  if (nav.classList.contains('open') && !nav.contains(e.target) && !e.target.closest('.hamburger')) {
+    nav.classList.remove('open');
+  }
+});
 
-/* ─── COUNTER ANIMATION ─── */
+/* ── COUNTER ANIMATION ── */
 function animateCount(el, target, suffix='') {
   let start = 0;
-  const duration = 1800;
-  const step = target / (duration / 16);
+  const step = target / (1800 / 16);
   const timer = setInterval(() => {
     start = Math.min(start + step, target);
     el.textContent = Math.floor(start).toLocaleString('en-IN') + suffix;
@@ -1892,230 +1282,311 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 observer.observe(document.getElementById('stats'));
 
-/* ─── ZODIAC DATA ─── */
+/* ── VIDEO LOADER ── */
+function loadVideo(thumb, id) {
+  var iframe = document.createElement('iframe');
+  iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&origin=' + window.location.origin;
+  iframe.title = 'YouTube video player';
+  iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+  iframe.allowFullscreen = true;
+  iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
+  thumb.replaceWith(iframe);
+}
+
+/* ── TYPEFORM RESIZE ── */
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'embed-height' && e.data.height) {
+    ['tfIframe','tfIframe2'].forEach(id => {
+      var el = document.getElementById(id);
+      if (el) el.style.minHeight = Math.max(e.data.height, 300) + 'px';
+    });
+  }
+});
+
+/* ══════════════════════════════════════════
+   ZODIAC DATA — bilingual
+══════════════════════════════════════════ */
 const signs = [
-  { name:'Aries',     sym:'♈', dates:'Mar 21–Apr 19', love:'Venus energises partnerships. Be open to vulnerability and honest communication.', career:'Bold moves pay off. Your initiative is your greatest asset this week.', health:'Focus on head and upper body. Meditation calms your fire sign energy.', num:'9', color:'Scarlet', day:'Tuesday' },
-  { name:'Taurus',    sym:'♉', dates:'Apr 20–May 20', love:'Stability is your greatest gift to offer and to receive. Be patient.', career:'Financial clarity arrives. Review contracts and agreements with care.', health:'Neck and throat need attention. Warm herbal teas and rest are healing.', num:'6', color:'Emerald', day:'Friday' },
-  { name:'Gemini',    sym:'♊', dates:'May 21–Jun 20', love:'Communication is the key. Say what you have been holding back — gently.', career:'Two opportunities arise simultaneously. Follow the one that excites you most.', health:'Breathwork and light movement suit your airy nature beautifully this week.', num:'5', color:'Yellow', day:'Wednesday' },
-  { name:'Cancer',    sym:'♋', dates:'Jun 21–Jul 22', love:'The moon heightens your emotions. Nurture others without losing yourself.', career:'Home-based projects and intuition-led decisions are favoured now.', health:'Stomach and digestion benefit from warm, home-cooked nourishing meals.', num:'2', color:'Silver', day:'Monday' },
-  { name:'Leo',       sym:'♌', dates:'Jul 23–Aug 22', love:'Romance sparkles — be generous with your warmth and undivided attention.', career:'Leadership is called for. Step into the spotlight with full confidence.', health:'Heart health is highlighted. Joy, dance and sunlight are your medicine.', num:'1', color:'Gold', day:'Sunday' },
-  { name:'Virgo',     sym:'♍', dates:'Aug 23–Sep 22', love:'Details matter in love too. A thoughtful, specific gesture speaks volumes.', career:'Your precision solves a problem no one else could see or crack.', health:'Gut health and daily routines deserve your careful, loving attention.', num:'5', color:'Forest Green', day:'Wednesday' },
-  { name:'Libra',     sym:'♎', dates:'Sep 23–Oct 22', love:'Balance is being restored. A meaningful conversation heals old wounds.', career:'Collaboration brings brilliant breakthroughs. Diplomacy is your superpower.', health:'Kidneys and lower back benefit from staying well hydrated and stretching.', num:'6', color:'Rose Pink', day:'Friday' },
-  { name:'Scorpio',   sym:'♏', dates:'Oct 23–Nov 21', love:'Deep intensity draws soulful, lasting connection. Trust what you feel.', career:'Research, transformation and hidden resources are your themes this week.', health:'Detox and rest support your wellbeing. Honour your need for solitude.', num:'8', color:'Crimson', day:'Tuesday' },
-  { name:'Sagittarius',sym:'♐',dates:'Nov 22–Dec 21', love:'Adventure calls in love — try something new and unexpected together.', career:'Expansion beckons. A foreign connection or course of study is auspicious.', health:'Hips and thighs benefit greatly from outdoor movement and fresh air.', num:'3', color:'Purple', day:'Thursday' },
-  { name:'Capricorn', sym:'♑', dates:'Dec 22–Jan 19', love:'Patience and loyalty deepen every bond. Show up consistently and fully.', career:'Ambition is rewarded. A long-held goal takes a decisive step forward.', health:'Bones and joints welcome restorative yoga and mineral-rich wholesome foods.', num:'8', color:'Charcoal', day:'Saturday' },
-  { name:'Aquarius',  sym:'♒', dates:'Jan 20–Feb 18', love:'Friendship and love blur beautifully this week. Let your walls gently come down.', career:'Innovation is your sharpest edge. Unexpected alliances open new paths.', health:'Circulation and ankles — keep moving gently and avoid physical stagnation.', num:'4', color:'Electric Blue', day:'Saturday' },
-  { name:'Pisces',    sym:'♓', dates:'Feb 19–Mar 20', love:'Dreams and romance intertwine magically. Let your open heart lead the way.', career:'Creative and spiritual work flourishes under this beautifully mystical sky.', health:'Rest, gentle water movement and creative expression restore your spirit.', num:'7', color:'Aquamarine', day:'Thursday' }
+  { name:'Aries',       nameHi:'मेष',      sym:'♈', dates:'Mar 21–Apr 19', datesHi:'21 मार्च–19 अप्रैल',
+    love:'Venus energises partnerships. Be open to vulnerability and honest communication.',
+    loveHi:'शुक्र साझेदारी को ऊर्जा देता है। संवेदनशील रहें और ईमानदारी से बात करें।',
+    career:'Bold moves pay off. Your initiative is your greatest asset this week.',
+    careerHi:'साहसी कदम फलदायक रहेंगे। इस सप्ताह आपकी पहल ही आपकी सबसे बड़ी शक्ति है।',
+    health:'Focus on head and upper body. Meditation calms your fire sign energy.',
+    healthHi:'सिर और ऊपरी शरीर पर ध्यान दें। ध्यान-साधना आपकी अग्नि राशि की ऊर्जा को शांत करती है।',
+    num:'9', color:'Scarlet', colorHi:'लाल', day:'Tuesday', dayHi:'मंगलवार' },
+
+  { name:'Taurus',      nameHi:'वृषभ',     sym:'♉', dates:'Apr 20–May 20', datesHi:'20 अप्रैल–20 मई',
+    love:'Stability is your greatest gift to offer and to receive. Be patient.',
+    loveHi:'स्थिरता देना और पाना आपका सबसे बड़ा उपहार है। धैर्य रखें।',
+    career:'Financial clarity arrives. Review contracts and agreements with care.',
+    careerHi:'आर्थिक स्पष्टता आएगी। अनुबंधों और समझौतों को ध्यानपूर्वक देखें।',
+    health:'Neck and throat need attention. Warm herbal teas and rest are healing.',
+    healthHi:'गर्दन और गले पर ध्यान दें। गर्म हर्बल चाय और आराम लाभकारी रहेंगे।',
+    num:'6', color:'Emerald', colorHi:'पन्ना हरा', day:'Friday', dayHi:'शुक्रवार' },
+
+  { name:'Gemini',      nameHi:'मिथुन',    sym:'♊', dates:'May 21–Jun 20', datesHi:'21 मई–20 जून',
+    love:'Communication is the key. Say what you have been holding back — gently.',
+    loveHi:'संवाद ही कुंजी है। जो मन में था वह धीरे से कह दें।',
+    career:'Two opportunities arise simultaneously. Follow the one that excites you most.',
+    careerHi:'एक साथ दो अवसर आएंगे। उसे चुनें जो आपको सबसे अधिक उत्साहित करे।',
+    health:'Breathwork and light movement suit your airy nature beautifully this week.',
+    healthHi:'प्राणायाम और हल्का व्यायाम इस सप्ताह आपकी वायु राशि के लिए उपयुक्त हैं।',
+    num:'5', color:'Yellow', colorHi:'पीला', day:'Wednesday', dayHi:'बुधवार' },
+
+  { name:'Cancer',      nameHi:'कर्क',     sym:'♋', dates:'Jun 21–Jul 22', datesHi:'21 जून–22 जुलाई',
+    love:'The moon heightens your emotions. Nurture others without losing yourself.',
+    loveHi:'चंद्रमा आपकी भावनाओं को गहरा करता है। दूसरों का ख्याल रखें, पर खुद को न भूलें।',
+    career:'Home-based projects and intuition-led decisions are favoured now.',
+    careerHi:'घर से जुड़े प्रोजेक्ट और अंतर्ज्ञान से लिए निर्णय इस समय शुभ हैं।',
+    health:'Stomach and digestion benefit from warm, home-cooked nourishing meals.',
+    healthHi:'पेट और पाचन के लिए गर्म, घर का बना पोषक भोजन लाभदायक रहेगा।',
+    num:'2', color:'Silver', colorHi:'चांदी', day:'Monday', dayHi:'सोमवार' },
+
+  { name:'Leo',         nameHi:'सिंह',     sym:'♌', dates:'Jul 23–Aug 22', datesHi:'23 जुलाई–22 अगस्त',
+    love:'Romance sparkles — be generous with your warmth and undivided attention.',
+    loveHi:'प्रेम में चमक है — अपनी ऊष्मा और पूरा ध्यान उदारता से दें।',
+    career:'Leadership is called for. Step into the spotlight with full confidence.',
+    careerHi:'नेतृत्व की जरूरत है। पूरे आत्मविश्वास के साथ सामने आएं।',
+    health:'Heart health is highlighted. Joy, dance and sunlight are your medicine.',
+    healthHi:'हृदय स्वास्थ्य महत्वपूर्ण है। खुशी, नृत्य और धूप आपकी दवा हैं।',
+    num:'1', color:'Gold', colorHi:'सोना', day:'Sunday', dayHi:'रविवार' },
+
+  { name:'Virgo',       nameHi:'कन्या',    sym:'♍', dates:'Aug 23–Sep 22', datesHi:'23 अगस्त–22 सितंबर',
+    love:'Details matter in love too. A thoughtful, specific gesture speaks volumes.',
+    loveHi:'प्रेम में भी विवरण महत्वपूर्ण हैं। एक सोचा-समझा संकेत बहुत कुछ कह देता है।',
+    career:'Your precision solves a problem no one else could see or crack.',
+    careerHi:'आपकी सटीकता एक ऐसी समस्या सुलझाएगी जो कोई और नहीं देख सका।',
+    health:'Gut health and daily routines deserve your careful, loving attention.',
+    healthHi:'पाचन स्वास्थ्य और दैनिक दिनचर्या पर प्रेमपूर्वक ध्यान दें।',
+    num:'5', color:'Forest Green', colorHi:'वन हरा', day:'Wednesday', dayHi:'बुधवार' },
+
+  { name:'Libra',       nameHi:'तुला',     sym:'♎', dates:'Sep 23–Oct 22', datesHi:'23 सितंबर–22 अक्टूबर',
+    love:'Balance is being restored. A meaningful conversation heals old wounds.',
+    loveHi:'संतुलन लौट रहा है। एक सार्थक बातचीत पुराने घावों को भर देगी।',
+    career:'Collaboration brings brilliant breakthroughs. Diplomacy is your superpower.',
+    careerHi:'सहयोग से शानदार सफलता मिलेगी। कूटनीति आपकी महाशक्ति है।',
+    health:'Kidneys and lower back benefit from staying well hydrated and stretching.',
+    healthHi:'गुर्दे और पीठ के निचले हिस्से के लिए खूब पानी पिएं और स्ट्रेचिंग करें।',
+    num:'6', color:'Rose Pink', colorHi:'गुलाबी', day:'Friday', dayHi:'शुक्रवार' },
+
+  { name:'Scorpio',     nameHi:'वृश्चिक',  sym:'♏', dates:'Oct 23–Nov 21', datesHi:'23 अक्टूबर–21 नवंबर',
+    love:'Deep intensity draws soulful, lasting connection. Trust what you feel.',
+    loveHi:'गहरी तीव्रता आत्मीय और स्थायी संबंध लाती है। अपनी भावनाओं पर भरोसा रखें।',
+    career:'Research, transformation and hidden resources are your themes this week.',
+    careerHi:'अनुसंधान, परिवर्तन और छुपे संसाधन इस सप्ताह के मुख्य विषय हैं।',
+    health:'Detox and rest support your wellbeing. Honour your need for solitude.',
+    healthHi:'डिटॉक्स और आराम आपकी सेहत के लिए जरूरी है। एकांत की जरूरत को सम्मान दें।',
+    num:'8', color:'Crimson', colorHi:'गहरा लाल', day:'Tuesday', dayHi:'मंगलवार' },
+
+  { name:'Sagittarius', nameHi:'धनु',      sym:'♐', dates:'Nov 22–Dec 21', datesHi:'22 नवंबर–21 दिसंबर',
+    love:'Adventure calls in love — try something new and unexpected together.',
+    loveHi:'प्रेम में रोमांच है — साथ में कुछ नया और अप्रत्याशित आज़माएं।',
+    career:'Expansion beckons. A foreign connection or course of study is auspicious.',
+    careerHi:'विस्तार की राह खुल रही है। विदेशी संपर्क या पढ़ाई का कोर्स शुभ है।',
+    health:'Hips and thighs benefit greatly from outdoor movement and fresh air.',
+    healthHi:'कूल्हों और जांघों के लिए बाहरी व्यायाम और ताज़ी हवा बेहद लाभकारी है।',
+    num:'3', color:'Purple', colorHi:'बैंगनी', day:'Thursday', dayHi:'गुरुवार' },
+
+  { name:'Capricorn',   nameHi:'मकर',      sym:'♑', dates:'Dec 22–Jan 19', datesHi:'22 दिसंबर–19 जनवरी',
+    love:'Patience and loyalty deepen every bond. Show up consistently and fully.',
+    loveHi:'धैर्य और निष्ठा हर रिश्ते को गहरा करती है। नियमित रूप से पूरी तरह उपस्थित रहें।',
+    career:'Ambition is rewarded. A long-held goal takes a decisive step forward.',
+    careerHi:'महत्वाकांक्षा को पुरस्कार मिलेगा। एक पुराना लक्ष्य अब निर्णायक कदम आगे बढ़ेगा।',
+    health:'Bones and joints welcome restorative yoga and mineral-rich wholesome foods.',
+    healthHi:'हड्डियों और जोड़ों के लिए पुनर्स्थापक योग और खनिज-युक्त भोजन लाभकारी है।',
+    num:'8', color:'Charcoal', colorHi:'चारकोल', day:'Saturday', dayHi:'शनिवार' },
+
+  { name:'Aquarius',    nameHi:'कुंभ',     sym:'♒', dates:'Jan 20–Feb 18', datesHi:'20 जनवरी–18 फरवरी',
+    love:'Friendship and love blur beautifully this week. Let your walls gently come down.',
+    loveHi:'इस सप्ताह मित्रता और प्रेम का सुंदर मेल होगा। अपनी दीवारें धीरे-धीरे गिरने दें।',
+    career:'Innovation is your sharpest edge. Unexpected alliances open new paths.',
+    careerHi:'नवाचार आपकी सबसे पैनी धार है। अप्रत्याशित गठबंधन नई राहें खोलेंगे।',
+    health:'Circulation and ankles — keep moving gently and avoid physical stagnation.',
+    healthHi:'रक्त संचार और टखनों के लिए धीरे-धीरे चलते रहें, स्थिरता से बचें।',
+    num:'4', color:'Electric Blue', colorHi:'विद्युत नीला', day:'Saturday', dayHi:'शनिवार' },
+
+  { name:'Pisces',      nameHi:'मीन',      sym:'♓', dates:'Feb 19–Mar 20', datesHi:'19 फरवरी–20 मार्च',
+    love:'Dreams and romance intertwine magically. Let your open heart lead the way.',
+    loveHi:'सपने और रोमांस जादुई रूप से मिलते हैं। खुले दिल को रास्ता दिखाने दें।',
+    career:'Creative and spiritual work flourishes under this beautifully mystical sky.',
+    careerHi:'इस रहस्यमय आकाश के तले रचनात्मक और आध्यात्मिक कार्य फलते-फूलते हैं।',
+    health:'Rest, gentle water movement and creative expression restore your spirit.',
+    healthHi:'आराम, हल्की जल-क्रिया और रचनात्मक अभिव्यक्ति आपकी आत्मा को पुनर्जीवित करेगी।',
+    num:'7', color:'Aquamarine', colorHi:'एक्वामरीन', day:'Thursday', dayHi:'गुरुवार' }
 ];
 
-const wheel = document.getElementById('signsWheel');
-const box = document.getElementById('readingBox');
+/* ── HOROSCOPE STATE ── */
+let currentLang = 'en';
+let activeSign  = null;
 
-signs.forEach((s, i) => {
-  const tile = document.createElement('div');
-  tile.className = 'sign-tile';
-  tile.innerHTML = `<div class="sign-glyph">${s.sym}</div><div class="sign-name-sm">${s.name}</div><div class="sign-date-sm">${s.dates}</div>`;
-  tile.onclick = () => {
-    document.querySelectorAll('.sign-tile').forEach(t => t.classList.remove('active'));
-    tile.classList.add('active');
-    showReading(s);
-  };
-  wheel.appendChild(tile);
-});
+/* ── BUILD WHEEL ── */
+function buildWheel() {
+  const wheel = document.getElementById('signsWheel');
+  wheel.innerHTML = '';
+  signs.forEach(s => {
+    const tile = document.createElement('div');
+    tile.className = 'sign-tile' + (activeSign && activeSign.name === s.name ? ' active' : '');
+    tile.innerHTML =
+      '<div class="sign-glyph">' + s.sym + '</div>' +
+      '<div class="sign-name-sm">' + (currentLang === 'hi' ? s.nameHi : s.name) + '</div>' +
+      '<div class="sign-date-sm">' + (currentLang === 'hi' ? s.datesHi : s.dates) + '</div>';
+    tile.addEventListener('click', () => {
+      document.querySelectorAll('.sign-tile').forEach(t => t.classList.remove('active'));
+      tile.classList.add('active');
+      activeSign = s;
+      showReading(s);
+    });
+    wheel.appendChild(tile);
+  });
+}
 
+/* ── SHOW READING ── */
 function showReading(s) {
-  const now = new Date();
-  const week = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+  var isHi = (currentLang === 'hi');
+  var now  = new Date();
+  var locale = isHi ? 'hi-IN' : 'en-IN';
+  var week = now.toLocaleDateString(locale, { day:'numeric', month:'long', year:'numeric' });
+  var weekLabel = isHi ? 'सप्ताह: ' : 'Week of ';
+
+  var loveLabel    = isHi ? 'प्रेम और रिश्ते'       : 'Love & Relationships';
+  var careerLabel  = isHi ? 'करियर और उद्देश्य'     : 'Career & Purpose';
+  var healthLabel  = isHi ? 'स्वास्थ्य और तंदुरुस्ती' : 'Health & Wellbeing';
+  var numLabel     = isHi ? 'भाग्यशाली अंक'         : 'Lucky Number';
+  var colorLabel   = isHi ? 'शुभ रंग'               : 'Power Colour';
+  var dayLabel     = isHi ? 'शुभ दिन'               : 'Auspicious Day';
+
   document.getElementById('rGlyph').textContent = s.sym;
-  document.getElementById('rName').textContent = s.name;
-  document.getElementById('rWeek').textContent = 'Week of ' + week;
-  document.getElementById('rCats').innerHTML = `
-    <div class="reading-cat-card"><div class="reading-cat-title">Love &amp; Relationships</div><p class="reading-cat-text">${s.love}</p></div>
-    <div class="reading-cat-card"><div class="reading-cat-title">Career &amp; Purpose</div><p class="reading-cat-text">${s.career}</p></div>
-    <div class="reading-cat-card"><div class="reading-cat-title">Health &amp; Wellbeing</div><p class="reading-cat-text">${s.health}</p></div>
-  `;
-  document.getElementById('rLucky').innerHTML = `
-    <div class="lucky-piece">Lucky Number: <strong>${s.num}</strong></div>
-    <div class="lucky-piece">Power Colour: <strong>${s.color}</strong></div>
-    <div class="lucky-piece">Auspicious Day: <strong>${s.day}</strong></div>
-  `;
+  document.getElementById('rName').textContent  = isHi ? s.nameHi : s.name;
+  document.getElementById('rWeek').textContent  = weekLabel + week;
+
+  document.getElementById('rCats').innerHTML =
+    '<div class="reading-cat-card"><div class="reading-cat-title">' + loveLabel   + '</div><p class="reading-cat-text">' + (isHi ? s.loveHi   : s.love)   + '</p></div>' +
+    '<div class="reading-cat-card"><div class="reading-cat-title">' + careerLabel + '</div><p class="reading-cat-text">' + (isHi ? s.careerHi : s.career) + '</p></div>' +
+    '<div class="reading-cat-card"><div class="reading-cat-title">' + healthLabel + '</div><p class="reading-cat-text">' + (isHi ? s.healthHi : s.health) + '</p></div>';
+
+  document.getElementById('rLucky').innerHTML =
+    '<div class="lucky-piece">' + numLabel   + ': <strong>' + s.num + '</strong></div>' +
+    '<div class="lucky-piece">' + colorLabel + ': <strong>' + (isHi ? s.colorHi : s.color) + '</strong></div>' +
+    '<div class="lucky-piece">' + dayLabel   + ': <strong>' + (isHi ? s.dayHi   : s.day)   + '</strong></div>';
+
+  var box = document.getElementById('readingBox');
   box.classList.remove('show');
-  void box.offsetWidth;
+  void box.offsetWidth; /* force reflow for animation replay */
   box.classList.add('show');
-  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  box.scrollIntoView({ behavior:'smooth', block:'nearest' });
 }
 
-/* ─── TOAST ─── */
-function showToast(type) {
-  const t = document.getElementById('toast');
-  const title = document.getElementById('toastTitle');
-  const msg = document.getElementById('toastMsg');
-  if (type === 'booking') {
-    title.textContent = '✦ Request Received';
-    msg.textContent = 'Thank you! I will confirm your session within 24 hours.';
-  } else {
-    title.textContent = '✦ Message Sent';
-    msg.textContent = 'Thank you — I will reply to your message soon.';
-  }
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 4200);
-}
-
-/* ─── SMOOTH CLOSE MOBILE NAV ON OUTSIDE CLICK ─── */
-document.addEventListener('click', e => {
-  const nav = document.getElementById('mobileNav');
-  if (nav.classList.contains('open') && !nav.contains(e.target) && !e.target.closest('.hamburger')) {
-    nav.classList.remove('open');
-  }
-});
-</script>
-   <script>
-let currentLang = "en";
-
+/* ── LANGUAGE TOGGLE ── */
 const translations = {
   en: {
-    about: "About",
-    services: "Services",
-    horoscope: "Horoscope",
-    blog: "Blog",
-    contact: "Contact",
-    book: "Book Consultation",
-      
-       vedicAstrology: "Vedic Astrology",
-  numerology: "Numerology",
-  vastu: "Vastu Shastra",
-  palmistry: "Palmistry & Face Reading",
-  synastry: "Synastry & Compatibility",
-  gemstone: "Gemstone Guidance",
-
-      trustedAstrologer: "India's Most Trusted Astrologer",
-    heroTitle: "Clarity, Timing & Cosmic Guidance for Your Life",
-    heroSubtitle:
-      "Personalised Vedic astrology, numerology, Vastu and palmistry consultations — rooted in ancient wisdom, delivered for modern life.",
-      
-      
-      bookConsultation: "Book a Consultation",
-readHoroscope: "Read Your Horoscope",
-
-yearsExpertise: "Years of Expertise",
-trustedClients: "Trusted Clients",
-countriesServed: "Countries Served",
-
-ratingTitle: "5.0 Rating",
-verifiedConsultations: "Verified Consultations",
-yuvaAward: "Yuva Pratibha Awardee",
-worldwideClients: "Serving Clients Worldwide",
-renownedAstrologer: "Renowned Astrologer",
-    aboutLabel: "About Me",
-    aboutTitle: "India's Leading Vedic Astrologer & Life Coach",
-    aboutIntro:
-      "I believe in clarity and timing — not fear. The stars are a map, not a cage.",
-
-    servicesLabel: "What I Offer",
-    servicesTitle: "Consultations & Services",
-    servicesSubtitle:
-      "Each session is deeply personal — tailored to your unique planetary map and life questions.",
-
-    bookingLabel: "Reserve Your Session",
-    bookingTitle: "Book a Consultation",
-
-    horoscopeLabel: "Weekly Horoscope",
-    horoscopeTitle: "What the Stars Say This Week",
-
-    testimonialsLabel: "Client Testimonials",
-    testimonialsTitle: "Trusted by Thousands",
-
-    blogLabel: "Astrology Insights",
-    blogTitle: "Latest Articles & Guidance",
-
-    contactLabel: "Get in Touch",
-    contactTitle: "Contact & Appointments",
-
-    footerText:
-      "Ancient wisdom for modern life. Trusted astrology consultations worldwide."
+    about:'About', services:'Services', horoscope:'Horoscope', contact:'Contact', book:'Book Consultation',
+    vedicAstrology:'Vedic Astrology', numerology:'Numerology', vastu:'Vastu Shastra',
+    palmistry:'Palmistry & Face Reading', synastry:'Synastry & Compatibility', gemstone:'Gemstone Guidance',
+    trustedAstrologer:"India's Most Trusted Astrologer",
+    heroTitle:'Clarity, Timing &amp; Cosmic Guidance for Your Life',
+    heroSubtitle:'Personalised Vedic astrology, numerology, Vastu and palmistry consultations — rooted in ancient wisdom, delivered for modern life.',
+    bookConsultation:'Book a Consultation', readHoroscope:'Read Your Horoscope',
+    yearsExpertise:'Years of Expertise', trustedClients:'Trusted Clients', countriesServed:'Countries Served',
+    ratingTitle:'5.0 Rating', verifiedConsultations:'Verified Consultations',
+    yuvaAward:'Yuva Pratibha Awardee', worldwideClients:'Serving Clients Worldwide', renownedAstrologer:'Renowned Astrologer',
+    aboutLabel:'About Me', aboutTitle:"India's Leading Vedic Astrologer &amp; Life Coach",
+    aboutPara1:'I believe in clarity and timing — not fear. The stars are a map, not a cage.',
+    aboutPara2:'With over two decades of deep study in Vedic Jyotish, Western astrology, numerology, Vastu Shastra and palmistry, I have guided more than 50,000 individuals across 15 countries toward meaningful, informed decisions in their careers, relationships and personal lives.',
+    aboutPara3:'My approach bridges the ancient wisdom of our rishis with the practical realities of modern life — giving you tools to understand not just what the planets say, but how to work with them skillfully.',
+    awardCredential:'Yuva Pratibha Award by the Akhil Bharatiya Vidvat Parishad in Kashi',
+    trustedPractice:'Years of Trusted Astrological Practice',
+    vedicJyotish:'Vedic Jyotish', westernAstrology:'Western Astrology', palmistryTag:'Palmistry',
+    gemstones:'Gemstones', faceReading:'Face Reading', coupleCounselling:'Couple Counselling',
+    happyClients:'Happy Clients', coupleSessions:'Couple Counselling Sessions',
+    servicesLabel:'What I Offer', servicesTitle:'Consultations &amp; Services',
+    servicesSubtitle:'Each session is deeply personal — tailored to your unique planetary map and life questions.',
+    mostPopular:'Most Popular', bookSession:'Book this session',
+    natalTitle:'Natal Chart Reading', natalDesc:"A comprehensive birth chart exploration — your sun, moon, rising, and all planetary placements decoded to reveal your strengths, challenges and soul's purpose.",
+    vedicTitle:'Vedic Jyotish', vedicDesc:'Traditional Vedic reading with Lagna, Nakshatra analysis, Dasha periods and personalised remedial measures for karmic alignment and life harmony.',
+    predictiveTitle:'Predictive Astrology', predictiveDesc:'Using transits, progressions and Dasha periods to illuminate major life themes for the year ahead — helping you move with the cosmic tide, not against it.',
+    vastuTitle:'Vastu Shastra', vastuDesc:'Balance energy in your home, office or workspace with expert Vastu consultations designed to attract peace, health and prosperity into your environment.',
+    synastryTitle:'Synastry &amp; Matchmaking', synastryDesc:'Explore cosmic compatibility between two souls — ideal for romantic partners, pre-marital counselling or understanding any significant personal relationship.',
+    numerologyTitle:'Numerology Reading', numerologyDesc:'Unlock the vibrational power of your name and birth date. Discover your life path number, destiny, and how to align your energy for maximum success.',
+    palmistryTitle:'Palmistry &amp; Face Reading', palmistryDesc:'Ancient arts of palmistry and physiognomy combined to reveal your character, potential, health patterns and life trajectory.',
+    gemstoneTitle:'Gemstone Consultation', gemstoneDesc:'Personalised gemstone recommendations based on your chart and planetary positions — to strengthen weak planets and attract favourable energies.',
+    quickGuidanceTitle:'Quick Guidance (First Question)', quickGuidanceDesc:'A focused introductory session on one specific question — career, love, health, business or timing. The ideal starting point for new clients.',
+    bookingLabel:'Reserve Your Session', bookingTitle:'Book a Consultation',
+    bookingSubtitle:'Fill in your details and I will confirm your session within 24 hours with a Microsoft Teams link or in-person address.',
+    howItWorks:'How it works', bookingIntro:'Every session begins with careful preparation. Your chart is studied before we meet.',
+    bookingPara:'I spend time with your birth data before every consultation so our time together is pure insight — not data collection. Sessions are available via Microsoft Teams, WhatsApp Video or in-person in Varanasi.',
+    step1Title:'Submit your booking request', step1Desc:'Complete the form with your birth details and preferred time slot.',
+    step2Title:'Confirmation within 24 hours', step2Desc:"You'll receive a confirmation with meeting link and a short intake questionnaire.",
+    step3Title:'Chart preparation', step3Desc:'I cast and deeply study your chart 1–2 days before our session.',
+    step4Title:'Your reading', step4Desc:'We meet live for an in-depth, dialogue-based session. Recording provided.',
+    horoscopeLabel:'Weekly Horoscope', horoscopeTitle:'What the Stars Say This Week',
+    horoscopeSubtitle:'Select your sun sign for personalised cosmic guidance.'
   },
-
   hi: {
-    about: "परिचय",
-    services: "सेवाएँ",
-    horoscope: "राशिफल",
-    blog: "ब्लॉग",
-    contact: "संपर्क",
-    book: "परामर्श बुक करें",
-      
-      
-  vedicAstrology: "वैदिक ज्योतिष",
-  numerology: "अंक ज्योतिष",
-  vastu: "वास्तु शास्त्र",
-  palmistry: "हस्तरेखा एवं मुखाकृति अध्ययन",
-  synastry: "कुंडली मिलान एवं अनुकूलता",
-  gemstone: "रत्न परामर्श",
-      
-    trustedAstrologer: "भारत के सबसे विश्वसनीय ज्योतिषाचार्य",
-    heroTitle: "आपके जीवन के लिए स्पष्टता, सही समय और दिव्य मार्गदर्शन",
-    heroSubtitle:
-      "वैदिक ज्योतिष, अंक ज्योतिष, वास्तु और हस्तरेखा की व्यक्तिगत सलाह — प्राचीन ज्ञान के साथ आधुनिक जीवन के लिए।",
-      
-      
-      bookConsultation: "परामर्श बुक करें",
-readHoroscope: "अपना राशिफल पढ़ें",
-
-yearsExpertise: "वर्षों का अनुभव",
-trustedClients: "विश्वसनीय ग्राहक",
-countriesServed: "सेवित देश",
-
-ratingTitle: "5.0 रेटिंग",
-verifiedConsultations: "सत्यापित परामर्श",
-      yuvaAward: "युवा प्रतिभा पुरस्कार से सम्मानित",
-worldwideClients: "विश्वभर में सेवाएँ",
-renownedAstrologer: "प्रसिद्ध ज्योतिषाचार्य",
-
-    aboutLabel: "मेरे बारे में",
-    aboutTitle: "भारत के प्रमुख वैदिक ज्योतिषाचार्य एवं जीवन मार्गदर्शक",
-    aboutIntro:
-      "मैं भय नहीं, बल्कि स्पष्टता और सही समय में विश्वास करता हूँ। सितारे एक मार्गदर्शक हैं, बंधन नहीं।",
-
-    servicesLabel: "मेरी सेवाएँ",
-    servicesTitle: "परामर्श एवं सेवाएँ",
-    servicesSubtitle:
-      "हर सत्र पूरी तरह व्यक्तिगत होता है — आपकी जन्म कुंडली और जीवन के प्रश्नों के अनुसार।",
-
-    bookingLabel: "अपना सत्र बुक करें",
-    bookingTitle: "परामर्श बुक करें",
-
-    horoscopeLabel: "साप्ताहिक राशिफल",
-    horoscopeTitle: "इस सप्ताह सितारे क्या कहते हैं",
-
-    testimonialsLabel: "ग्राहकों की राय",
-    testimonialsTitle: "हजारों लोगों का विश्वास",
-
-    blogLabel: "ज्योतिषीय ज्ञान",
-    blogTitle: "नवीनतम लेख और मार्गदर्शन",
-
-    contactLabel: "संपर्क करें",
-    contactTitle: "संपर्क और अपॉइंटमेंट",
-
-    footerText:
-      "आधुनिक जीवन के लिए प्राचीन ज्ञान। विश्वभर में विश्वसनीय ज्योतिष परामर्श।"
+    about:'परिचय', services:'सेवाएँ', horoscope:'राशिफल', contact:'संपर्क', book:'परामर्श बुक करें',
+    vedicAstrology:'वैदिक ज्योतिष', numerology:'अंक ज्योतिष', vastu:'वास्तु शास्त्र',
+    palmistry:'हस्तरेखा एवं मुखाकृति अध्ययन', synastry:'कुंडली मिलान एवं अनुकूलता', gemstone:'रत्न परामर्श',
+    trustedAstrologer:'भारत के सबसे विश्वसनीय ज्योतिषाचार्य',
+    heroTitle:'आपके जीवन के लिए स्पष्टता, सही समय और दिव्य मार्गदर्शन',
+    heroSubtitle:'वैदिक ज्योतिष, अंक ज्योतिष, वास्तु और हस्तरेखा की व्यक्तिगत सलाह — प्राचीन ज्ञान के साथ आधुनिक जीवन के लिए।',
+    bookConsultation:'परामर्श बुक करें', readHoroscope:'अपना राशिफल पढ़ें',
+    yearsExpertise:'वर्षों का अनुभव', trustedClients:'विश्वसनीय ग्राहक', countriesServed:'सेवित देश',
+    ratingTitle:'5.0 रेटिंग', verifiedConsultations:'सत्यापित परामर्श',
+    yuvaAward:'युवा प्रतिभा पुरस्कार से सम्मानित', worldwideClients:'विश्वभर में सेवाएँ', renownedAstrologer:'प्रसिद्ध ज्योतिषाचार्य',
+    aboutLabel:'मेरे बारे में', aboutTitle:'भारत के प्रमुख वैदिक ज्योतिषाचार्य एवं जीवन मार्गदर्शक',
+    aboutPara1:'मैं भय नहीं, बल्कि स्पष्टता और सही समय में विश्वास करता हूँ। सितारे मार्गदर्शक हैं, बंधन नहीं।',
+    aboutPara2:'वैदिक ज्योतिष, पाश्चात्य ज्योतिष, अंक ज्योतिष, वास्तु शास्त्र और हस्तरेखा के दो दशकों से अधिक गहन अध्ययन के साथ, मैंने 15 देशों के 50,000 से अधिक लोगों को उनके करियर, संबंधों और व्यक्तिगत जीवन में सही निर्णय लेने में मार्गदर्शन दिया है।',
+    aboutPara3:'मेरा दृष्टिकोण हमारे ऋषियों के प्राचीन ज्ञान को आधुनिक जीवन की वास्तविकताओं से जोड़ता है, जिससे आपको ग्रहों के संकेतों को समझने और उन्हें सही ढंग से उपयोग करने की दिशा मिलती है।',
+    awardCredential:'काशी में अखिल भारतीय विद्वत परिषद द्वारा युवा प्रतिभा पुरस्कार',
+    trustedPractice:'विश्वसनीय ज्योतिषीय अनुभव के वर्ष',
+    vedicJyotish:'वैदिक ज्योतिष', westernAstrology:'पाश्चात्य ज्योतिष', palmistryTag:'हस्तरेखा',
+    gemstones:'रत्न', faceReading:'मुखाकृति अध्ययन', coupleCounselling:'वैवाहिक परामर्श',
+    happyClients:'संतुष्ट ग्राहक', coupleSessions:'वैवाहिक परामर्श सत्र',
+    servicesLabel:'मेरी सेवाएँ', servicesTitle:'परामर्श एवं सेवाएँ',
+    servicesSubtitle:'हर सत्र पूरी तरह व्यक्तिगत होता है — आपकी जन्म कुंडली और जीवन के प्रश्नों के अनुसार।',
+    mostPopular:'सबसे लोकप्रिय', bookSession:'यह सत्र बुक करें',
+    natalTitle:'जन्म कुंडली विश्लेषण', natalDesc:'आपकी सूर्य, चंद्र, लग्न और सभी ग्रह स्थितियों का विस्तृत अध्ययन — आपकी शक्तियों, चुनौतियों और जीवन उद्देश्य को उजागर करता है।',
+    vedicTitle:'वैदिक ज्योतिष', vedicDesc:'लग्न, नक्षत्र विश्लेषण, दशा काल और कार्मिक संतुलन के लिए व्यक्तिगत उपायों सहित पारंपरिक वैदिक परामर्श।',
+    predictiveTitle:'भविष्यवाणी ज्योतिष', predictiveDesc:'गोचर, प्रगति और दशाओं के माध्यम से आने वाले वर्ष के प्रमुख जीवन संकेतों की जानकारी।',
+    vastuTitle:'वास्तु शास्त्र', vastuDesc:'घर, कार्यालय या कार्यस्थल में शांति, स्वास्थ्य और समृद्धि के लिए सकारात्मक ऊर्जा संतुलन स्थापित करें।',
+    synastryTitle:'कुंडली मिलान एवं वैवाहिक परामर्श', synastryDesc:'दो व्यक्तियों के बीच ज्योतिषीय अनुकूलता — विवाह, प्रेम संबंध या महत्वपूर्ण रिश्तों के लिए।',
+    numerologyTitle:'अंक ज्योतिष परामर्श', numerologyDesc:'अपने नाम और जन्मतिथि की ऊर्जा को समझें। अपना जीवन पथ अंक और सफलता के संकेत जानें।',
+    palmistryTitle:'हस्तरेखा एवं मुखाकृति अध्ययन', palmistryDesc:'हस्तरेखा और मुखाकृति विज्ञान के माध्यम से व्यक्तित्व, स्वास्थ्य और जीवन दिशा का विश्लेषण।',
+    gemstoneTitle:'रत्न परामर्श', gemstoneDesc:'आपकी कुंडली और ग्रह स्थिति के अनुसार व्यक्तिगत रत्न सुझाव — कमजोर ग्रहों को बल देने के लिए।',
+    quickGuidanceTitle:'त्वरित मार्गदर्शन (पहला प्रश्न)', quickGuidanceDesc:'करियर, प्रेम, स्वास्थ्य, व्यापार या समय से जुड़े एक विशेष प्रश्न पर केंद्रित परिचयात्मक सत्र।',
+    bookingLabel:'अपना सत्र आरक्षित करें', bookingTitle:'परामर्श बुक करें',
+    bookingSubtitle:'अपनी जानकारी भरें और 24 घंटे के भीतर Microsoft Teams लिंक या व्यक्तिगत पते सहित पुष्टि प्राप्त होगी।',
+    howItWorks:'यह कैसे काम करता है', bookingIntro:'हर सत्र सावधानीपूर्वक तैयारी से शुरू होता है। मिलने से पहले आपकी कुंडली का अध्ययन किया जाता है।',
+    bookingPara:'हर परामर्श से पहले मैं आपकी जन्म जानकारी का अध्ययन करता हूँ। सत्र Microsoft Teams, WhatsApp Video या वाराणसी में व्यक्तिगत रूप से उपलब्ध हैं।',
+    step1Title:'अपना बुकिंग अनुरोध भेजें', step1Desc:'फॉर्म में अपनी जन्म जानकारी और पसंदीदा समय भरें।',
+    step2Title:'24 घंटे के भीतर पुष्टि', step2Desc:'आपको मीटिंग लिंक और छोटे प्रश्नपत्र सहित पुष्टि प्राप्त होगी।',
+    step3Title:'कुंडली तैयारी', step3Desc:'सत्र से 1–2 दिन पहले आपकी कुंडली का गहन अध्ययन किया जाता है।',
+    step4Title:'आपका परामर्श', step4Desc:'हम एक विस्तृत लाइव सत्र में मिलते हैं। रिकॉर्डिंग भी प्रदान की जाती है।',
+    horoscopeLabel:'साप्ताहिक राशिफल', horoscopeTitle:'इस सप्ताह सितारे क्या कहते हैं',
+    horoscopeSubtitle:'व्यक्तिगत ज्योतिषीय मार्गदर्शन के लिए अपनी राशि चुनें।'
   }
 };
 
 function toggleLanguage() {
-  currentLang = currentLang === "en" ? "hi" : "en";
+  currentLang = (currentLang === 'en') ? 'hi' : 'en';
+  document.getElementById('langBtn').textContent = (currentLang === 'en') ? 'हिंदी' : 'English';
 
-  document.querySelector(".lang-toggle").innerText =
-    currentLang === "en" ? "हिंदी" : "English";
-
-  const t = translations[currentLang];
-
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-
-    if (t[key]) {
-      el.innerHTML = t[key];
-    }
+  /* Update all data-i18n elements */
+  var t = translations[currentLang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
   });
+
+  /* Rebuild wheel in new language, preserve active selection */
+  buildWheel();
+
+  /* Re-render open reading in new language */
+  if (activeSign) showReading(activeSign);
 }
+
+/* ── INIT ── */
+buildWheel();
 </script>
 </body>
 </html>
