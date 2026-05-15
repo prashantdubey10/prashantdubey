@@ -2022,7 +2022,8 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 </section>
 
 <!-- DAKSHINA -->
-<!--<section id="dakshina">
+<!--
+<section id="dakshina">
   <div id="copiedMsg">✓ UPI ID copied!</div>
   <div class="container">
 
@@ -2046,7 +2047,7 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 
     <div class="dakshina-grid">
 
-      <!-- LEFT: Amount selector + UPI -->
+
       <div class="dakshina-left">
         <h3 data-i18n="dakshinaChooseAmtTitle">Choose Your Offering</h3>
         <p class="subhead" data-i18n="dakshinaChooseAmtSub">Select a sacred amount or enter your own. All figures carry their own significance in Vedic numerology.</p>
@@ -2079,7 +2080,7 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
         </div>
 
         <div class="apps-row">
-          <!-- PhonePe — inline SVG (circle icon only) -->
+
           <div class="app-pill">
             <svg width="22" height="22" viewBox="0 6 36 36" xmlns="http://www.w3.org/2000/svg" style="border-radius:50%;overflow:visible;flex-shrink:0;">
               <circle cx="17.9" cy="24" r="17.9" fill="#5f259f"/>
@@ -2087,49 +2088,47 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
             </svg>
             PhonePe
           </div>
-          <!-- Google Pay -->
+
           <div class="app-pill">
             <img src="data:image/png;base64,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" width="22" height="22" alt="Google Pay" style="border-radius:5px;display:block;flex-shrink:0;"/>
             Google Pay
           </div>
-          <!-- Paytm -->
+
           <div class="app-pill">
             <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwADADASIAAhEBAxEB/8QAGgABAAIDAQAAAAAAAAAAAAAAAAQFBgcIAv/EAC0QAAEDAwMDAgQHAAAAAAAAAAECAwQABREGEjEHEyEUQRUWImEXJDJCUnGB/8QAGAEBAQADAAAAAAAAAAAAAAAAAAYEBQf/xAAmEQABAwMDAwUBAAAAAAAAAAABAAIDBBEhEjFRIkGRBRMycbFh/9oADAMBAAIRAxEAPwDjKlKURKUpREpSlEWwXLDp9c9VsTDdbkGP3g4HFEAZ2+55z9qg6Zslvm2toyrXI7igrMnubUnycYG7PGP2171Vqd6PIEa2PRXWlsgl1J3FKiSMAg44x7VMtE6C5DtLvxhmMIrOx1hTgT3DtCfIJHBGeDVkBRPqtLWt6d8NANyOd7C+d+FPE1LYdRJz/STsf1VT1jgMwLeSyVuruXp3V7z9aA4tPGcDwkcVsDpHb9Kp1bcLcbSpd0i/mWHl5U221taGBlX6tyic44PPtWH2G5pD01S7vCaj+tcKG3QNxSVZyk7h4OT7GrnpVe7Sx1Putwl3CLFiuQFNodfdDaVKCmvAKsfxJ/ykApo3xPaGi7gM22AIJ82N1gestnlo5m3dhpOCeRjx2UqzWjpvN0retVPWWc3bI09DbKO8vuoRsZBTjeQcrWo8k4PI8Vdy+nWg3L3K03HjTmbk7CM5l3vKKGUbtgAyfP1ecEH+6wexXK3tdCb/AG1ydGROduCFtx1OgOLTuY8hOckfSrz9jWwjqPT/AOMHr/jlt9J8vdnv+qR2+56jds3Zxux5xzSmNLIxmtjMht8DuXX/AAfS0lcK+GST2pJOkvAyT8RHp+7km/Plc9UpSo1dLSlKURKUpRF//9k=" width="22" height="22" alt="Paytm" style="border-radius:5px;display:block;flex-shrink:0;"/>
             Paytm
           </div>
-          <!-- BHIM -->
+
           <div class="app-pill">
             <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwADADASIAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAAcCBggFBP/EADIQAAECBQEFBgUFAQAAAAAAAAECAwAEBQYRIRJBUXGBBxMVIjFhCBQjMpEzQlJiouH/xAAaAQACAwEBAAAAAAAAAAAAAAAFBwADBgIE/8QAKhEAAQMDAQYGAwAAAAAAAAAAAQIDBAAFETESIUFRgdEGEyJxkfBCYbH/2gAMAwEAAhEDEQA/AMZQQQRKlWa0rQnrjoVdqUltFVKYQ73YH6mScge4SlR6Ab45dLo05UqdUZ2WRtNyDaXHRvwTjTkATyBjRnw4Ujw/s7TOLRhyozC3tRrsDyJH+SesRlLNk7Xn6siXbSZSozBebRjRKCkfT5AlXQiMox4hC5z8Y/ifT03KH9IorercqDa2pqBknG11OQfjd74rMcEWC/qAq3bjfk0g/LL+rLqO9B3cxqOkV+NShQWkKHGg7aw4kKToaImy2488hlpJW44oJSkepJ0AiEXLsWpPjHaVSGVJ2mmHfmnOADY2hnmoJHWKpT4jsLeVokE/FemMyX3ktDVRA+a1RblNbo9v0+lN42ZSWQzkbylIBPU6xKtygm5FadNtHmQTxj2qUlKSpRAAGSTuisVyrGZJYYJSwPU/z/5CYtkeRKlBxs7wck/efKmJ4nuMG325TUkZChgJ4ntjnw96XParbvjtuKdYb2p2Sy6zgaqT+5PUDPMCEHDS7Tr/AO872i0F/wAmqZiaQfu4pQeHE/iFbDhgoWhv1dKUlsbdbZwvpRDr+GOSl5RNduiecbYl5dpMuHnDhKR96ySfTGEfmEpHXduGoG12bcaX3FPQ8p91CNO/cPopXHACQB7Z5VXaG5NjGOg42iMnkNT261obZKREkB9Qzs5wOZ0Hen9TL7cvCs1EyAUxQ5FIbbUoYVMLJJKzwAA0Hvk8Ate02/zO97RqG8RK6pfmEnV3ilP9fffy9ac3cM1LWv4DJZYaecU7NOA+Z0nACfZOAOccWOINqZiDZQMAadz+zQmV5s+YqXJOTwHAAffpoggggrV1f//Z" width="22" height="22" alt="BHIM" style="border-radius:5px;display:block;flex-shrink:0;"/>
             BHIM
           </div>
-          <!-- Generic UPI -->
+
           <div class="app-pill">
             <img src="data:image/png;base64,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" width="22" height="22" alt="UPI" style="border-radius:4px;display:block;flex-shrink:0;"/>
             Any UPI App
           </div>
-        </div><!-- /.apps-row -->
-      </div><!-- /.dakshina-left -->
+        </div>
+      </div>
 
-      <!-- RIGHT: QR card — sits directly beside Choose Your Offering -->
+
       <div class="dakshina-right">
 
         <div class="qr-card">
           <h4 data-i18n="dakshinaQrTitle">Scan &amp; Pay</h4>
           <p class="qr-sub" data-i18n="dakshinaQrSub">Open any UPI app → Scan QR → Enter amount → Pay with jai Mata Di 🙏</p>
-          <!-- Decorative QR placeholder — replace src with actual QR image -->
+          
           <div class="qr-placeholder" id="qrBox">
-            <!-- Decorative QR-like pattern (replace with real QR image) -->
+
              <img src="images/Upi-id.png" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
           </div>
           <p class="qr-name-tag">Pt. Prashant Dubey · pkdubey551@oksbi</p>
-          <!--<p style="font-size:0.7rem;color:var(--text-muted);margin-top:0.4rem;" data-i18n="dakshinaQrReplace">
-            ⚠️ Replace this QR with your actual UPI QR image
-          </p>-->
-        </div><!-- /.qr-card -->
+         
+        </div>
 
-      </div><!-- /.dakshina-right -->
+      </div>
 
-      <!-- BOTTOM ROW: full-width intent card — grid child, spans both columns -->
+
       <div class="dakshina-bottom">
 
         <div class="dakshina-intent-card">
@@ -2148,11 +2147,11 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
           </div>
         </div>
 
-      </div><!-- /.dakshina-bottom -->
+      </div>
 
-    </div><!-- /.dakshina-grid -->
+    </div>
 
-  </div><!-- /.container -->
+  </div>
 </section> -->
 
 <!-- CONTACT -->
