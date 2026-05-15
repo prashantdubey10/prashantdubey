@@ -733,8 +733,8 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 <body>
 
 <!-- ANNOUNCEMENT BAR -->
-<div class="ann-bar">
-  ✦ First consultation question for only ₹550 — <a href="#booking">Book now</a> &nbsp;|&nbsp; Available on Microsoft Teams &amp; In-Person (Varanasi)
+<div class="ann-bar" id="annBar">
+  ✦ <span data-i18n="annText">First consultation question for only ₹550 —</span> <a href="#booking" data-i18n="annLink">Book now</a> &nbsp;|&nbsp; <span data-i18n="annAvail">Available on Microsoft Teams &amp; In-Person (Varanasi)</span>
 </div>
 
 <!-- NAV -->
@@ -1046,46 +1046,46 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 <section id="testimonials">
   <div class="container">
     <div class="text-center">
-      <p class="section-label">Client Testimonials</p>
-      <h2 class="section-title">Trusted by Thousands</h2>
+      <p class="section-label" data-i18n="testiLabel">Client Testimonials</p>
+      <h2 class="section-title" data-i18n="testiTitle">Trusted by Thousands</h2>
       <div class="divider-ornament"><span>✦</span></div>
     </div>
     <div class="testimonials-grid">
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"The natal chart reading was one of the most profound experiences of my life. Every word resonated — I felt truly seen and understood for the first time."</p>
+        <p class="testi-text" data-i18n="testi1Text">"The natal chart reading was one of the most profound experiences of my life. Every word resonated — I felt truly seen and understood for the first time."</p>
         <div class="testi-author-name">Ananya Mehta</div>
-        <div class="testi-author-loc">Mumbai · Natal Chart Reading</div>
+        <div class="testi-author-loc" data-i18n="testi1Loc">Mumbai · Natal Chart Reading</div>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"The Vedic Jyotish session brought me clarity I had searched years for. The Dasha timeline predictions have been strikingly accurate."</p>
+        <p class="testi-text" data-i18n="testi2Text">"The Vedic Jyotish session brought me clarity I had searched years for. The Dasha timeline predictions have been strikingly accurate."</p>
         <div class="testi-author-name">Rahul Kapoor</div>
-        <div class="testi-author-loc">New Delhi · Vedic Jyotish</div>
+        <div class="testi-author-loc" data-i18n="testi2Loc">New Delhi · Vedic Jyotish</div>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Our synastry reading transformed how we understand each other. We left with so much compassion and a shared language for our differences."</p>
+        <p class="testi-text" data-i18n="testi3Text">"Our synastry reading transformed how we understand each other. We left with so much compassion and a shared language for our differences."</p>
         <div class="testi-author-name">Sonia &amp; Dev Patel</div>
-        <div class="testi-author-loc">Bengaluru · Synastry Reading</div>
+        <div class="testi-author-loc" data-i18n="testi3Loc">Bengaluru · Synastry Reading</div>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"The Vastu consultation changed the entire energy of our home within weeks. We noticed real shifts in harmony, health and even finances."</p>
+        <p class="testi-text" data-i18n="testi4Text">"The Vastu consultation changed the entire energy of our home within weeks. We noticed real shifts in harmony, health and even finances."</p>
         <div class="testi-author-name">Meera Nair</div>
-        <div class="testi-author-loc">Kochi · Vastu Shastra</div>
+        <div class="testi-author-loc" data-i18n="testi4Loc">Kochi · Vastu Shastra</div>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"I was sceptical at first but the numerology reading described my life path with uncanny accuracy. Changed how I look at my career decisions entirely."</p>
+        <p class="testi-text" data-i18n="testi5Text">"I was sceptical at first but the numerology reading described my life path with uncanny accuracy. Changed how I look at my career decisions entirely."</p>
         <div class="testi-author-name">Arjun Srivastava</div>
-        <div class="testi-author-loc">Lucknow · Numerology</div>
+        <div class="testi-author-loc" data-i18n="testi5Loc">Lucknow · Numerology</div>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"As an NRI in Dubai, I was worried about distance but the online session was seamless and deeply insightful. Highly recommend to anyone seeking real guidance."</p>
+        <p class="testi-text" data-i18n="testi6Text">"As an NRI in Dubai, I was worried about distance but the online session was seamless and deeply insightful. Highly recommend to anyone seeking real guidance."</p>
         <div class="testi-author-name">Priti Sharma</div>
-        <div class="testi-author-loc">Dubai · Online Consultation</div>
+        <div class="testi-author-loc" data-i18n="testi6Loc">Dubai · Online Consultation</div>
       </div>
     </div>
   </div>
@@ -1094,10 +1094,10 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 <!-- VIDEOS -->
 <section id="videos">
   <div class="container">
-    <p class="section-label" style="display:block;text-align:center;">Celestial Guidance</p>
-    <h2 class="section-title" style="text-align:center;">Latest Astrology Videos</h2>
+    <p class="section-label" style="display:block;text-align:center;" data-i18n="videosLabel">Celestial Guidance</p>
+    <h2 class="section-title" style="text-align:center;" data-i18n="videosTitle">Latest Astrology Videos</h2>
     <div class="divider-ornament"><span>✦</span></div>
-    <p class="section-subtitle">Watch spiritual insights, horoscope guidance, remedies and cosmic wisdom directly from our YouTube channel.</p>
+    <p class="section-subtitle" data-i18n="videosSubtitle">Watch spiritual insights, horoscope guidance, remedies and cosmic wisdom directly from our YouTube channel.</p>
     <div class="video-grid">
       <div class="video-card">
         <div class="video-wrapper">
@@ -1146,26 +1146,26 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 <section id="contact">
   <div class="container">
     <div class="text-center">
-      <p class="section-label">Get in Touch</p>
-      <h2 class="section-title">Contact Me</h2>
+      <p class="section-label" data-i18n="contactLabel">Get in Touch</p>
+      <h2 class="section-title" data-i18n="contactTitle">Contact Me</h2>
       <div class="divider-ornament"><span>✦</span></div>
     </div>
     <div class="contact-grid">
       <div class="contact-info">
-        <p class="intro">"The cosmos is within us. We are made of star-stuff."</p>
-        <p>Whether you have a question before booking, want to explore a collaboration, or simply want to say hello — I am always glad to hear from fellow seekers of wisdom.</p>
+        <p class="intro" data-i18n="contactQuote">"The cosmos is within us. We are made of star-stuff."</p>
+        <p data-i18n="contactPara">Whether you have a question before booking, want to explore a collaboration, or simply want to say hello — I am always glad to hear from fellow seekers of wisdom.</p>
         <ul class="contact-items">
           <li class="contact-item">
             <div class="contact-item-icon">✉️</div>
-            <div><div class="contact-item-label">Email</div><div class="contact-item-val">prashant.dubey10@outlook.com</div></div>
+            <div><div class="contact-item-label" data-i18n="contactEmailLabel">Email</div><div class="contact-item-val">prashant.dubey10@outlook.com</div></div>
           </li>
           <li class="contact-item">
             <div class="contact-item-icon">🕐</div>
-            <div><div class="contact-item-label">Office Hours</div><div class="contact-item-val">Mon – Sat, 10:00 AM – 7:00 PM IST</div></div>
+            <div><div class="contact-item-label" data-i18n="contactHoursLabel">Office Hours</div><div class="contact-item-val" data-i18n="contactHoursVal">Mon – Sat, 10:00 AM – 7:00 PM IST</div></div>
           </li>
           <li class="contact-item">
             <div class="contact-item-icon">📍</div>
-            <div><div class="contact-item-label">Location</div><div class="contact-item-val">Varanasi (In-Person) &amp; Worldwide via Microsoft Teams</div></div>
+            <div><div class="contact-item-label" data-i18n="contactLocLabel">Location</div><div class="contact-item-val" data-i18n="contactLocVal">Varanasi (In-Person) &amp; Worldwide via Microsoft Teams</div></div>
           </li>
         </ul>
         <div class="social-row">
@@ -1188,49 +1188,49 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
     <div class="footer-grid">
       <div class="footer-brand">
         <span class="logo">Pt. Prashant Dubey <span>✦</span></span>
-        <p>Bridging ancient celestial wisdom with modern life guidance. Every chart tells a story — let us read yours together with clarity, compassion and precision.</p>
+        <p data-i18n="footerTagline">Bridging ancient celestial wisdom with modern life guidance. Every chart tells a story — let us read yours together with clarity, compassion and precision.</p>
         <div class="social-row">
           <a class="social-link" href="#" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);" title="YouTube">▶️</a>
         </div>
       </div>
       <div class="footer-col">
-        <h4>Services</h4>
+        <h4 data-i18n="footerServicesHead">Services</h4>
         <ul>
-          <li><a href="#services">Natal Chart Reading</a></li>
-          <li><a href="#services">Vedic Jyotish</a></li>
-          <li><a href="#services">Predictive Astrology</a></li>
-          <li><a href="#services">Vastu Shastra</a></li>
-          <li><a href="#services">Numerology</a></li>
-          <li><a href="#services">Palmistry</a></li>
-          <li><a href="#services">Gemstone Guidance</a></li>
+          <li><a href="#services" data-i18n="natalTitle">Natal Chart Reading</a></li>
+          <li><a href="#services" data-i18n="vedicTitle">Vedic Jyotish</a></li>
+          <li><a href="#services" data-i18n="predictiveTitle">Predictive Astrology</a></li>
+          <li><a href="#services" data-i18n="vastuTitle">Vastu Shastra</a></li>
+          <li><a href="#services" data-i18n="numerologyTitle">Numerology Reading</a></li>
+          <li><a href="#services" data-i18n="palmistryTag">Palmistry</a></li>
+          <li><a href="#services" data-i18n="gemstoneTitle">Gemstone Consultation</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Explore</h4>
+        <h4 data-i18n="footerExploreHead">Explore</h4>
         <ul>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#horoscope">Weekly Horoscope</a></li>
-          <li><a href="#booking">Book a Session</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" data-i18n="aboutLabel">About Me</a></li>
+          <li><a href="#horoscope" data-i18n="horoscopeLabel">Weekly Horoscope</a></li>
+          <li><a href="#booking" data-i18n="footerBookLink">Book a Session</a></li>
+          <li><a href="#testimonials" data-i18n="testiTitle">Trusted by Thousands</a></li>
+          <li><a href="#contact" data-i18n="contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4 data-i18n="contact">Contact</h4>
         <ul>
           <li><a href="mailto:prashant.dubey10@outlook.com">prashant.dubey10@outlook.com</a></li>
-          <li><a href="#">Varanasi</a></li>
-          <li><a href="#">Online via Microsoft Teams</a></li>
-          <li><a href="#">Mon–Sat, 10am–7pm IST</a></li>
+          <li><a href="#" data-i18n="footerVaranasi">Varanasi</a></li>
+          <li><a href="#" data-i18n="footerOnline">Online via Microsoft Teams</a></li>
+          <li><a href="#" data-i18n="footerHours">Mon–Sat, 10am–7pm IST</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Pt. Prashant Dubey Astrology. All rights reserved.</p>
+      <p data-i18n="footerCopyright">© 2026 Pt. Prashant Dubey Astrology. All rights reserved.</p>
       <div class="footer-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Disclaimer</a>
+        <a href="#" data-i18n="footerPrivacy">Privacy Policy</a>
+        <a href="#" data-i18n="footerTerms">Terms of Service</a>
+        <a href="#" data-i18n="footerDisclaimer">Disclaimer</a>
       </div>
     </div>
   </div>
@@ -1483,6 +1483,9 @@ const translations = {
     about:'About', services:'Services', horoscope:'Horoscope', contact:'Contact', book:'Book Consultation',
     vedicAstrology:'Vedic Astrology', numerology:'Numerology', vastu:'Vastu Shastra',
     palmistry:'Palmistry & Face Reading', synastry:'Synastry & Compatibility', gemstone:'Gemstone Guidance',
+    annText:'First consultation question for only ₹550 —',
+    annLink:'Book now',
+    annAvail:'Available on Microsoft Teams &amp; In-Person (Varanasi)',
     trustedAstrologer:"India's Most Trusted Astrologer",
     heroTitle:'Clarity, Timing &amp; Cosmic Guidance for Your Life',
     heroSubtitle:'Personalised Vedic astrology, numerology, Vastu and palmistry consultations — rooted in ancient wisdom, delivered for modern life.',
@@ -1520,12 +1523,47 @@ const translations = {
     step3Title:'Chart preparation', step3Desc:'I cast and deeply study your chart 1–2 days before our session.',
     step4Title:'Your reading', step4Desc:'We meet live for an in-depth, dialogue-based session. Recording provided.',
     horoscopeLabel:'Weekly Horoscope', horoscopeTitle:'What the Stars Say This Week',
-    horoscopeSubtitle:'Select your sun sign for personalised cosmic guidance.'
+    horoscopeSubtitle:'Select your sun sign for personalised cosmic guidance.',
+    /* Testimonials */
+    testiLabel:'Client Testimonials', testiTitle:'Trusted by Thousands',
+    testi1Text:'"The natal chart reading was one of the most profound experiences of my life. Every word resonated — I felt truly seen and understood for the first time."',
+    testi1Loc:'Mumbai · Natal Chart Reading',
+    testi2Text:'"The Vedic Jyotish session brought me clarity I had searched years for. The Dasha timeline predictions have been strikingly accurate."',
+    testi2Loc:'New Delhi · Vedic Jyotish',
+    testi3Text:'"Our synastry reading transformed how we understand each other. We left with so much compassion and a shared language for our differences."',
+    testi3Loc:'Bengaluru · Synastry Reading',
+    testi4Text:'"The Vastu consultation changed the entire energy of our home within weeks. We noticed real shifts in harmony, health and even finances."',
+    testi4Loc:'Kochi · Vastu Shastra',
+    testi5Text:'"I was sceptical at first but the numerology reading described my life path with uncanny accuracy. Changed how I look at my career decisions entirely."',
+    testi5Loc:'Lucknow · Numerology',
+    testi6Text:'"As an NRI in Dubai, I was worried about distance but the online session was seamless and deeply insightful. Highly recommend to anyone seeking real guidance."',
+    testi6Loc:'Dubai · Online Consultation',
+    /* Videos */
+    videosLabel:'Celestial Guidance', videosTitle:'Latest Astrology Videos',
+    videosSubtitle:'Watch spiritual insights, horoscope guidance, remedies and cosmic wisdom directly from our YouTube channel.',
+    /* Contact */
+    contactLabel:'Get in Touch', contactTitle:'Contact Me',
+    contactQuote:'"The cosmos is within us. We are made of star-stuff."',
+    contactPara:'Whether you have a question before booking, want to explore a collaboration, or simply want to say hello — I am always glad to hear from fellow seekers of wisdom.',
+    contactEmailLabel:'Email', contactHoursLabel:'Office Hours',
+    contactHoursVal:'Mon – Sat, 10:00 AM – 7:00 PM IST',
+    contactLocLabel:'Location', contactLocVal:'Varanasi (In-Person) &amp; Worldwide via Microsoft Teams',
+    /* Footer */
+    footerTagline:'Bridging ancient celestial wisdom with modern life guidance. Every chart tells a story — let us read yours together with clarity, compassion and precision.',
+    footerServicesHead:'Services', footerExploreHead:'Explore',
+    footerBookLink:'Book a Session',
+    footerVaranasi:'Varanasi', footerOnline:'Online via Microsoft Teams',
+    footerHours:'Mon–Sat, 10am–7pm IST',
+    footerCopyright:'© 2026 Pt. Prashant Dubey Astrology. All rights reserved.',
+    footerPrivacy:'Privacy Policy', footerTerms:'Terms of Service', footerDisclaimer:'Disclaimer'
   },
   hi: {
     about:'परिचय', services:'सेवाएँ', horoscope:'राशिफल', contact:'संपर्क', book:'परामर्श बुक करें',
     vedicAstrology:'वैदिक ज्योतिष', numerology:'अंक ज्योतिष', vastu:'वास्तु शास्त्र',
     palmistry:'हस्तरेखा एवं मुखाकृति अध्ययन', synastry:'कुंडली मिलान एवं अनुकूलता', gemstone:'रत्न परामर्श',
+    annText:'पहला परामर्श प्रश्न केवल ₹550 में —',
+    annLink:'अभी बुक करें',
+    annAvail:'Microsoft Teams और वाराणसी में व्यक्तिगत रूप से उपलब्ध',
     trustedAstrologer:'भारत के सबसे विश्वसनीय ज्योतिषाचार्य',
     heroTitle:'आपके जीवन के लिए स्पष्टता, सही समय और दिव्य मार्गदर्शन',
     heroSubtitle:'वैदिक ज्योतिष, अंक ज्योतिष, वास्तु और हस्तरेखा की व्यक्तिगत सलाह — प्राचीन ज्ञान के साथ आधुनिक जीवन के लिए।',
@@ -1563,7 +1601,39 @@ const translations = {
     step3Title:'कुंडली तैयारी', step3Desc:'सत्र से 1–2 दिन पहले आपकी कुंडली का गहन अध्ययन किया जाता है।',
     step4Title:'आपका परामर्श', step4Desc:'हम एक विस्तृत लाइव सत्र में मिलते हैं। रिकॉर्डिंग भी प्रदान की जाती है।',
     horoscopeLabel:'साप्ताहिक राशिफल', horoscopeTitle:'इस सप्ताह सितारे क्या कहते हैं',
-    horoscopeSubtitle:'व्यक्तिगत ज्योतिषीय मार्गदर्शन के लिए अपनी राशि चुनें।'
+    horoscopeSubtitle:'व्यक्तिगत ज्योतिषीय मार्गदर्शन के लिए अपनी राशि चुनें।',
+    /* Testimonials */
+    testiLabel:'ग्राहकों की राय', testiTitle:'हजारों लोगों का विश्वास',
+    testi1Text:'"जन्म कुंडली पठन मेरे जीवन के सबसे गहरे अनुभवों में से एक था। हर बात सच लगी — पहली बार मुझे सच में समझा और देखा गया।"',
+    testi1Loc:'मुंबई · जन्म कुंडली पठन',
+    testi2Text:'"वैदिक ज्योतिष सत्र ने मुझे वह स्पष्टता दी जिसे मैं वर्षों से खोज रहा था। दशा कालखंड की भविष्यवाणियाँ बिल्कुल सटीक रहीं।"',
+    testi2Loc:'नई दिल्ली · वैदिक ज्योतिष',
+    testi3Text:'"हमारे कुंडली मिलान परामर्श ने हमारी समझ को बदल दिया। हम करुणा और एक साझी भाषा लेकर लौटे।"',
+    testi3Loc:'बेंगलुरु · कुंडली मिलान',
+    testi4Text:'"वास्तु परामर्श ने कुछ ही हफ्तों में हमारे घर की ऊर्जा बदल दी। सद्भाव, स्वास्थ्य और वित्त — सभी में सुधार दिखा।"',
+    testi4Loc:'कोचि · वास्तु शास्त्र',
+    testi5Text:'"पहले मुझे संदेह था, लेकिन अंक ज्योतिष परामर्श ने मेरे जीवन पथ को अद्भुत सटीकता से बताया। करियर के निर्णयों पर मेरी सोच पूरी तरह बदल गई।"',
+    testi5Loc:'लखनऊ · अंक ज्योतिष',
+    testi6Text:'"दुबई में रहते हुए दूरी की चिंता थी, लेकिन ऑनलाइन सत्र बेहद सहज और ज्ञानवर्धक रहा। सच्चे मार्गदर्शन के इच्छुक हर व्यक्ति को दृढ़ता से अनुशंसा करती हूँ।"',
+    testi6Loc:'दुबई · ऑनलाइन परामर्श',
+    /* Videos */
+    videosLabel:'दिव्य मार्गदर्शन', videosTitle:'नवीनतम ज्योतिष वीडियो',
+    videosSubtitle:'हमारे YouTube चैनल से सीधे आध्यात्मिक अंतर्दृष्टि, राशिफल मार्गदर्शन, उपाय और ब्रह्मांडीय ज्ञान देखें।',
+    /* Contact */
+    contactLabel:'संपर्क करें', contactTitle:'संपर्क',
+    contactQuote:'"ब्रह्मांड हमारे भीतर है। हम तारों की धूल से बने हैं।"',
+    contactPara:'चाहे बुकिंग से पहले कोई प्रश्न हो, सहयोग की इच्छा हो, या बस नमस्ते कहना हो — ज्ञान के साधकों से सुनकर मुझे सदा प्रसन्नता होती है।',
+    contactEmailLabel:'ईमेल', contactHoursLabel:'कार्यालय समय',
+    contactHoursVal:'सोमवार – शनिवार, प्रातः 10:00 – सायं 7:00 IST',
+    contactLocLabel:'स्थान', contactLocVal:'वाराणसी (व्यक्तिगत) एवं Microsoft Teams द्वारा विश्वभर',
+    /* Footer */
+    footerTagline:'प्राचीन ज्योतिषीय ज्ञान को आधुनिक जीवन मार्गदर्शन से जोड़ना। हर कुंडली एक कहानी कहती है — मिलकर आपकी कहानी स्पष्टता, करुणा और सटीकता से पढ़ें।',
+    footerServicesHead:'सेवाएँ', footerExploreHead:'अन्वेषण करें',
+    footerBookLink:'सत्र बुक करें',
+    footerVaranasi:'वाराणसी', footerOnline:'Microsoft Teams द्वारा ऑनलाइन',
+    footerHours:'सोम–शनि, प्रातः 10 – सायं 7 IST',
+    footerCopyright:'© 2026 Pt. Prashant Dubey Astrology. सर्वाधिकार सुरक्षित।',
+    footerPrivacy:'गोपनीयता नीति', footerTerms:'सेवा की शर्तें', footerDisclaimer:'अस्वीकरण'
   }
 };
 
