@@ -911,6 +911,584 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 .mobile-nav ul li a { display: block; padding: 0.8rem 0; color: var(--text-mid); font-size: 1rem; text-decoration: none; border-bottom: 1px solid var(--border); }
 .mobile-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-mid); }
 
+/* ─── DAKSHINA SECTION ─── */
+#dakshina {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(160deg, #FDF3E7 0%, #FDF8F0 40%, #F7F0E3 100%);
+  position: relative;
+  overflow: hidden;
+}
+#dakshina::before {
+  content: 'ॐ';
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  font-size: 22rem;
+  color: rgba(212,115,10,0.04);
+  font-family: serif;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.dakshina-intro {
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+.dakshina-intro .dharma-note {
+  background: rgba(212,115,10,0.07);
+  border: 1px solid rgba(212,115,10,0.20);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem 1.8rem;
+  margin: 0 auto 2.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.08rem;
+  font-style: italic;
+  color: var(--text-mid);
+  line-height: 1.8;
+  position: relative;
+}
+.dakshina-intro .dharma-note::before {
+  content: '🪔';
+  display: block;
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+  font-style: normal;
+}
+/* Dakshina: top row = offering + QR side by side; bottom row = intent + bank full width */
+.dakshina-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+  align-items: start;
+  max-width: 980px;
+  margin: 0 auto;
+}
+/* left card = col 1, row 1 */
+.dakshina-left {
+  grid-column: 1;
+  grid-row: 1;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+}
+/* right column = col 2, row 1 — only the QR card */
+.dakshina-right {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+/* bottom strip — grid child, spans both columns, gap from grid applies automatically */
+.dakshina-bottom {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+/* intent card: horizontal layout on desktop */
+.dakshina-intent-card {
+  background: linear-gradient(135deg, var(--maroon) 0%, #6E1515 100%);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.4rem;
+  color: rgba(255,255,255,0.9);
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+.dakshina-intent-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+.punya-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem 2rem;
+  flex: 1;
+}
+.punya-list li {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.85);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  line-height: 1.6;
+  padding: 0.1rem 0;
+}
+.punya-list li::before {
+  content: '✦';
+  color: var(--saffron-light);
+  font-size: 0.7rem;
+  margin-top: 0.22rem;
+  flex-shrink: 0;
+}
+.dakshina-left h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--maroon);
+  margin-bottom: 0.4rem;
+}
+.dakshina-left .subhead {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+}
+.amount-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 1.4rem;
+}
+.amt-btn {
+  background: var(--cream2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.22s ease;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.3;
+}
+.amt-btn:hover, .amt-btn.active {
+  background: var(--saffron);
+  border-color: var(--saffron);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(212,115,10,0.28);
+}
+.amt-btn small {
+  display: block;
+  font-size: 0.64rem;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-top: 0.1rem;
+}
+.custom-amount-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+  align-items: center;
+}
+.custom-amount-row label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.custom-amount-row input {
+  flex: 1;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-dark);
+  background: var(--cream);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.custom-amount-row input:focus { border-color: var(--saffron); }
+.upi-display {
+  background: var(--cream2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.upi-display:hover { border-color: var(--saffron); }
+.upi-logo {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #5B4FCF, #00BCD4);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.7rem;
+  color: #fff;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.upi-id-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  letter-spacing: 0.01em;
+}
+.upi-id-label {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  margin-top: 0.1rem;
+}
+.copy-hint {
+  font-size: 0.68rem;
+  color: var(--saffron);
+  margin-top: 0.15rem;
+}
+.apps-row {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+/* QR side */
+.qr-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+.qr-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--maroon);
+  margin-bottom: 0.3rem;
+}
+.qr-card .qr-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 1.4rem;
+}
+.qr-placeholder {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 1.1rem;
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  gap: 0.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.qr-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 2px;
+  width: 90px;
+  position: relative;
+  z-index: 1;
+}
+.qr-cell {
+  aspect-ratio: 1;
+  border-radius: 1px;
+}
+.qr-name-tag {
+  font-size: 0.76rem;
+  color: var(--saffron);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.dakshina-intent-card {
+  /* defined above */
+}
+.intl-strip {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.1rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.80);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+.intent-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.intl-strip a { color: var(--saffron-light); font-weight: 500; text-decoration: none; }
+.intl-strip a:hover { text-decoration: underline; }
+
+/* toast copy */
+#copiedMsg {
+  display: none;
+  position: fixed;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--maroon);
+  color: #fff;
+  padding: 0.5rem 1.4rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  z-index: 1000;
+  animation: fadeInOut 2s ease forwards;
+}
+@keyframes fadeInOut {
+  0%{opacity:0;transform:translateX(-50%) translateY(10px);}
+  15%{opacity:1;transform:translateX(-50%) translateY(0);}
+  80%{opacity:1;}
+  100%{opacity:0;transform:translateX(-50%) translateY(-6px);}
+}
+
+@media (max-width: 820px) {
+  /* collapse to single column — grid gap handles all spacing uniformly */
+  .dakshina-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .dakshina-left  { grid-column: 1; grid-row: 1; padding: 1.5rem; }
+  .dakshina-right { grid-column: 1; grid-row: 2; }
+  .dakshina-bottom { grid-column: 1; grid-row: 3; }
+  /* intent card stacks vertically */
+  .dakshina-intent-card {
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+  }
+  .dakshina-intent-card h4 {
+    white-space: normal;
+    margin-bottom: 0;
+  }
+  /* punya items single column */
+  .punya-list {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .intent-body { width: 100%; }
+  .intl-strip { margin-top: 1rem; }
+  /* QR card consistent padding */
+  .qr-card { padding: 1.5rem; }
+}
+
+@media (max-width: 540px) {
+  .amount-grid { grid-template-columns: repeat(3, 1fr); }
+  .dakshina-left  { padding: 1.25rem; }
+  .dakshina-intent-card { padding: 1.25rem; }
+  .qr-card { padding: 1.25rem; }
+  /* tighten section padding */
+  #dakshina { padding: 3rem 0; }
+}
+
+/* ─── APP PILL LOGOS ─── */
+.app-pill {
+  background: var(--cream2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.32rem 0.85rem 0.32rem 0.5rem;
+  font-size: 0.74rem;
+  color: var(--text-mid);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.app-pill:hover { border-color: var(--saffron); box-shadow: 0 2px 8px rgba(212,115,10,0.12); }
+.app-pill svg { display: block; flex-shrink: 0; }
+
+/* ─── PUJA GALLERY CAROUSEL ─── */
+#pujaGallery {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--text-dark);
+}
+.carousel-track-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16/7;
+  min-height: 340px;
+  max-height: 600px;
+}
+@media (max-width: 768px) {
+  .carousel-track-wrap { aspect-ratio: 4/3; max-height: 480px; }
+}
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.77,0,0.18,1);
+  will-change: transform;
+}
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transform: scale(1.04);
+  transition: transform 7s ease-out;
+}
+.carousel-slide.active img { transform: scale(1); }
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(28,20,16,0.82) 0%, rgba(28,20,16,0.18) 55%, transparent 100%);
+  pointer-events: none;
+}
+.carousel-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 2.5rem 3.5rem 2.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+@media (max-width: 600px) {
+  .carousel-caption { padding: 1.5rem 1.4rem 2.8rem; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+}
+.caption-text { flex: 1; }
+.caption-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--saffron-light);
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 0.45rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s 0.15s, transform 0.5s 0.15s;
+}
+.caption-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s 0.25s, transform 0.5s 0.25s;
+}
+.caption-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  font-style: italic;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s 0.35s, transform 0.5s 0.35s;
+}
+.carousel-slide.active .caption-label,
+.carousel-slide.active .caption-title,
+.carousel-slide.active .caption-sub {
+  opacity: 1; transform: translateY(0);
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+  padding-bottom: 0.1rem;
+}
+.carousel-arrow {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  color: #fff;
+  font-size: 1rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  user-select: none;
+}
+.carousel-arrow:hover { background: var(--saffron); border-color: var(--saffron); transform: scale(1.08); }
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+.dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  padding: 0;
+}
+.dot.active {
+  background: var(--saffron-light);
+  width: 22px;
+  border-radius: 4px;
+}
+.carousel-counter {
+  position: absolute;
+  top: 1.4rem; right: 1.8rem;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.55);
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.06em;
+  background: rgba(0,0,0,0.25);
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 3;
+}
+.carousel-header-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 1.6rem 3.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 3;
+}
+@media (max-width: 600px) { .carousel-header-bar { padding: 1.2rem 1.4rem 0; } }
+.carousel-section-label {
+  font-size: 0.67rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+.carousel-ornament { color: var(--saffron-light); font-size: 0.9rem; }
+
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: repeat(2,1fr); }
@@ -972,6 +1550,7 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
         </div>
       </li>
       <li><a href="#horoscope" data-i18n="horoscope">Horoscope</a></li>
+      <li><a href="#dakshina" data-i18n="dakshinaNav">Dakshina</a></li>
       <li><a href="#contact" data-i18n="contact">Contact</a></li>
     </ul>
     <a class="nav-cta" href="#booking" data-i18n="book">Book Consultation</a>
@@ -989,6 +1568,7 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
     <li><a href="#about" data-i18n="about" onclick="toggleMobileNav()">About</a></li>
     <li><a href="#services" data-i18n="services" onclick="toggleMobileNav()">Services</a></li>
     <li><a href="#horoscope" data-i18n="horoscope" onclick="toggleMobileNav()">Horoscope</a></li>
+    <li><a href="#dakshina" data-i18n="dakshinaNav" onclick="toggleMobileNav()" style="color:var(--saffron);">दक्षिणा / Dakshina</a></li>
     <li><a href="#contact" data-i18n="contact" onclick="toggleMobileNav()">Contact</a></li>
     <li><a href="#booking" data-i18n="book" onclick="toggleMobileNav()" style="color:var(--saffron);font-weight:500;">Book Consultation →</a></li>
   </ul>
@@ -1308,6 +1888,88 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
   </div>
 </section>
 
+<!-- PUJA GALLERY CAROUSEL -->
+<section id="pujaGallery" aria-label="Sacred Puja Ceremonies Gallery">
+  <div class="carousel-track-wrap" id="carouselWrap">
+
+    <!-- Top label -->
+    <div class="carousel-header-bar">
+      <span class="carousel-ornament">✦</span>
+      <span class="carousel-section-label" data-i18n="galleryLabel">Sacred Ceremonies · पवित्र अनुष्ठान</span>
+    </div>
+
+    <!-- Slide counter -->
+    <div class="carousel-counter" id="carouselCounter">1 / 3</div>
+
+    <!-- Track -->
+    <div class="carousel-track" id="carouselTrack">
+
+      <!-- Slide 1 — Temple Puja -->
+      <div class="carousel-slide active" data-index="0">
+        <img src="images/puja-temple.webp" data-src-actual="preview-2.webp" alt="Temple Puja Ceremony" loading="lazy"
+             onerror="this.style.background='linear-gradient(135deg,#3d1c00,#8B1A1A)';this.style.objectFit='none'"/>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption">
+          <div class="caption-text">
+            <div class="caption-label" data-i18n="slide1Label">Temple Puja · मंदिर पूजा</div>
+            <div class="caption-title" data-i18n="slide1Title">Sacred Puja &amp; Archana</div>
+            <div class="caption-sub" data-i18n="slide1Sub">Performed with marigold garlands, sacred fire and fruit offerings — at the holy temples of Kashi.</div>
+          </div>
+          <div class="carousel-controls">
+            <div class="carousel-arrow" onclick="carouselPrev()" aria-label="Previous">&#8592;</div>
+            <div class="carousel-arrow" onclick="carouselNext()" aria-label="Next">&#8594;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 — Home Havan -->
+      <div class="carousel-slide" data-index="1">
+        <img src="images/puja-havan.webp" alt="Home Havan Ceremony" loading="lazy"
+             onerror="this.style.background='linear-gradient(135deg,#1a3a1a,#2d5016)';this.style.objectFit='none'"/>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption">
+          <div class="caption-text">
+            <div class="caption-label" data-i18n="slide2Label">Griha Havan · गृह हवन</div>
+            <div class="caption-title" data-i18n="slide2Title">Yagna &amp; Havan at Home</div>
+            <div class="caption-sub" data-i18n="slide2Sub">Family Havan conducted in the sacred space of the home — for planetary peace, protection and prosperity.</div>
+          </div>
+          <div class="carousel-controls">
+            <div class="carousel-arrow" onclick="carouselPrev()" aria-label="Previous">&#8592;</div>
+            <div class="carousel-arrow" onclick="carouselNext()" aria-label="Next">&#8594;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 — Wedding Ceremony -->
+      <div class="carousel-slide" data-index="2">
+        <img src="images/puja-vivah.webp" alt="Vivah Puja Wedding Ceremony" loading="lazy"
+             onerror="this.style.background='linear-gradient(135deg,#3a1a00,#5c2d0a)';this.style.objectFit='none'"/>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption">
+          <div class="caption-text">
+            <div class="caption-label" data-i18n="slide3Label">Vivah Puja · विवाह पूजा</div>
+            <div class="caption-title" data-i18n="slide3Title">Vivah &amp; Sanskar Ceremonies</div>
+            <div class="caption-sub" data-i18n="slide3Sub">Vedic wedding rituals conducted with full shastriya vidhi — honouring the sacred union of two souls.</div>
+          </div>
+          <div class="carousel-controls">
+            <div class="carousel-arrow" onclick="carouselPrev()" aria-label="Previous">&#8592;</div>
+            <div class="carousel-arrow" onclick="carouselNext()" aria-label="Next">&#8594;</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /carousel-track -->
+
+    <!-- Dots -->
+    <div class="carousel-dots" id="carouselDots">
+      <button class="dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
+      <button class="dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
+      <button class="dot" onclick="goToSlide(2)" aria-label="Slide 3"></button>
+    </div>
+
+  </div><!-- /carousel-track-wrap -->
+</section>
+
 <!-- VIDEOS -->
 <section id="videos">
   <div class="container">
@@ -1357,6 +2019,218 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
       </div>
     </div>
   </div>
+</section>
+
+<!-- DAKSHINA -->
+<section id="dakshina">
+  <div id="copiedMsg">✓ UPI ID copied!</div>
+  <div class="container">
+
+    <div class="text-center">
+      <p class="section-label" data-i18n="dakshinaLabel">Dakshina</p>
+      <h2 class="section-title" data-i18n="dakshinaTitle">Offer Your Dakshina</h2>
+      <div class="divider-ornament"><span>🪔</span></div>
+    </div>
+
+    <div class="dakshina-intro">
+      <div class="dharma-note" data-i18n="dakshinaDharmaNote">
+        Dakshina is not a fee — it is a heartfelt offering, an act of gratitude and divine exchange.<br>
+        Whatever you give with a pure heart, Panditji dedicates entirely to sacred Puja, Yagna, and Anna-Daan.
+        Your offering earns you <em>punya</em> (merit), and ensures no sin attaches to the transaction.
+      </div>
+      <p class="section-subtitle" style="margin-bottom:0;" data-i18n="dakshinaSubtitle">
+        As per Vedic tradition, dakshina given with shraddha (faith) and bhakti (devotion)
+        is considered a divine act — not commerce. Give freely; give what your heart allows.
+      </p>
+    </div>
+
+    <div class="dakshina-grid">
+
+      <!-- LEFT: Amount selector + UPI -->
+      <div class="dakshina-left">
+        <h3 data-i18n="dakshinaChooseAmtTitle">Choose Your Offering</h3>
+        <p class="subhead" data-i18n="dakshinaChooseAmtSub">Select a sacred amount or enter your own. All figures carry their own significance in Vedic numerology.</p>
+
+        <div class="amount-grid" id="amtGrid">
+          <button class="amt-btn" onclick="selectAmt(this,'108')">₹108<small data-i18n="amt108">Ekadashi</small></button>
+          <button class="amt-btn" onclick="selectAmt(this,'251')">₹251<small data-i18n="amt251">Mangal</small></button>
+          <button class="amt-btn" onclick="selectAmt(this,'501')">₹501<small data-i18n="amt501">Panchami</small></button>
+          <button class="amt-btn" onclick="selectAmt(this,'1001')">₹1001<small data-i18n="amt1001">Sahasra</small></button>
+          <button class="amt-btn" onclick="selectAmt(this,'2100')">₹2100<small data-i18n="amt2100">Poorna</small></button>
+          <button class="amt-btn" onclick="selectAmt(this,'custom')" data-i18n="amtCustom">Custom ✎</button>
+        </div>
+
+        <div class="custom-amount-row" id="customRow" style="display:none;">
+          <label data-i18n="amtCustomLabel">₹ Amount:</label>
+          <input type="number" id="customInput" placeholder="e.g. 500" min="1"/>
+        </div>
+
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:1rem;" data-i18n="dakshinaUpiHeading">
+          Pay via UPI — scan the QR code or copy the UPI ID below:
+        </p>
+
+        <div class="upi-display" onclick="copyUPI()" title="Click to copy UPI ID">
+          <div class="upi-logo">UPI</div>
+          <div>
+            <div class="upi-id-text" id="upiIdText">prashantdubey@upi</div>
+            <div class="upi-id-label" data-i18n="dakshinaUpiLabel">UPI ID · Pt. Prashant Dubey</div>
+            <div class="copy-hint" data-i18n="dakshinaCopyHint">👆 Tap to copy</div>
+          </div>
+        </div>
+
+        <div class="apps-row">
+          <!-- PhonePe — inline SVG (circle icon only) -->
+          <div class="app-pill">
+            <svg width="22" height="22" viewBox="0 6 36 36" xmlns="http://www.w3.org/2000/svg" style="border-radius:50%;overflow:visible;flex-shrink:0;">
+              <circle cx="17.9" cy="24" r="17.9" fill="#5f259f"/>
+              <path d="M26 19.3c0-.7-.6-1.3-1.3-1.3h-2.4l-5.5-6.3c-.5-.6-1.3-.8-2.1-.6l-1.9.6c-.3.1-.4.5-.2.7l6 5.7H9.5c-.3 0-.5.2-.5.5v1c0 .7.6 1.3 1.3 1.3h1.4v4.8c0 3.6 1.9 5.7 5.1 5.7 1 0 1.8-.1 2.8-.5v3.2c0 .9.7 1.6 1.6 1.6h1.4c.3 0 .6-.3.6-.6V20.8h2.3c.3 0 .5-.2.5-.5v-1zm-6.4 8.6c-.6.3-1.4.4-2 .4-1.6 0-2.4-.8-2.4-2.6v-4.8h4.4v7z" fill="#fff"/>
+            </svg>
+            PhonePe
+          </div>
+          <!-- Google Pay -->
+          <div class="app-pill">
+            <img src="data:image/png;base64,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" width="22" height="22" alt="Google Pay" style="border-radius:5px;display:block;flex-shrink:0;"/>
+            Google Pay
+          </div>
+          <!-- Paytm -->
+          <div class="app-pill">
+            <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwADADASIAAhEBAxEB/8QAGgABAAIDAQAAAAAAAAAAAAAAAAQFBgcIAv/EAC0QAAEDAwMDAgQHAAAAAAAAAAECAwQABREGEjEHEyEUQRUWImEXJDJCUnGB/8QAGAEBAQADAAAAAAAAAAAAAAAAAAYEBQf/xAAmEQABAwMDAwUBAAAAAAAAAAABAAIDBBEhEjFRIkGRBRMycbFh/9oADAMBAAIRAxEAPwDjKlKURKUpREpSlEWwXLDp9c9VsTDdbkGP3g4HFEAZ2+55z9qg6Zslvm2toyrXI7igrMnubUnycYG7PGP2171Vqd6PIEa2PRXWlsgl1J3FKiSMAg44x7VMtE6C5DtLvxhmMIrOx1hTgT3DtCfIJHBGeDVkBRPqtLWt6d8NANyOd7C+d+FPE1LYdRJz/STsf1VT1jgMwLeSyVuruXp3V7z9aA4tPGcDwkcVsDpHb9Kp1bcLcbSpd0i/mWHl5U221taGBlX6tyic44PPtWH2G5pD01S7vCaj+tcKG3QNxSVZyk7h4OT7GrnpVe7Sx1Putwl3CLFiuQFNodfdDaVKCmvAKsfxJ/ykApo3xPaGi7gM22AIJ82N1gestnlo5m3dhpOCeRjx2UqzWjpvN0retVPWWc3bI09DbKO8vuoRsZBTjeQcrWo8k4PI8Vdy+nWg3L3K03HjTmbk7CM5l3vKKGUbtgAyfP1ecEH+6wexXK3tdCb/AG1ydGROduCFtx1OgOLTuY8hOckfSrz9jWwjqPT/AOMHr/jlt9J8vdnv+qR2+56jds3Zxux5xzSmNLIxmtjMht8DuXX/AAfS0lcK+GST2pJOkvAyT8RHp+7km/Plc9UpSo1dLSlKURKUpRF//9k=" width="22" height="22" alt="Paytm" style="border-radius:5px;display:block;flex-shrink:0;"/>
+            Paytm
+          </div>
+          <!-- BHIM -->
+          <div class="app-pill">
+            <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwADADASIAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAAcCBggFBP/EADIQAAECBQEFBgUFAQAAAAAAAAECAwAEBQYRIRJBUXGBBxMVIjFhCBQjMpEzQlJiouH/xAAaAQACAwEBAAAAAAAAAAAAAAAFBwADBgIE/8QAKhEAAQMDAQYGAwAAAAAAAAAAAQIDBAAFETESIUFRgdEGEyJxkfBCYbH/2gAMAwEAAhEDEQA/AMZQQQRKlWa0rQnrjoVdqUltFVKYQ73YH6mScge4SlR6Ab45dLo05UqdUZ2WRtNyDaXHRvwTjTkATyBjRnw4Ujw/s7TOLRhyozC3tRrsDyJH+SesRlLNk7Xn6siXbSZSozBebRjRKCkfT5AlXQiMox4hC5z8Y/ifT03KH9IorercqDa2pqBknG11OQfjd74rMcEWC/qAq3bjfk0g/LL+rLqO9B3cxqOkV+NShQWkKHGg7aw4kKToaImy2488hlpJW44oJSkepJ0AiEXLsWpPjHaVSGVJ2mmHfmnOADY2hnmoJHWKpT4jsLeVokE/FemMyX3ktDVRA+a1RblNbo9v0+lN42ZSWQzkbylIBPU6xKtygm5FadNtHmQTxj2qUlKSpRAAGSTuisVyrGZJYYJSwPU/z/5CYtkeRKlBxs7wck/efKmJ4nuMG325TUkZChgJ4ntjnw96XParbvjtuKdYb2p2Sy6zgaqT+5PUDPMCEHDS7Tr/AO872i0F/wAmqZiaQfu4pQeHE/iFbDhgoWhv1dKUlsbdbZwvpRDr+GOSl5RNduiecbYl5dpMuHnDhKR96ySfTGEfmEpHXduGoG12bcaX3FPQ8p91CNO/cPopXHACQB7Z5VXaG5NjGOg42iMnkNT261obZKREkB9Qzs5wOZ0Hen9TL7cvCs1EyAUxQ5FIbbUoYVMLJJKzwAA0Hvk8Ate02/zO97RqG8RK6pfmEnV3ilP9fffy9ac3cM1LWv4DJZYaecU7NOA+Z0nACfZOAOccWOINqZiDZQMAadz+zQmV5s+YqXJOTwHAAffpoggggrV1f//Z" width="22" height="22" alt="BHIM" style="border-radius:5px;display:block;flex-shrink:0;"/>
+            BHIM
+          </div>
+          <!-- Generic UPI -->
+          <div class="app-pill">
+            <img src="data:image/png;base64,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" width="22" height="22" alt="UPI" style="border-radius:4px;display:block;flex-shrink:0;"/>
+            Any UPI App
+          </div>
+        </div><!-- /.apps-row -->
+      </div><!-- /.dakshina-left -->
+
+      <!-- RIGHT: QR card — sits directly beside Choose Your Offering -->
+      <div class="dakshina-right">
+
+        <div class="qr-card">
+          <h4 data-i18n="dakshinaQrTitle">Scan &amp; Pay</h4>
+          <p class="qr-sub" data-i18n="dakshinaQrSub">Open any UPI app → Scan QR → Enter amount → Pay with jai Mata Di 🙏</p>
+          <!-- Decorative QR placeholder — replace src with actual QR image -->
+          <div class="qr-placeholder" id="qrBox">
+            <!-- Decorative QR-like pattern (replace with real QR image) -->
+            <svg width="140" height="140" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:2;">
+              <!-- top-left finder -->
+              <rect x="8" y="8" width="36" height="36" rx="3" fill="none" stroke="var(--maroon)" stroke-width="4"/>
+              <rect x="16" y="16" width="20" height="20" rx="1" fill="var(--maroon)"/>
+              <!-- top-right finder -->
+              <rect x="96" y="8" width="36" height="36" rx="3" fill="none" stroke="var(--maroon)" stroke-width="4"/>
+              <rect x="104" y="16" width="20" height="20" rx="1" fill="var(--maroon)"/>
+              <!-- bottom-left finder -->
+              <rect x="8" y="96" width="36" height="36" rx="3" fill="none" stroke="var(--maroon)" stroke-width="4"/>
+              <rect x="16" y="104" width="20" height="20" rx="1" fill="var(--maroon)"/>
+              <!-- data dots scattered -->
+              <rect x="52" y="8" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="62" y="8" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="72" y="12" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="52" y="18" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="62" y="22" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="72" y="18" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="82" y="8" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="52" y="30" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="72" y="30" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <!-- middle rows -->
+              <rect x="8"  y="52" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="18" y="52" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="28" y="56" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="38" y="52" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="52" y="48" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="62" y="52" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="72" y="48" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="82" y="52" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="92" y="48" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="102" y="56" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="116" y="52" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="126" y="48" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="8"  y="62" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="22" y="66" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="36" y="62" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="48" y="66" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="60" y="62" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="70" y="66" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="80" y="62" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="92" y="66" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="104" y="62" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="114" y="66" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="126" y="62" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="8"  y="74" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="20" y="78" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="34" y="74" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="50" y="78" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="62" y="74" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="74" y="78" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="88" y="74" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="100" y="78" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="112" y="74" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="124" y="78" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <!-- bottom rows -->
+              <rect x="52" y="92" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="62" y="96" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="72" y="92" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="82" y="96" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="92" y="92" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="102" y="96" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="112" y="92" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="124" y="96" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="52" y="106" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="64" y="110" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="76" y="106" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="88" y="110" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="100" y="106" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="112" y="110" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="124" y="106" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="52" y="118" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="66" y="122" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="80" y="118" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="94" y="122" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <rect x="108" y="118" width="6" height="6" rx="1" fill="var(--saffron)"/>
+              <rect x="122" y="122" width="6" height="6" rx="1" fill="var(--maroon)"/>
+              <!-- centre OM -->
+              <text x="70" y="76" text-anchor="middle" font-size="18" fill="var(--gold)" font-family="serif" opacity="0.9">ॐ</text>
+            </svg>
+          </div>
+          <p class="qr-name-tag">Pt. Prashant Dubey · prashantdubey@upi</p>
+          <p style="font-size:0.7rem;color:var(--text-muted);margin-top:0.4rem;" data-i18n="dakshinaQrReplace">
+            ⚠️ Replace this QR with your actual UPI QR image
+          </p>
+        </div><!-- /.qr-card -->
+
+      </div><!-- /.dakshina-right -->
+
+      <!-- BOTTOM ROW: full-width intent card — grid child, spans both columns -->
+      <div class="dakshina-bottom">
+
+        <div class="dakshina-intent-card">
+          <h4>🙏 <span data-i18n="dakshinaPunyaTitle">How Your Dakshina is Used</span></h4>
+          <div class="intent-body">
+            <ul class="punya-list">
+              <li data-i18n="punya1">Puja &amp; Archana performed on behalf of the donor for their wellbeing and prosperity</li>
+              <li data-i18n="punya2">Yagna &amp; Havan for peace, planetary remedy and family protection</li>
+              <li data-i18n="punya3">Anna-Daan — feeding the poor and sadhus, earning merit for the giver</li>
+              <li data-i18n="punya4">Gau-Seva — care of the sacred cow at the Gaushala</li>
+              <li data-i18n="punya5">The giver of dakshina is never a paapi — shastra ensures this sacred contract</li>
+            </ul>
+            <div class="intl-strip">
+              🌍 <span data-i18n="dakshinaIntl">For international devotees — reach out via <a href="mailto:prashant.dubey10@outlook.com">email</a> for PayPal / Wise / bank wire details.</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.dakshina-bottom -->
+
+    </div><!-- /.dakshina-grid -->
+
+  </div><!-- /.container -->
 </section>
 
 <!-- CONTACT -->
@@ -1441,6 +2315,7 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
         <ul>
           <li><a href="#about" data-i18n="aboutLabel">About Me</a></li>
           <li><a href="#horoscope" data-i18n="horoscopeLabel">Weekly Horoscope</a></li>
+          <li><a href="#dakshina" data-i18n="dakshinaLabel">Dakshina</a></li>
           <li><a href="#booking" data-i18n="footerBookLink">Book a Session</a></li>
           <li><a href="#testimonials" data-i18n="testiTitle">Trusted by Thousands</a></li>
           <li><a href="#contact" data-i18n="contact">Contact</a></li>
@@ -1523,6 +2398,107 @@ function loadVideo(thumb, id) {
   iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
   thumb.replaceWith(iframe);
 }
+
+/* ── DAKSHINA ── */
+function selectAmt(btn, val) {
+  document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  var row = document.getElementById('customRow');
+  if (val === 'custom') {
+    row.style.display = 'flex';
+    document.getElementById('customInput').focus();
+  } else {
+    row.style.display = 'none';
+  }
+}
+function copyUPI() {
+  var upiId = document.getElementById('upiIdText').textContent;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(upiId).then(showCopied);
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = upiId; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showCopied(); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+}
+function showCopied() {
+  var el = document.getElementById('copiedMsg');
+  el.style.display = 'block';
+  setTimeout(function(){ el.style.display = 'none'; }, 2200);
+}
+
+/* ── CAROUSEL ── */
+(function(){
+  var current = 0;
+  var total = 3;
+  var autoTimer = null;
+  var startX = 0;
+  var isDragging = false;
+
+  function setSlide(idx, dir) {
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots   = document.querySelectorAll('.dot');
+    var track  = document.getElementById('carouselTrack');
+    var counter = document.getElementById('carouselCounter');
+
+    // Remove active from current
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+
+    current = (idx + total) % total;
+
+    // Move track
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    if (counter) counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  window.carouselNext = function() { resetTimer(); setSlide(current + 1); };
+  window.carouselPrev = function() { resetTimer(); setSlide(current - 1); };
+  window.goToSlide    = function(i) { resetTimer(); setSlide(i); };
+
+  function resetTimer() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(function(){ setSlide(current + 1); }, 5000);
+  }
+
+  // Auto-play
+  autoTimer = setInterval(function(){ setSlide(current + 1); }, 5000);
+
+  // Pause on hover
+  var wrap = document.getElementById('carouselWrap');
+  if (wrap) {
+    wrap.addEventListener('mouseenter', function(){ clearInterval(autoTimer); });
+    wrap.addEventListener('mouseleave', resetTimer);
+
+    // Touch / swipe support
+    wrap.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; isDragging = true; }, {passive:true});
+    wrap.addEventListener('touchend', function(e){
+      if (!isDragging) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) { if (dx < 0) carouselNext(); else carouselPrev(); }
+      isDragging = false;
+    }, {passive:true});
+
+    // Mouse drag support
+    wrap.addEventListener('mousedown', function(e){ startX = e.clientX; isDragging = true; });
+    wrap.addEventListener('mouseup', function(e){
+      if (!isDragging) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 40) { if (dx < 0) carouselNext(); else carouselPrev(); }
+      isDragging = false;
+    });
+  }
+
+  // Keyboard support
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight') carouselNext();
+    if (e.key === 'ArrowLeft')  carouselPrev();
+  });
+})();
 
 /* ── TYPEFORM RESIZE ── */
 window.addEventListener('message', function(e) {
@@ -1788,7 +2764,39 @@ const translations = {
     footerVaranasi:'Varanasi', footerOnline:'Online via Microsoft Teams',
     footerHours:'Mon–Sat, 10am–7pm IST',
     footerCopyright:'© 2026 Pt. Prashant Dubey Astrology. All rights reserved.',
-    footerPrivacy:'Privacy Policy', footerTerms:'Terms of Service', footerDisclaimer:'Disclaimer'
+    footerPrivacy:'Privacy Policy', footerTerms:'Terms of Service', footerDisclaimer:'Disclaimer',
+    /* Dakshina */
+    dakshinaLabel:'Dakshina', dakshinaNav:'Dakshina',
+    dakshinaTitle:'Offer Your Dakshina',
+    dakshinaDharmaNote:'Dakshina is not a fee — it is a heartfelt offering, an act of gratitude and divine exchange.<br>Whatever you give with a pure heart, Panditji dedicates entirely to sacred Puja, Yagna, and Anna-Daan.<br>Your offering earns you <em>punya</em> (merit), and ensures no sin attaches to the transaction.',
+    dakshinaSubtitle:'As per Vedic tradition, dakshina given with shraddha (faith) and bhakti (devotion) is considered a divine act — not commerce. Give freely; give what your heart allows.',
+    dakshinaChooseAmtTitle:'Choose Your Offering',
+    dakshinaChooseAmtSub:'Select a sacred amount or enter your own. All figures carry their own significance in Vedic numerology.',
+    amt108:'Ekadashi', amt251:'Mangal', amt501:'Panchami', amt1001:'Sahasra', amt2100:'Poorna', amtCustom:'Custom ✎',
+    amtCustomLabel:'₹ Amount:',
+    dakshinaUpiHeading:'Pay via UPI — scan the QR code or copy the UPI ID below:',
+    dakshinaUpiLabel:'UPI ID · Pt. Prashant Dubey',
+    dakshinaCopyHint:'👆 Tap to copy',
+    dakshinaQrTitle:'Scan &amp; Pay',
+    dakshinaQrSub:'Open any UPI app → Scan QR → Enter amount → Pay with jai Mata Di 🙏',
+    dakshinaQrReplace:'⚠️ Replace this QR with your actual UPI QR image',
+    dakshinaPunyaTitle:'How Your Dakshina is Used',
+    punya1:'Puja &amp; Archana performed on behalf of the donor for their wellbeing and prosperity',
+    punya2:'Yagna &amp; Havan for peace, planetary remedy and family protection',
+    punya3:'Anna-Daan — feeding the poor and sadhus, earning merit for the giver',
+    punya4:'Gau-Seva — care of the sacred cow at the Gaushala',
+    punya5:'The giver of dakshina is never a paapi — shastra ensures this sacred contract',
+    dakshinaBankTitle:'Bank Transfer Details',
+    dakshinaBankTitle:'Bank Transfer Details',
+    dakshinaIntl:'For international devotees — reach out via <a href="mailto:prashant.dubey10@outlook.com">email</a> for PayPal / Wise / bank wire details.',
+    /* Gallery */
+    galleryLabel:'Sacred Ceremonies · पवित्र अनुष्ठान',
+    slide1Label:'Temple Puja · मंदिर पूजा', slide1Title:'Sacred Puja &amp; Archana',
+    slide1Sub:'Performed with marigold garlands, sacred fire and fruit offerings — at the holy temples of Kashi.',
+    slide2Label:'Griha Havan · गृह हवन', slide2Title:'Yagna &amp; Havan at Home',
+    slide2Sub:'Family Havan conducted in the sacred space of the home — for planetary peace, protection and prosperity.',
+    slide3Label:'Vivah Puja · विवाह पूजा', slide3Title:'Vivah &amp; Sanskar Ceremonies',
+    slide3Sub:'Vedic wedding rituals conducted with full shastriya vidhi — honouring the sacred union of two souls.'
   },
   hi: {
     about:'परिचय', services:'सेवाएँ', horoscope:'राशिफल', contact:'संपर्क', book:'परामर्श बुक करें',
@@ -1868,7 +2876,39 @@ const translations = {
     footerVaranasi:'वाराणसी', footerOnline:'Microsoft Teams द्वारा ऑनलाइन',
     footerHours:'सोम–शनि, प्रातः 10 – सायं 7 IST',
     footerCopyright:'© 2026 Pt. Prashant Dubey Astrology. सर्वाधिकार सुरक्षित।',
-    footerPrivacy:'गोपनीयता नीति', footerTerms:'सेवा की शर्तें', footerDisclaimer:'अस्वीकरण'
+    footerPrivacy:'गोपनीयता नीति', footerTerms:'सेवा की शर्तें', footerDisclaimer:'अस्वीकरण',
+    /* Dakshina */
+    dakshinaLabel:'दक्षिणा', dakshinaNav:'दक्षिणा',
+    dakshinaTitle:'दक्षिणा अर्पित करें',
+    dakshinaDharmaNote:'दक्षिणा शुल्क नहीं है — यह हृदय का भाव है, कृतज्ञता और दैवीय आदान-प्रदान का कार्य है।<br>आप जो भी शुद्ध मन से देते हैं, पंडितजी उसे पूजा, यज्ञ और अन्न-दान में लगाते हैं।<br>आपकी दक्षिणा आपको <em>पुण्य</em> देती है, और यह सुनिश्चित करती है कि आप किसी पाप के भागी न हों।',
+    dakshinaSubtitle:'वैदिक परंपरा के अनुसार, श्रद्धा और भक्ति से दी गई दक्षिणा एक दिव्य कार्य है — व्यापार नहीं। स्वतंत्र मन से दें; जो हृदय कहे, वही दें।',
+    dakshinaChooseAmtTitle:'राशि चुनें',
+    dakshinaChooseAmtSub:'कोई भी पवित्र राशि चुनें या अपनी इच्छानुसार दर्ज करें। वैदिक अंक ज्योतिष में सभी संख्याओं का अपना महत्व है।',
+    amt108:'एकादशी', amt251:'मंगल', amt501:'पंचमी', amt1001:'सहस्र', amt2100:'पूर्ण', amtCustom:'अन्य ✎',
+    amtCustomLabel:'₹ राशि:',
+    dakshinaUpiHeading:'UPI से भुगतान करें — QR कोड स्कैन करें या UPI ID कॉपी करें:',
+    dakshinaUpiLabel:'UPI ID · पं. प्रशांत दुबे',
+    dakshinaCopyHint:'👆 कॉपी करने के लिए टैप करें',
+    dakshinaQrTitle:'स्कैन करें और भुगतान करें',
+    dakshinaQrSub:'कोई भी UPI ऐप खोलें → QR स्कैन करें → राशि डालें → भुगतान करें 🙏',
+    dakshinaQrReplace:'⚠️ इस QR को अपने असली UPI QR कोड से बदलें',
+    dakshinaPunyaTitle:'आपकी दक्षिणा का उपयोग',
+    punya1:'दाता के नाम पर पूजा और अर्चना — उनके कल्याण और समृद्धि के लिए',
+    punya2:'यज्ञ और हवन — शांति, ग्रह-शांति और परिवार की रक्षा के लिए',
+    punya3:'अन्न-दान — गरीबों और साधुओं को भोजन कराना, जिससे दाता को पुण्य मिले',
+    punya4:'गौ-सेवा — गौशाला में पवित्र गाय की देखभाल',
+    punya5:'दक्षिणा देने वाला कभी पापी नहीं — शास्त्र इस पवित्र अनुबंध की रक्षा करते हैं',
+    dakshinaBankTitle:'बैंक ट्रांसफर विवरण',
+    dakshinaBankTitle:'बैंक हस्तांतरण विवरण',
+    dakshinaIntl:'विदेश में रहने वाले भक्तों के लिए — PayPal / Wise / Bank Wire विवरण के लिए <a href="mailto:prashant.dubey10@outlook.com">ईमेल</a> द्वारा संपर्क करें।',
+    /* Gallery */
+    galleryLabel:'पवित्र अनुष्ठान · Sacred Ceremonies',
+    slide1Label:'मंदिर पूजा · Temple Puja', slide1Title:'पवित्र पूजा और अर्चना',
+    slide1Sub:'काशी के पवित्र मंदिरों में गेंदे की माला, पवित्र अग्नि और फल-अर्पण के साथ संपन्न।',
+    slide2Label:'गृह हवन · Griha Havan', slide2Title:'घर में यज्ञ और हवन',
+    slide2Sub:'घर के पवित्र स्थान पर परिवार के साथ हवन — ग्रह-शांति, रक्षा और समृद्धि के लिए।',
+    slide3Label:'विवाह पूजा · Vivah Puja', slide3Title:'विवाह और संस्कार समारोह',
+    slide3Sub:'पूर्ण शास्त्रीय विधि से वैदिक विवाह संस्कार — दो आत्माओं के पवित्र मिलन का सम्मान।'
   }
 };
 
