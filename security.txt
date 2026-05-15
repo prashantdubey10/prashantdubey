@@ -1,0 +1,15 @@
+# Security Policy — Pt. Prashant Dubey Astrology
+# https://www.prashantdubey.co.in/
+#
+# This file follows the security.txt standard (RFC 9116).
+# Place at: /.well-known/security.txt
+# Also copy to: /security.txt
+
+Contact: mailto:prashant.dubey10@outlook.com
+Expires: 2027-05-15T00:00:00.000Z
+Preferred-Languages: en, hi
+Canonical: https://www.prashantdubey.co.in/.well-known/security.txt
+
+# If you discover a security vulnerability on this website,
+# please report it responsibly via email above.
+# We appreciate responsible disclosure and will respond within 72 hours.

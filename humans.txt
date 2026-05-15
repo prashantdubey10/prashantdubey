@@ -1,0 +1,20 @@
+/* TEAM */
+Pandit (Owner & Content Author)
+  Name: Pt. Prashant Kumar Dubey
+  Role: Vedic Astrologer & Website Owner
+  Location: Varanasi (Kashi), Uttar Pradesh, India
+  Contact: prashant.dubey10@outlook.com
+
+/* THANKS */
+  Google Fonts — Playfair Display, Cormorant Garamond, DM Sans
+  Schema.org — Structured data vocabulary
+  UPI / NPCI — Payment infrastructure
+
+/* SITE */
+  Last update: 2026-05-15
+  Language: English / Hindi (hi-IN)
+  Doctype: HTML5
+  IDE: Visual Studio Code / NetBeans
+  Hosting: GitHub Pages
+  Domain: www.prashantdubey.co.in
+  Standards: HTML5, CSS3, ES6+, Schema.org, Open Graph, robots.txt

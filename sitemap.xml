@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  sitemap.xml — Pt. Prashant Dubey Astrology
+  https://www.prashantdubey.co.in/
+  Submit to: https://search.google.com/search-console
+             https://www.bing.com/webmasters
+  Last updated: 2026-05-15
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- ── Homepage ──────────────────────────────────────────── -->
+  <url>
+    <loc>https://www.prashantdubey.co.in/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+
+    <!-- Bilingual alternates -->
+    <xhtml:link rel="alternate" hreflang="en-IN"
+                href="https://www.prashantdubey.co.in/"/>
+    <xhtml:link rel="alternate" hreflang="hi-IN"
+                href="https://www.prashantdubey.co.in/"/>
+    <xhtml:link rel="alternate" hreflang="x-default"
+                href="https://www.prashantdubey.co.in/"/>
+
+    <!-- Key images for Google Image Search -->
+    <image:image>
+      <image:loc>https://www.prashantdubey.co.in/images/hero.jpg</image:loc>
+      <image:title>Pt. Prashant Dubey — Vedic Astrologer, Varanasi</image:title>
+      <image:caption>India's most trusted Vedic astrologer with 26+ years of experience in Jyotish, Numerology and Vastu Shastra</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.prashantdubey.co.in/images/og-cover.jpg</image:loc>
+      <image:title>Pt. Prashant Dubey Astrology — Book a Consultation</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.prashantdubey.co.in/images/about.jpg</image:loc>
+      <image:title>Pandit Prashant Dubey — About</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.prashantdubey.co.in/images/puja-temple.webp</image:loc>
+      <image:title>Sacred Temple Puja — Pt. Prashant Dubey</image:title>
+      <image:caption>Temple Puja and Archana ceremony performed with marigold garlands at Kashi</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.prashantdubey.co.in/images/puja-havan.webp</image:loc>
+      <image:title>Griha Havan — Yagna at Home</image:title>
+      <image:caption>Family Havan conducted for planetary peace, protection and prosperity</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.prashantdubey.co.in/images/puja-vivah.webp</image:loc>
+      <image:title>Vivah Puja — Vedic Wedding Ceremony</image:title>
+      <image:caption>Vedic wedding rituals conducted with full shastriya vidhi in Varanasi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ── Section anchors (for rich anchor indexing) ─────────── -->
+  <url>
+    <loc>https://www.prashantdubey.co.in/#services</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.prashantdubey.co.in/#services"/>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.prashantdubey.co.in/#services"/>
+  </url>
+
+  <url>
+    <loc>https://www.prashantdubey.co.in/#about</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.prashantdubey.co.in/#about"/>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.prashantdubey.co.in/#about"/>
+  </url>
+
+  <url>
+    <loc>https://www.prashantdubey.co.in/#booking</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.prashantdubey.co.in/#booking"/>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.prashantdubey.co.in/#booking"/>
+  </url>
+
+  <url>
+    <loc>https://www.prashantdubey.co.in/#testimonials</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.prashantdubey.co.in/#horoscope</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.prashantdubey.co.in/#horoscope"/>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.prashantdubey.co.in/#horoscope"/>
+  </url>
+
+  <url>
+    <loc>https://www.prashantdubey.co.in/#dakshina</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.prashantdubey.co.in/#dakshina"/>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.prashantdubey.co.in/#dakshina"/>
+  </url>
+
+  <url>
+    <loc>https://www.prashantdubey.co.in/#contact</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.prashantdubey.co.in/#contact"/>
+    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://www.prashantdubey.co.in/#contact"/>
+  </url>
+
+</urlset>

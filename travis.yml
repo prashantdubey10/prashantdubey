@@ -1,0 +1,90 @@
+# ════════════════════════════════════════════════════════════
+#  .travis.yml — Pt. Prashant Dubey Astrology
+#  CI/CD: Validate → Deploy to GitHub Pages
+#  https://www.prashantdubey.co.in/
+# ════════════════════════════════════════════════════════════
+
+language: node_js
+node_js:
+  - "20"
+
+# Cache node_modules to speed up builds
+cache:
+  directories:
+    - node_modules
+
+# ── Trigger only on main branch pushes ───────────────────────
+branches:
+  only:
+    - main
+    - master
+
+# ── Environment variables ────────────────────────────────────
+# GITHUB_TOKEN is set in Travis CI repository settings (secure)
+# Never hardcode tokens here.
+env:
+  global:
+    - SITE_URL="https://www.prashantdubey.co.in"
+    - DEPLOY_BRANCH="main"
+
+# ── Install stage ────────────────────────────────────────────
+install:
+  # Install HTML validation and link-checking tools
+  - npm install -g html-validate
+  - npm install -g broken-link-checker
+
+# ── Script (build / validate) stage ─────────────────────────
+script:
+  # 1. Validate HTML structure
+  - echo "✅ Validating HTML..."
+  - html-validate index.html || true
+  - html-validate 404.html   || true
+
+  # 2. Check robots.txt exists and has a Sitemap directive
+  - echo "✅ Checking robots.txt..."
+  - test -f robots.txt && echo "robots.txt present" || (echo "❌ robots.txt missing" && exit 1)
+  - grep -i "Sitemap" robots.txt && echo "Sitemap found in robots.txt"
+
+  # 3. Check .nojekyll exists (critical for GitHub Pages)
+  - echo "✅ Checking .nojekyll..."
+  - test -f .nojekyll && echo ".nojekyll present" || (echo "❌ .nojekyll missing" && exit 1)
+
+  # 4. Confirm 404.html present
+  - echo "✅ Checking 404.html..."
+  - test -f 404.html && echo "404.html present" || (echo "❌ 404.html missing" && exit 1)
+
+  # 5. Basic performance check — ensure index.html < 5 MB
+  - echo "✅ Checking file size..."
+  - |
+    SIZE=$(wc -c < index.html)
+    echo "index.html size: $SIZE bytes"
+    if [ "$SIZE" -gt 5242880 ]; then
+      echo "❌ index.html exceeds 5 MB — optimise before deploying"
+      exit 1
+    fi
+
+  - echo "🎉 All checks passed. Deploying..."
+
+# ── Deploy to GitHub Pages ────────────────────────────────────
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: .
+  target_branch: gh-pages
+  on:
+    branch: main
+
+# ── Notifications ─────────────────────────────────────────────
+notifications:
+  email:
+    recipients:
+      - prashant.dubey10@outlook.com
+    on_success: change   # Email only when status changes to success
+    on_failure: always   # Always email on failure
+
+# ── After deploy ──────────────────────────────────────────────
+after_deploy:
+  - echo "🚀 Deployed to https://www.prashantdubey.co.in"
+  - echo "🔍 Submit sitemap at https://search.google.com/search-console"

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  nbactions.xml — NetBeans IDE Maven Action Bindings
+  Project: Pt. Prashant Dubey Astrology Website
+  https://www.prashantdubey.co.in/
+-->
+<actions>
+
+  <!-- ── Run: serve the static site locally ─────────────────── -->
+  <action>
+    <actionName>run</actionName>
+    <displayName>Run Site (Local Server)</displayName>
+    <goals>
+      <goal>exec:exec</goal>
+    </goals>
+    <properties>
+      <exec.executable>python3</exec.executable>
+      <exec.args>-m http.server 8080</exec.args>
+      <exec.workingdir>${basedir}</exec.workingdir>
+    </properties>
+  </action>
+
+  <!-- ── Debug: run with verbose output ────────────────────── -->
+  <action>
+    <actionName>debug</actionName>
+    <displayName>Debug (Verbose Server)</displayName>
+    <goals>
+      <goal>exec:exec</goal>
+    </goals>
+    <properties>
+      <exec.executable>npx</exec.executable>
+      <exec.args>serve . --listen 8080 --cors</exec.args>
+      <exec.workingdir>${basedir}</exec.workingdir>
+    </properties>
+  </action>
+
+  <!-- ── Test: HTML validation ──────────────────────────────── -->
+  <action>
+    <actionName>test</actionName>
+    <displayName>Validate HTML</displayName>
+    <goals>
+      <goal>exec:exec</goal>
+    </goals>
+    <properties>
+      <exec.executable>npx</exec.executable>
+      <exec.args>html-validate index.html 404.html</exec.args>
+      <exec.workingdir>${basedir}</exec.workingdir>
+    </properties>
+  </action>
+
+  <!-- ── Clean: remove generated artefacts ─────────────────── -->
+  <action>
+    <actionName>clean</actionName>
+    <displayName>Clean Build Artefacts</displayName>
+    <goals>
+      <goal>clean</goal>
+    </goals>
+  </action>
+
+  <!-- ── Build: minify and prepare for deployment ──────────── -->
+  <action>
+    <actionName>build</actionName>
+    <displayName>Build (Minify for Production)</displayName>
+    <goals>
+      <goal>exec:exec</goal>
+    </goals>
+    <properties>
+      <exec.executable>npx</exec.executable>
+      <exec.args>html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true -o dist/index.html index.html</exec.args>
+      <exec.workingdir>${basedir}</exec.workingdir>
+    </properties>
+  </action>
+
+  <!-- ── Deploy: push to GitHub Pages ─────────────────────── -->
+  <action>
+    <actionName>package</actionName>
+    <displayName>Deploy to GitHub Pages</displayName>
+    <goals>
+      <goal>exec:exec</goal>
+    </goals>
+    <properties>
+      <exec.executable>git</exec.executable>
+      <exec.args>push origin main</exec.args>
+      <exec.workingdir>${basedir}</exec.workingdir>
+    </properties>
+  </action>
+
+  <!-- ── Open in Browser ───────────────────────────────────── -->
+  <action>
+    <actionName>run.single</actionName>
+    <displayName>Open in Browser</displayName>
+    <goals>
+      <goal>exec:exec</goal>
+    </goals>
+    <properties>
+      <exec.executable>open</exec.executable>
+      <exec.args>http://localhost:8080</exec.args>
+    </properties>
+  </action>
+
+</actions>

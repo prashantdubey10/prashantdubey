@@ -1,0 +1,110 @@
+# ════════════════════════════════════════════════════════════
+#  .gitignore — Pt. Prashant Dubey Astrology
+#  Static HTML site · GitHub Pages deployment
+# ════════════════════════════════════════════════════════════
+
+# ── Operating System ─────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+*~
+
+# ── IDE & Editors ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+.netbeans/
+nbproject/private/
+*.sublime-project
+*.sublime-workspace
+.eclipse/
+.settings/
+.classpath
+.project
+*.swp
+*.swo
+
+# ── Node / npm (if any tooling is added later) ─────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.npm/
+
+# ── Maven / Java build artefacts ──────────────────────────────
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+
+# ── Environment & secrets — NEVER commit these ────────────────
+.env
+.env.local
+.env.development
+.env.production
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.json
+secrets.yml
+
+# ── Build / dist outputs ───────────────────────────────────────
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+
+# ── Logs ───────────────────────────────────────────────────────
+logs/
+*.log
+log/
+
+# ── Temporary files ────────────────────────────────────────────
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# ── Image originals (keep processed WebP in repo, not raw RAW/PSD) ──
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xd
+*.CR2
+*.raw
+*.NEF
+*.DNG
+
+# ── Certificates / deployment configs with credentials ─────────
+.travis_rsa
+deploy_key
+deploy_rsa
+
+# ── Misc ────────────────────────────────────────────────────────
+.sass-cache/
+.jekyll-cache/
+_site/
+Gemfile.lock

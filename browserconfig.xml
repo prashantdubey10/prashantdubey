@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  browserconfig.xml — Pt. Prashant Dubey Astrology
+  Windows / Microsoft Edge pinned-site tile configuration.
+  Referenced automatically by IE/Edge from the root directory.
+-->
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square70x70logo   src="images/tile-70.png"/>
+      <square150x150logo src="images/tile-150.png"/>
+      <wide310x150logo   src="images/tile-310x150.png"/>
+      <square310x310logo src="images/tile-310.png"/>
+      <TileColor>#8B1A1A</TileColor>
+    </tile>
+    <notification>
+      <polling-uri  src="https://www.prashantdubey.co.in/"/>
+      <frequency>1440</frequency>
+      <cycle>1</cycle>
+    </notification>
+  </msapplication>
+</browserconfig>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  pom.xml — Maven Project Descriptor
+  Project: Pt. Prashant Dubey Astrology Website
+  https://www.prashantdubey.co.in/
+  
+  This POM enables Java/Maven tooling (NetBeans IDE, build automation,
+  HTML validation plugins, and exec:exec tasks) for a static web project.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- ── Project Identity ──────────────────────────────────── -->
+  <groupId>co.in.prashantdubey</groupId>
+  <artifactId>prashantdubey-astrology-site</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <name>Pt. Prashant Dubey Astrology Website</name>
+  <description>
+    Official website for Pandit Prashant Kumar Dubey — India's most trusted
+    Vedic astrologer based in Varanasi with 26+ years of experience in Jyotish,
+    Numerology, Vastu Shastra, Palmistry and Kundli reading.
+  </description>
+  <url>https://www.prashantdubey.co.in/</url>
+  <inceptionYear>2024</inceptionYear>
+
+  <!-- ── Organisation ──────────────────────────────────────── -->
+  <organization>
+    <name>Pt. Prashant Dubey Astrology</name>
+    <url>https://www.prashantdubey.co.in/</url>
+  </organization>
+
+  <!-- ── Developers ────────────────────────────────────────── -->
+  <developers>
+    <developer>
+      <id>prashantdubey</id>
+      <name>Pandit Prashant Kumar Dubey</name>
+      <email>prashant.dubey10@outlook.com</email>
+      <url>https://www.prashantdubey.co.in/</url>
+      <roles>
+        <role>owner</role>
+        <role>content-author</role>
+      </roles>
+      <timezone>Asia/Kolkata</timezone>
+      <properties>
+        <location>Varanasi, Uttar Pradesh, India</location>
+      </properties>
+    </developer>
+  </developers>
+
+  <!-- ── Licence ───────────────────────────────────────────── -->
+  <licenses>
+    <license>
+      <name>Proprietary — All Rights Reserved</name>
+      <url>https://www.prashantdubey.co.in/LICENSE.MD</url>
+      <distribution>manual</distribution>
+      <comments>
+        All content and code are the exclusive property of
+        Pandit Prashant Kumar Dubey. Reproduction or distribution
+        without prior written permission is prohibited.
+      </comments>
+    </license>
+  </licenses>
+
+  <!-- ── Source Control ────────────────────────────────────── -->
+  <scm>
+    <connection>scm:git:https://github.com/YOUR_USERNAME/prashantdubey-astrology.git</connection>
+    <developerConnection>scm:git:git@github.com:YOUR_USERNAME/prashantdubey-astrology.git</developerConnection>
+    <url>https://github.com/YOUR_USERNAME/prashantdubey-astrology</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <!-- ── Issue Tracking ────────────────────────────────────── -->
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/YOUR_USERNAME/prashantdubey-astrology/issues</url>
+  </issueManagement>
+
+  <!-- ── CI ────────────────────────────────────────────────── -->
+  <ciManagement>
+    <system>Travis CI</system>
+    <url>https://app.travis-ci.com/github/YOUR_USERNAME/prashantdubey-astrology</url>
+  </ciManagement>
+
+  <!-- ── Properties ────────────────────────────────────────── -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <!-- Site metadata -->
+    <site.domain>www.prashantdubey.co.in</site.domain>
+    <site.url>https://www.prashantdubey.co.in/</site.url>
+    <site.locale>en_IN</site.locale>
+    <!-- Plugin versions -->
+    <exec-maven-plugin.version>3.3.0</exec-maven-plugin.version>
+    <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
+    <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+  </properties>
+
+  <!-- ── Build ─────────────────────────────────────────────── -->
+  <build>
+    <defaultGoal>validate</defaultGoal>
+
+    <pluginManagement>
+      <plugins>
+
+        <!-- Exec plugin — run local dev server, validators, git push -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>${exec-maven-plugin.version}</version>
+        </plugin>
+
+        <!-- Resources plugin — copy static assets to build output -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${maven-resources-plugin.version}</version>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+
+        <!-- Antrun — shell tasks (ping sitemap, notify, etc.) -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>${maven-antrun-plugin.version}</version>
+        </plugin>
+
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+
+      <!-- ── Validate: check required files exist ───────────── -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>check-required-files</id>
+            <phase>validate</phase>
+            <goals><goal>run</goal></goals>
+            <configuration>
+              <target>
+                <echo message="Checking required site files…"/>
+                <available file="index.html"  property="index.exists"/>
+                <available file="robots.txt"  property="robots.exists"/>
+                <available file=".nojekyll"   property="nojekyll.exists"/>
+                <available file="404.html"    property="404.exists"/>
+                <fail unless="index.exists"   message="index.html is missing!"/>
+                <fail unless="robots.exists"  message="robots.txt is missing!"/>
+                <echo message="✅ All required files present."/>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- ── Package: copy site files to target/site ────────── -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-site-files</id>
+            <phase>package</phase>
+            <goals><goal>copy-resources</goal></goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/site</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}</directory>
+                  <includes>
+                    <include>index.html</include>
+                    <include>404.html</include>
+                    <include>robots.txt</include>
+                    <include>sitemap.xml</include>
+                    <include>manifest.json</include>
+                    <include>.nojekyll</include>
+                    <include>CNAME</include>
+                    <include>images/**</include>
+                  </includes>
+                  <excludes>
+                    <exclude>target/**</exclude>
+                    <exclude>.git/**</exclude>
+                    <exclude>node_modules/**</exclude>
+                    <exclude>.env*</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- ── Exec: local dev server (mvn exec:exec@serve) ──── -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>serve</id>
+            <goals><goal>exec</goal></goals>
+            <configuration>
+              <executable>python3</executable>
+              <arguments>
+                <argument>-m</argument>
+                <argument>http.server</argument>
+                <argument>8080</argument>
+              </arguments>
+              <workingDirectory>${basedir}</workingDirectory>
+            </configuration>
+          </execution>
+          <!-- Ping Google Search Console sitemap after deploy -->
+          <execution>
+            <id>ping-sitemap</id>
+            <phase>deploy</phase>
+            <goals><goal>exec</goal></goals>
+            <configuration>
+              <executable>curl</executable>
+              <arguments>
+                <argument>-s</argument>
+                <argument>https://www.google.com/ping?sitemap=https://www.prashantdubey.co.in/sitemap.xml</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <!-- ── Profiles ──────────────────────────────────────────── -->
+  <profiles>
+
+    <!-- Production profile: mvn package -Pprod -->
+    <profile>
+      <id>prod</id>
+      <properties>
+        <env>production</env>
+        <site.url>https://www.prashantdubey.co.in/</site.url>
+      </properties>
+    </profile>
+
+    <!-- Local dev profile: mvn validate -Plocal -->
+    <profile>
+      <id>local</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <env>development</env>
+        <site.url>http://localhost:8080/</site.url>
+      </properties>
+    </profile>
+
+  </profiles>
+
+</project>
