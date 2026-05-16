@@ -1994,8 +1994,65 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
       </div>
     </div>
 
+    <!-- ── FEATURED / MUST-WATCH VIDEOS (hand-picked, permanent) ── -->
+    <div style="margin-top:3.5rem;">
+      <div class="divider-ornament"><span>✦</span></div>
+      <p class="section-label" style="display:block;text-align:center;margin-top:1.5rem;">विशेष चयन · Must Watch</p>
+      <h2 class="section-title" style="text-align:center;">सर्वाधिक देखे गए वीडियो</h2>
+      <p class="section-subtitle" style="text-align:center;margin-bottom:1.8rem;">पंडितजी के सबसे लोकप्रिय और महत्वपूर्ण वीडियो — एक बार अवश्य देखें।</p>
+
+      <div class="video-grid">
+
+        <!-- Featured Video 1 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <div class="video-thumb" onclick="loadVideo(this,'XWdm7wmb7OA')">
+              <img src="https://i.ytimg.com/vi/XWdm7wmb7OA/hqdefault.jpg" alt="Featured Video 1" loading="lazy"/>
+              <div class="play-btn"></div>
+            </div>
+          </div>
+          <div class="video-body">
+            <p class="video-tag">⭐ विशेष चयन</p>
+            <h3 class="video-title" id="feat-title-1">लोड हो रहा है…</h3>
+            <p class="video-desc" id="feat-desc-1"></p>
+          </div>
+        </div>
+
+        <!-- Featured Video 2 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <div class="video-thumb" onclick="loadVideo(this,'yn9tiJR_RsU')">
+              <img src="https://i.ytimg.com/vi/yn9tiJR_RsU/hqdefault.jpg" alt="Featured Video 2" loading="lazy"/>
+              <div class="play-btn"></div>
+            </div>
+          </div>
+          <div class="video-body">
+            <p class="video-tag">⭐ विशेष चयन</p>
+            <h3 class="video-title" id="feat-title-2">लोड हो रहा है…</h3>
+            <p class="video-desc" id="feat-desc-2"></p>
+          </div>
+        </div>
+
+        <!-- Featured Video 3 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <div class="video-thumb" onclick="loadVideo(this,'GWPDxZlUEtM')">
+              <img src="https://i.ytimg.com/vi/GWPDxZlUEtM/hqdefault.jpg" alt="Featured Video 3" loading="lazy"/>
+              <div class="play-btn"></div>
+            </div>
+          </div>
+          <div class="video-body">
+            <p class="video-tag">⭐ विशेष चयन</p>
+            <h3 class="video-title" id="feat-title-3">लोड हो रहा है…</h3>
+            <p class="video-desc" id="feat-desc-3"></p>
+          </div>
+        </div>
+
+      </div><!-- /.video-grid featured -->
+    </div><!-- /.featured wrapper -->
+
     <!-- View all videos button -->
-    <div style="text-align:center;margin-top:2.2rem;">
+    <div style="text-align:center;margin-top:2.5rem;">
       <a href="https://www.youtube.com/@ShastriJiKashivale235" target="_blank" rel="noopener"
          style="display:inline-block;padding:.75rem 2rem;background:var(--crimson,#8B1A1A);color:#fff;border-radius:6px;font-weight:600;text-decoration:none;font-size:.95rem;letter-spacing:.04em;">
         ▶ YouTube पर सभी वीडियो देखें
@@ -2003,6 +2060,36 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
     </div>
   </div>
 </section>
+
+<script>
+/* ── FETCH TITLES FOR FEATURED VIDEOS via oEmbed (free, no API key) ─────────
+   YouTube's oEmbed endpoint returns title & author for any public video.
+   We call it 3 times (once per featured video) to fill in the titles.
+   ──────────────────────────────────────────────────────────────────────── */
+(function() {
+  var featured = [
+    { id: 'XWdm7wmb7OA', titleEl: 'feat-title-1', descEl: 'feat-desc-1' },
+    { id: 'yn9tiJR_RsU', titleEl: 'feat-title-2', descEl: 'feat-desc-2' },
+    { id: 'GWPDxZlUEtM', titleEl: 'feat-title-3', descEl: 'feat-desc-3' }
+  ];
+  featured.forEach(function(v) {
+    var url = 'https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=' + v.id + '&format=json';
+    fetch(url)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var t = document.getElementById(v.titleEl);
+        if (t && data.title) t.textContent = data.title;
+        var d = document.getElementById(v.descEl);
+        if (d) d.textContent = data.author_name || '';
+      })
+      .catch(function() {
+        /* oEmbed blocked by CORS in some browsers — title stays as-is from RSS or blank */
+        var t = document.getElementById(v.titleEl);
+        if (t && t.textContent === 'लोड हो रहा है…') t.textContent = '✦ पंडितजी का विशेष वीडियो';
+      });
+  });
+})();
+</script>
 
 <script>
 /* ── AUTO-FETCH LATEST YOUTUBE VIDEOS (free, no API key) ────────────────────
