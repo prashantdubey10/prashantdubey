@@ -1,0 +1,28 @@
+{
+  "name": "Pt. Prashant Dubey Astrology",
+  "short_name": "PD Astrology",
+  "description": "India's most trusted Vedic astrologer in Varanasi. Expert in Jyotish, Numerology, Vastu Shastra & Palmistry.",
+  "theme_color": "#8B1A1A",
+  "background_color": "#1a0a00",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
