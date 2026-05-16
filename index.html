@@ -1977,49 +1977,132 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
     <h2 class="section-title" style="text-align:center;" data-i18n="videosTitle">Latest Astrology Videos</h2>
     <div class="divider-ornament"><span>✦</span></div>
     <p class="section-subtitle" data-i18n="videosSubtitle">Watch spiritual insights, horoscope guidance, remedies and cosmic wisdom directly from our YouTube channel.</p>
-    <div class="video-grid">
-      <div class="video-card">
-        <div class="video-wrapper">
-          <div class="video-thumb" onclick="loadVideo(this,'XWdm7wmb7OA')">
-            <img src="https://i.ytimg.com/vi/XWdm7wmb7OA/hqdefault.jpg" alt="Saturn Return" loading="lazy"/>
-            <div class="play-btn"></div>
-          </div>
-        </div>
-        <div class="video-body">
-          <p class="video-tag">वैदिक ज्योतिष</p>
-          <h3 class="video-title">मंगल ग्रह का सिंह राशि में प्रवेश</h3>
-          <p class="video-desc">मंगलग्रह का अन्य राशियों में संचरण व ग्रहों से युतिफल — जानें इसका आपकी राशि पर क्या प्रभाव पड़ेगा।</p>
-        </div>
+    <!-- Videos auto-loaded from YouTube RSS — no manual work needed -->
+    <div class="video-grid" id="yt-video-grid">
+      <!-- Skeleton loaders shown while fetching -->
+      <div class="video-card yt-skeleton" style="opacity:.5;pointer-events:none">
+        <div class="video-wrapper" style="background:#e8e0d5;"></div>
+        <div class="video-body"><p class="video-tag">लोड हो रहा है…</p><h3 class="video-title" style="color:#ccc;">━━━━━━━━━━━━</h3></div>
       </div>
-      <div class="video-card">
-        <div class="video-wrapper">
-          <div class="video-thumb" onclick="loadVideo(this,'yn9tiJR_RsU')">
-            <img src="https://i.ytimg.com/vi/yn9tiJR_RsU/hqdefault.jpg" alt="Weekly Horoscope" loading="lazy"/>
-            <div class="play-btn"></div>
-          </div>
-        </div>
-        <div class="video-body">
-          <p class="video-tag">पाक्षिक राशिफल</p>
-          <h3 class="video-title">पाक्षिक राशिफल: 25 June – 10 July 2025</h3>
-          <p class="video-desc">27 नक्षत्रों पर चर्चा, सभी राशियों का विस्तृत फल और विभिन्न उपाय।</p>
-        </div>
+      <div class="video-card yt-skeleton" style="opacity:.5;pointer-events:none">
+        <div class="video-wrapper" style="background:#e8e0d5;"></div>
+        <div class="video-body"><p class="video-tag">लोड हो रहा है…</p><h3 class="video-title" style="color:#ccc;">━━━━━━━━━━━━</h3></div>
       </div>
-      <div class="video-card">
-        <div class="video-wrapper">
-          <div class="video-thumb" onclick="loadVideo(this,'GWPDxZlUEtM')">
-            <img src="https://i.ytimg.com/vi/GWPDxZlUEtM/hqdefault.jpg" alt="Remedies Rahu Ketu" loading="lazy"/>
-            <div class="play-btn"></div>
-          </div>
-        </div>
-        <div class="video-body">
-          <p class="video-tag">साप्ताहिक राशिफल</p>
-          <h3 class="video-title">साप्ताहिक राशिफल: 9 June – 15 June 2025</h3>
-          <p class="video-desc">इस सप्ताह का राशिफल — सभी राशियों के लिए At a Glance ग्रह स्थिति और फल।</p>
-        </div>
+      <div class="video-card yt-skeleton" style="opacity:.5;pointer-events:none">
+        <div class="video-wrapper" style="background:#e8e0d5;"></div>
+        <div class="video-body"><p class="video-tag">लोड हो रहा है…</p><h3 class="video-title" style="color:#ccc;">━━━━━━━━━━━━</h3></div>
       </div>
+    </div>
+
+    <!-- View all videos button -->
+    <div style="text-align:center;margin-top:2.2rem;">
+      <a href="https://www.youtube.com/@ShastriJiKashivale235" target="_blank" rel="noopener"
+         style="display:inline-block;padding:.75rem 2rem;background:var(--crimson,#8B1A1A);color:#fff;border-radius:6px;font-weight:600;text-decoration:none;font-size:.95rem;letter-spacing:.04em;">
+        ▶ YouTube पर सभी वीडियो देखें
+      </a>
     </div>
   </div>
 </section>
+
+<script>
+/* ── AUTO-FETCH LATEST YOUTUBE VIDEOS (free, no API key) ────────────────────
+   Uses YouTube's free RSS feed + allorigins.win CORS proxy.
+   Every time the page loads the latest 3 videos appear automatically.
+   Channel: @ShastriJiKashivale235
+   ──────────────────────────────────────────────────────────────────────── */
+(function() {
+  var CHANNEL_ID = 'UCn2KdQE_QLShDXI-QT_NwWQ';
+  var RSS_URL    = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+  /* allorigins.win is a free CORS proxy — no account, no API key needed */
+  var PROXY_URL  = 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS_URL);
+  var MAX_VIDEOS = 3;
+
+  function getVideoId(entry) {
+    /* YouTube RSS entries have a <yt:videoId> tag */
+    var el = entry.getElementsByTagNameNS('http://www.youtube.com/xml/schemas/2015', 'videoId')[0]
+          || entry.querySelector('videoId');
+    if (el) return el.textContent.trim();
+    /* fallback: parse from <link> href */
+    var link = entry.querySelector('link');
+    if (link) {
+      var m = (link.getAttribute('href') || '').match(/[?&]v=([^&]+)/);
+      if (m) return m[1];
+    }
+    return null;
+  }
+
+  function renderVideos(items) {
+    var grid = document.getElementById('yt-video-grid');
+    if (!grid) return;
+    grid.innerHTML = '';                    /* clear skeletons */
+    items.slice(0, MAX_VIDEOS).forEach(function(entry) {
+      var id    = getVideoId(entry);
+      if (!id) return;
+      var title = (entry.querySelector('title') || {}).textContent || '';
+      /* Use media:group > media:description when available */
+      var descEl = entry.querySelector('description')
+                || entry.querySelector('summary');
+      var desc  = descEl ? descEl.textContent.trim().slice(0, 120) : '';
+      if (desc.length === 120) desc += '…';
+
+      var card = document.createElement('div');
+      card.className = 'video-card';
+      card.innerHTML =
+        '<div class="video-wrapper">' +
+          '<div class="video-thumb" onclick="loadVideo(this,\'' + id + '\')">' +
+            '<img src="https://i.ytimg.com/vi/' + id + '/hqdefault.jpg"' +
+                 ' alt="' + title.replace(/"/g,'&quot;') + '" loading="lazy"/>' +
+            '<div class="play-btn"></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="video-body">' +
+          '<p class="video-tag">YouTube • नवीनतम</p>' +
+          '<h3 class="video-title">' + title + '</h3>' +
+          (desc ? '<p class="video-desc">' + desc + '</p>' : '') +
+        '</div>';
+      grid.appendChild(card);
+    });
+
+    /* If nothing rendered (empty channel?) keep a fallback message */
+    if (!grid.children.length) {
+      grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);">वीडियो लोड नहीं हो सके। कृपया YouTube चैनल देखें।</p>';
+    }
+  }
+
+  fetch(PROXY_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var parser  = new DOMParser();
+      var xmlDoc  = parser.parseFromString(data.contents, 'application/xml');
+      var entries = Array.from(xmlDoc.querySelectorAll('entry'));
+      if (entries.length) {
+        renderVideos(entries);
+      } else {
+        throw new Error('No entries in feed');
+      }
+    })
+    .catch(function(err) {
+      console.warn('YouTube RSS fetch failed, trying fallback proxy…', err);
+      /* Second fallback: corsproxy.io */
+      var FALLBACK = 'https://corsproxy.io/?' + encodeURIComponent(RSS_URL);
+      fetch(FALLBACK)
+        .then(function(r) { return r.text(); })
+        .then(function(xml) {
+          var parser  = new DOMParser();
+          var xmlDoc  = parser.parseFromString(xml, 'application/xml');
+          var entries = Array.from(xmlDoc.querySelectorAll('entry'));
+          if (entries.length) renderVideos(entries);
+          else throw new Error('empty feed on fallback');
+        })
+        .catch(function() {
+          /* Both proxies failed — silently remove skeletons; channel link still visible */
+          var grid = document.getElementById('yt-video-grid');
+          if (grid) grid.innerHTML =
+            '<p style="text-align:center;padding:2rem;color:var(--text-muted);">वीडियो अभी लोड नहीं हो सके। कृपया ऊपर YouTube लिंक से देखें।</p>';
+        });
+    });
+})();
+</script>
 
 <!-- CONTACT -->
 <section id="contact">
