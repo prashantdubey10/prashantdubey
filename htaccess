@@ -1,0 +1,17 @@
+Options -MultiViews
+RewriteEngine On
+
+# 1. Redirect HTTP non-www to HTTPS www
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^prashantdubey\.co\.in$ [NC]
+RewriteRule ^(.*)$ https://www.prashantdubey.co.in/$1 [R=301,L]
+
+# 2. Redirect HTTPS non-www to HTTPS www
+RewriteCond %{HTTPS} on
+RewriteCond %{HTTP_HOST} ^prashantdubey\.co\.in$ [NC]
+RewriteRule ^(.*)$ https://www.prashantdubey.co.in/$1 [R=301,L]
+
+# 3. Redirect HTTP www to HTTPS www
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^www\.prashantdubey\.co\.in$ [NC]
+RewriteRule ^(.*)$ https://www.prashantdubey.co.in/$1 [R=301,L]
