@@ -2091,102 +2091,116 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 </script>
 
 <script>
-/* ── AUTO-FETCH LATEST YOUTUBE VIDEOS (free, no API key) ────────────────────
-   Uses YouTube's free RSS feed + allorigins.win CORS proxy.
-   Every time the page loads the latest 3 videos appear automatically.
-   Channel: @ShastriJiKashivale235
+/* ── AUTO-FETCH LATEST YOUTUBE VIDEOS — mobile-optimised ────────────────────
+   Strategy (fastest & most reliable on slow mobile connections):
+   1. Check sessionStorage cache first — zero network if already fetched this session
+   2. Primary: rss2json.com — returns clean JSON, no XML parsing, very fast
+   3. Fallback: allorigins.win — parses XML only if rss2json fails
+   4. AbortController timeout (6 s) so it never hangs forever on slow networks
    ──────────────────────────────────────────────────────────────────────── */
 (function() {
-  var CHANNEL_ID = 'UCn2KdQE_QLShDXI-QT_NwWQ';
-  var RSS_URL    = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
-  /* allorigins.win is a free CORS proxy — no account, no API key needed */
-  var PROXY_URL  = 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS_URL);
-  var MAX_VIDEOS = 3;
+  var CHANNEL_ID  = 'UCn2KdQE_QLShDXI-QT_NwWQ';
+  var RSS_URL     = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+  var CACHE_KEY   = 'yt_latest_videos_v1';
+  var CACHE_TTL   = 30 * 60 * 1000; /* 30 minutes — re-fetch if tab stays open long */
+  var MAX_VIDEOS  = 3;
 
-  function getVideoId(entry) {
-    /* YouTube RSS entries have a <yt:videoId> tag */
-    var el = entry.getElementsByTagNameNS('http://www.youtube.com/xml/schemas/2015', 'videoId')[0]
-          || entry.querySelector('videoId');
-    if (el) return el.textContent.trim();
-    /* fallback: parse from <link> href */
-    var link = entry.querySelector('link');
-    if (link) {
-      var m = (link.getAttribute('href') || '').match(/[?&]v=([^&]+)/);
-      if (m) return m[1];
-    }
-    return null;
-  }
-
-  function renderVideos(items) {
+  /* ── Render cards from a plain array of {id, title} objects ── */
+  function renderVideos(videos) {
     var grid = document.getElementById('yt-video-grid');
     if (!grid) return;
-    grid.innerHTML = '';                    /* clear skeletons */
-    items.slice(0, MAX_VIDEOS).forEach(function(entry) {
-      var id    = getVideoId(entry);
-      if (!id) return;
-      var title = (entry.querySelector('title') || {}).textContent || '';
-      /* Use media:group > media:description when available */
-      var descEl = entry.querySelector('description')
-                || entry.querySelector('summary');
-      var desc  = descEl ? descEl.textContent.trim().slice(0, 120) : '';
-      if (desc.length === 120) desc += '…';
-
+    grid.innerHTML = '';
+    videos.slice(0, MAX_VIDEOS).forEach(function(v) {
       var card = document.createElement('div');
       card.className = 'video-card';
       card.innerHTML =
         '<div class="video-wrapper">' +
-          '<div class="video-thumb" onclick="loadVideo(this,\'' + id + '\')">' +
-            '<img src="https://i.ytimg.com/vi/' + id + '/hqdefault.jpg"' +
-                 ' alt="' + title.replace(/"/g,'&quot;') + '" loading="lazy"/>' +
+          '<div class="video-thumb" onclick="loadVideo(this,\'' + v.id + '\')">' +
+            '<img src="https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg"' +
+                 ' alt="' + v.title.replace(/"/g,'&quot;') + '" loading="lazy" decoding="async"/>' +
             '<div class="play-btn"></div>' +
           '</div>' +
         '</div>' +
         '<div class="video-body">' +
           '<p class="video-tag">YouTube • नवीनतम</p>' +
-          '<h3 class="video-title">' + title + '</h3>' +
-          (desc ? '<p class="video-desc">' + desc + '</p>' : '') +
+          '<h3 class="video-title">' + v.title + '</h3>' +
         '</div>';
       grid.appendChild(card);
     });
-
-    /* If nothing rendered (empty channel?) keep a fallback message */
-    if (!grid.children.length) {
-      grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);">वीडियो लोड नहीं हो सके। कृपया YouTube चैनल देखें।</p>';
-    }
+    if (!grid.children.length) showError();
   }
 
-  fetch(PROXY_URL)
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      var parser  = new DOMParser();
-      var xmlDoc  = parser.parseFromString(data.contents, 'application/xml');
-      var entries = Array.from(xmlDoc.querySelectorAll('entry'));
-      if (entries.length) {
-        renderVideos(entries);
-      } else {
-        throw new Error('No entries in feed');
+  function showError() {
+    var grid = document.getElementById('yt-video-grid');
+    if (grid) grid.innerHTML =
+      '<p style="text-align:center;padding:2rem;color:var(--text-muted,#888);">' +
+      'नवीनतम वीडियो लोड नहीं हो सके।<br>' +
+      '<a href="https://www.youtube.com/@ShastriJiKashivale235" target="_blank" ' +
+         'style="color:var(--crimson,#8B1A1A);">YouTube चैनल पर देखें →</a></p>';
+  }
+
+  /* ── Fetch with timeout helper ── */
+  function fetchWithTimeout(url, ms) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function() { ctrl.abort(); }, ms);
+    return fetch(url, { signal: ctrl.signal })
+      .finally(function() { clearTimeout(timer); });
+  }
+
+  /* ── Try rss2json (returns JSON — fast, no XML parsing) ── */
+  function tryRssToJson() {
+    var url = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(RSS_URL) + '&count=' + MAX_VIDEOS;
+    return fetchWithTimeout(url, 6000)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data.items || !data.items.length) throw new Error('empty');
+        return data.items.map(function(item) {
+          /* rss2json gives us the full YouTube URL in item.link */
+          var m = item.link.match(/[?&]v=([^&]+)/);
+          return { id: m ? m[1] : '', title: item.title || '' };
+        }).filter(function(v) { return v.id; });
+      });
+  }
+
+  /* ── Fallback: allorigins proxy + XML parse ── */
+  function tryAllOrigins() {
+    var proxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS_URL);
+    return fetchWithTimeout(proxy, 6000)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var parser = new DOMParser();
+        var xml    = parser.parseFromString(data.contents, 'application/xml');
+        var entries = Array.from(xml.querySelectorAll('entry'));
+        if (!entries.length) throw new Error('empty');
+        return entries.map(function(e) {
+          var idEl = e.getElementsByTagNameNS('http://www.youtube.com/xml/schemas/2015','videoId')[0]
+                  || e.querySelector('videoId');
+          var id  = idEl ? idEl.textContent.trim() : '';
+          var title = (e.querySelector('title') || {}).textContent || '';
+          return { id: id, title: title };
+        }).filter(function(v) { return v.id; });
+      });
+  }
+
+  /* ── Main: cache → rss2json → allorigins ── */
+  try {
+    var cached = sessionStorage.getItem(CACHE_KEY);
+    if (cached) {
+      var obj = JSON.parse(cached);
+      if (Date.now() - obj.ts < CACHE_TTL) {
+        renderVideos(obj.videos);
+        return;
       }
+    }
+  } catch(e) {}
+
+  tryRssToJson()
+    .catch(function() { return tryAllOrigins(); })
+    .then(function(videos) {
+      try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), videos: videos })); } catch(e) {}
+      renderVideos(videos);
     })
-    .catch(function(err) {
-      console.warn('YouTube RSS fetch failed, trying fallback proxy…', err);
-      /* Second fallback: corsproxy.io */
-      var FALLBACK = 'https://corsproxy.io/?' + encodeURIComponent(RSS_URL);
-      fetch(FALLBACK)
-        .then(function(r) { return r.text(); })
-        .then(function(xml) {
-          var parser  = new DOMParser();
-          var xmlDoc  = parser.parseFromString(xml, 'application/xml');
-          var entries = Array.from(xmlDoc.querySelectorAll('entry'));
-          if (entries.length) renderVideos(entries);
-          else throw new Error('empty feed on fallback');
-        })
-        .catch(function() {
-          /* Both proxies failed — silently remove skeletons; channel link still visible */
-          var grid = document.getElementById('yt-video-grid');
-          if (grid) grid.innerHTML =
-            '<p style="text-align:center;padding:2rem;color:var(--text-muted);">वीडियो अभी लोड नहीं हो सके। कृपया ऊपर YouTube लिंक से देखें।</p>';
-        });
-    });
+    .catch(function() { showError(); });
 })();
 </script>
 
