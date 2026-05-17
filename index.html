@@ -2328,6 +2328,249 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
   <div class="toast-msg" id="toastMsg"></div>
 </div>
 
+<!-- ═══ MICROSOFT CLARITY — CUSTOM EVENTS ═══ -->
+<script>
+(function () {
+  /* Helper: safe clarity call */
+  function cEvent(name) {
+    if (typeof clarity === 'function') clarity('event', name);
+  }
+  function cSet(key, val) {
+    if (typeof clarity === 'function') clarity('set', key, val);
+  }
+
+  /* ── 1. PAGE LOAD ── */
+  cEvent('page_loaded');
+  cSet('page_language', document.documentElement.lang || 'en');
+
+  /* ── 2. NAV — top navigation link clicks ── */
+  document.querySelectorAll('.nav-links a, .nav-cta').forEach(function (a) {
+    a.addEventListener('click', function () {
+      cEvent('nav_link_clicked');
+      cSet('nav_destination', a.getAttribute('href') || a.textContent.trim());
+    });
+  });
+
+  /* ── 3. MOBILE NAV — hamburger open / close ── */
+  var hamburger = document.querySelector('.hamburger');
+  if (hamburger) {
+    hamburger.addEventListener('click', function () {
+      var isOpen = document.getElementById('mobileNav').classList.contains('open');
+      cEvent(isOpen ? 'mobile_nav_closed' : 'mobile_nav_opened');
+    });
+  }
+
+  /* ── 4. MOBILE NAV LINKS ── */
+  document.querySelectorAll('.mobile-nav a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      cEvent('mobile_nav_link_clicked');
+      cSet('mobile_nav_destination', a.getAttribute('href') || a.textContent.trim());
+    });
+  });
+
+  /* ── 5. HERO CTAs ── */
+  var heroBookBtn = document.querySelector('.hero-ctas .btn-saffron');
+  if (heroBookBtn) {
+    heroBookBtn.addEventListener('click', function () {
+      cEvent('hero_book_consultation_clicked');
+    });
+  }
+  var heroHoroscopeBtn = document.querySelector('.hero-ctas .btn-outline');
+  if (heroHoroscopeBtn) {
+    heroHoroscopeBtn.addEventListener('click', function () {
+      cEvent('hero_read_horoscope_clicked');
+    });
+  }
+
+  /* ── 6. ANNOUNCEMENT BAR — "Book now" link ── */
+  var annLink = document.querySelector('.ann-bar a');
+  if (annLink) {
+    annLink.addEventListener('click', function () {
+      cEvent('announcement_bar_book_clicked');
+    });
+  }
+
+  /* ── 7. SERVICES — "Book this session" clicks (with service name + price) ── */
+  document.querySelectorAll('.service-card').forEach(function (card) {
+    var link = card.querySelector('.service-link');
+    if (!link) return;
+    link.addEventListener('click', function () {
+      var serviceName = (card.querySelector('.service-name') || {}).textContent || 'Unknown';
+      var price = (card.querySelector('.price-num') || {}).textContent || '';
+      cEvent('service_book_clicked');
+      cSet('service_name', serviceName.trim());
+      cSet('service_price', price.trim());
+    });
+  });
+
+  /* ── 8. HOROSCOPE — zodiac sign selected ── */
+  var signsWheel = document.getElementById('signsWheel');
+  if (signsWheel) {
+    signsWheel.addEventListener('click', function (e) {
+      var tile = e.target.closest('.sign-tile');
+      if (!tile) return;
+      var signName = (tile.querySelector('.sign-name-sm') || {}).textContent || '';
+      cEvent('horoscope_sign_selected');
+      cSet('zodiac_sign', signName.trim());
+    });
+  }
+
+  /* ── 9. LANGUAGE TOGGLE ── */
+  var langBtn = document.getElementById('langBtn');
+  if (langBtn) {
+    langBtn.addEventListener('click', function () {
+      var switchingTo = langBtn.textContent.trim() === 'हिंदी' ? 'Hindi' : 'English';
+      cEvent('language_switched');
+      cSet('language_selected', switchingTo);
+    });
+  }
+
+  /* ── 10. BOOKING SECTION — scrolled into view ── */
+  var bookingSection = document.getElementById('booking');
+  if (bookingSection) {
+    var bookingObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        cEvent('booking_section_viewed');
+        bookingObserver.disconnect();
+      }
+    }, { threshold: 0.3 });
+    bookingObserver.observe(bookingSection);
+  }
+
+  /* ── 11. CONTACT SECTION — scrolled into view ── */
+  var contactSection = document.getElementById('contact');
+  if (contactSection) {
+    var contactObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        cEvent('contact_section_viewed');
+        contactObserver.disconnect();
+      }
+    }, { threshold: 0.3 });
+    contactObserver.observe(contactSection);
+  }
+
+  /* ── 12. DAKSHINA — amount button selected ── */
+  document.querySelectorAll('.amt-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var amt = btn.getAttribute('data-val') || btn.textContent.trim();
+      cEvent('dakshina_amount_selected');
+      cSet('dakshina_amount', amt);
+    });
+  });
+
+  /* ── 13. DAKSHINA — UPI copy button ── */
+  document.querySelectorAll('[onclick*="copyUPI"]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      cEvent('dakshina_upi_copied');
+    });
+  });
+
+  /* ── 14. DAKSHINA SECTION — scrolled into view ── */
+  var dakshinaSection = document.getElementById('dakshina');
+  if (dakshinaSection) {
+    var dakshinaObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        cEvent('dakshina_section_viewed');
+        dakshinaObserver.disconnect();
+      }
+    }, { threshold: 0.3 });
+    dakshinaObserver.observe(dakshinaSection);
+  }
+
+  /* ── 15. VIDEOS — YouTube video played (wrap loadVideo) ── */
+  var _origLoadVideo = window.loadVideo;
+  window.loadVideo = function (thumb, id) {
+    cEvent('youtube_video_played');
+    cSet('video_id', id);
+    if (typeof _origLoadVideo === 'function') _origLoadVideo(thumb, id);
+  };
+
+  /* ── 16. YOUTUBE CHANNEL BUTTON ── */
+  document.querySelectorAll('a[href*="youtube.com/@ShastriJiKashivale235"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      cEvent('youtube_channel_link_clicked');
+    });
+  });
+
+  /* ── 17. GALLERY CAROUSEL — wrap navigation functions ── */
+  var _origCarouselNext = window.carouselNext;
+  var _origCarouselPrev = window.carouselPrev;
+  var _origGoToSlide    = window.goToSlide;
+
+  window.carouselNext = function () {
+    cEvent('gallery_carousel_next');
+    if (typeof _origCarouselNext === 'function') _origCarouselNext();
+  };
+  window.carouselPrev = function () {
+    cEvent('gallery_carousel_prev');
+    if (typeof _origCarouselPrev === 'function') _origCarouselPrev();
+  };
+  window.goToSlide = function (i) {
+    cEvent('gallery_carousel_dot_clicked');
+    cSet('carousel_slide_index', String(i + 1));
+    if (typeof _origGoToSlide === 'function') _origGoToSlide(i);
+  };
+
+  /* ── 18. EMAIL LINK — clicked ── */
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      cEvent('email_link_clicked');
+    });
+  });
+
+  /* ── 19. SOCIAL — YouTube icon clicked ── */
+  document.querySelectorAll('.social-link').forEach(function (a) {
+    a.addEventListener('click', function () {
+      cEvent('social_youtube_clicked');
+    });
+  });
+
+  /* ── 20. FOOTER LINKS ── */
+  document.querySelectorAll('footer a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      cEvent('footer_link_clicked');
+      cSet('footer_link_text', a.textContent.trim());
+    });
+  });
+
+  /* ── 21. SCROLL DEPTH — 25 / 50 / 75 / 100% ── */
+  var scrollDepthFired = {};
+  window.addEventListener('scroll', function () {
+    var scrolled = window.scrollY + window.innerHeight;
+    var total = document.documentElement.scrollHeight;
+    var pct = Math.floor((scrolled / total) * 100);
+    [25, 50, 75, 100].forEach(function (depth) {
+      if (pct >= depth && !scrollDepthFired[depth]) {
+        scrollDepthFired[depth] = true;
+        cEvent('scroll_depth_' + depth + '_percent');
+      }
+    });
+  }, { passive: true });
+
+  /* ── 22. TIME ON PAGE — 30s / 60s / 120s ── */
+  [30, 60, 120].forEach(function (sec) {
+    setTimeout(function () {
+      cEvent('time_on_page_' + sec + 's');
+    }, sec * 1000);
+  });
+
+  /* ── 23. KEY SECTION VIEWS ── */
+  ['about', 'services', 'horoscope', 'testimonials', 'videos', 'pujaGallery'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var obs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        cEvent('section_viewed');
+        cSet('section_name', id);
+        obs.disconnect();
+      }
+    }, { threshold: 0.3 });
+    obs.observe(el);
+  });
+
+})();
+</script>
+
 <script>
 /* ── NAV SCROLL ── */
 window.addEventListener('scroll', () => {
