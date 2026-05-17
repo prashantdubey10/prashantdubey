@@ -2100,21 +2100,21 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 </script>
 
 <script>
-/* ── AUTO-FETCH LATEST YOUTUBE VIDEOS — mobile-optimised ────────────────────
-   Strategy (fastest & most reliable on slow mobile connections):
-   1. Check sessionStorage cache first — zero network if already fetched this session
-   2. Primary: rss2json.com — returns clean JSON, no XML parsing, very fast
-   3. Fallback: allorigins.win — parses XML only if rss2json fails
-   4. AbortController timeout (6 s) so it never hangs forever on slow networks
+/* ── AUTO-FETCH LATEST YOUTUBE VIDEOS ────────────────────────────────────────
+   Strategy:
+   1. sessionStorage cache (30 min TTL) — zero network on repeat visits
+   2. Primary:  allorigins.win  — CORS proxy, parses YouTube RSS XML
+   3. Fallback: corsproxy.io    — second proxy if allorigins is down
+   4. AbortController 8 s timeout on each attempt
    ──────────────────────────────────────────────────────────────────────── */
 (function() {
-  var CHANNEL_ID  = 'UCn2KdQE_QLShDXI-QT_NwWQ';
-  var RSS_URL     = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
-  var CACHE_KEY   = 'yt_latest_videos_v1';
-  var CACHE_TTL   = 30 * 60 * 1000; /* 30 minutes — re-fetch if tab stays open long */
-  var MAX_VIDEOS  = 3;
+  var CHANNEL_ID = 'UCn2KdQE_QLShDXI-QT_NwWQ';
+  var RSS_URL    = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+  var CACHE_KEY  = 'yt_latest_videos_v2';
+  var CACHE_TTL  = 30 * 60 * 1000;
+  var MAX_VIDEOS = 3;
 
-  /* ── Render cards from a plain array of {id, title} objects ── */
+  /* ── Render video cards ── */
   function renderVideos(videos) {
     var grid = document.getElementById('yt-video-grid');
     if (!grid) return;
@@ -2148,63 +2148,63 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
          'style="color:var(--crimson,#8B1A1A);">YouTube चैनल पर देखें →</a></p>';
   }
 
-  /* ── Fetch with timeout helper ── */
+  /* ── Fetch with timeout ── */
   function fetchWithTimeout(url, ms) {
-    var ctrl = new AbortController();
+    var ctrl  = new AbortController();
     var timer = setTimeout(function() { ctrl.abort(); }, ms);
     return fetch(url, { signal: ctrl.signal })
       .finally(function() { clearTimeout(timer); });
   }
 
-  /* ── Try rss2json (returns JSON — fast, no XML parsing) ── */
-  function tryRssToJson() {
-    var url = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(RSS_URL) + '&count=' + MAX_VIDEOS;
-    return fetchWithTimeout(url, 6000)
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (!data.items || !data.items.length) throw new Error('empty');
-        return data.items.map(function(item) {
-          /* rss2json gives us the full YouTube URL in item.link */
-          var m = item.link.match(/[?&]v=([^&]+)/);
-          return { id: m ? m[1] : '', title: item.title || '' };
-        }).filter(function(v) { return v.id; });
-      });
+  /* ── Parse YouTube RSS XML string into [{id, title}] ── */
+  function parseXML(xmlString) {
+    var parser  = new DOMParser();
+    var xml     = parser.parseFromString(xmlString, 'application/xml');
+    var entries = Array.from(xml.querySelectorAll('entry'));
+    if (!entries.length) throw new Error('no entries');
+    return entries.map(function(e) {
+      /* videoId lives in the yt: namespace */
+      var idEl  = e.getElementsByTagNameNS('http://www.youtube.com/xml/schemas/2015', 'videoId')[0]
+               || e.querySelector('videoId');
+      var id    = idEl ? idEl.textContent.trim() : '';
+      var title = (e.querySelector('title') || {}).textContent || '';
+      return { id: id, title: title };
+    }).filter(function(v) { return v.id; });
   }
 
-  /* ── Fallback: allorigins proxy + XML parse ── */
+  /* ── Proxy 1: allorigins.win ── */
   function tryAllOrigins() {
-    var proxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS_URL);
-    return fetchWithTimeout(proxy, 6000)
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        var parser = new DOMParser();
-        var xml    = parser.parseFromString(data.contents, 'application/xml');
-        var entries = Array.from(xml.querySelectorAll('entry'));
-        if (!entries.length) throw new Error('empty');
-        return entries.map(function(e) {
-          var idEl = e.getElementsByTagNameNS('http://www.youtube.com/xml/schemas/2015','videoId')[0]
-                  || e.querySelector('videoId');
-          var id  = idEl ? idEl.textContent.trim() : '';
-          var title = (e.querySelector('title') || {}).textContent || '';
-          return { id: id, title: title };
-        }).filter(function(v) { return v.id; });
-      });
+    var url = 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS_URL);
+    return fetchWithTimeout(url, 8000)
+      .then(function(r) {
+        if (!r.ok) throw new Error('allorigins ' + r.status);
+        return r.json();
+      })
+      .then(function(data) { return parseXML(data.contents); });
   }
 
-  /* ── Main: cache → rss2json → allorigins ── */
+  /* ── Proxy 2: corsproxy.io (fallback) ── */
+  function tryCorsproxy() {
+    var url = 'https://corsproxy.io/?' + encodeURIComponent(RSS_URL);
+    return fetchWithTimeout(url, 8000)
+      .then(function(r) {
+        if (!r.ok) throw new Error('corsproxy ' + r.status);
+        return r.text();
+      })
+      .then(function(text) { return parseXML(text); });
+  }
+
+  /* ── Main: cache → allorigins → corsproxy ── */
   try {
     var cached = sessionStorage.getItem(CACHE_KEY);
     if (cached) {
       var obj = JSON.parse(cached);
-      if (Date.now() - obj.ts < CACHE_TTL) {
-        renderVideos(obj.videos);
-        return;
-      }
+      if (Date.now() - obj.ts < CACHE_TTL) { renderVideos(obj.videos); return; }
     }
   } catch(e) {}
 
-  tryRssToJson()
-    .catch(function() { return tryAllOrigins(); })
+  tryAllOrigins()
+    .catch(function() { return tryCorsproxy(); })
     .then(function(videos) {
       try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), videos: videos })); } catch(e) {}
       renderVideos(videos);
@@ -2331,19 +2331,12 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 <!-- ═══ MICROSOFT CLARITY — CUSTOM EVENTS ═══ -->
 <script>
 (function () {
-  /* Helper: safe clarity call */
-  function cEvent(name) {
-    if (typeof clarity === 'function') clarity('event', name);
-  }
-  function cSet(key, val) {
-    if (typeof clarity === 'function') clarity('set', key, val);
-  }
+  function cEvent(name) { if (typeof clarity === 'function') clarity('event', name); }
+  function cSet(key, val) { if (typeof clarity === 'function') clarity('set', key, val); }
 
-  /* ── 1. PAGE LOAD ── */
   cEvent('page_loaded');
   cSet('page_language', document.documentElement.lang || 'en');
 
-  /* ── 2. NAV — top navigation link clicks ── */
   document.querySelectorAll('.nav-links a, .nav-cta').forEach(function (a) {
     a.addEventListener('click', function () {
       cEvent('nav_link_clicked');
@@ -2351,7 +2344,6 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
     });
   });
 
-  /* ── 3. MOBILE NAV — hamburger open / close ── */
   var hamburger = document.querySelector('.hamburger');
   if (hamburger) {
     hamburger.addEventListener('click', function () {
@@ -2360,7 +2352,6 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
     });
   }
 
-  /* ── 4. MOBILE NAV LINKS ── */
   document.querySelectorAll('.mobile-nav a').forEach(function (a) {
     a.addEventListener('click', function () {
       cEvent('mobile_nav_link_clicked');
@@ -2368,116 +2359,73 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
     });
   });
 
-  /* ── 5. HERO CTAs ── */
   var heroBookBtn = document.querySelector('.hero-ctas .btn-saffron');
-  if (heroBookBtn) {
-    heroBookBtn.addEventListener('click', function () {
-      cEvent('hero_book_consultation_clicked');
-    });
-  }
+  if (heroBookBtn) heroBookBtn.addEventListener('click', function () { cEvent('hero_book_consultation_clicked'); });
+
   var heroHoroscopeBtn = document.querySelector('.hero-ctas .btn-outline');
-  if (heroHoroscopeBtn) {
-    heroHoroscopeBtn.addEventListener('click', function () {
-      cEvent('hero_read_horoscope_clicked');
-    });
-  }
+  if (heroHoroscopeBtn) heroHoroscopeBtn.addEventListener('click', function () { cEvent('hero_read_horoscope_clicked'); });
 
-  /* ── 6. ANNOUNCEMENT BAR — "Book now" link ── */
   var annLink = document.querySelector('.ann-bar a');
-  if (annLink) {
-    annLink.addEventListener('click', function () {
-      cEvent('announcement_bar_book_clicked');
-    });
-  }
+  if (annLink) annLink.addEventListener('click', function () { cEvent('announcement_bar_book_clicked'); });
 
-  /* ── 7. SERVICES — "Book this session" clicks (with service name + price) ── */
   document.querySelectorAll('.service-card').forEach(function (card) {
     var link = card.querySelector('.service-link');
     if (!link) return;
     link.addEventListener('click', function () {
-      var serviceName = (card.querySelector('.service-name') || {}).textContent || 'Unknown';
-      var price = (card.querySelector('.price-num') || {}).textContent || '';
       cEvent('service_book_clicked');
-      cSet('service_name', serviceName.trim());
-      cSet('service_price', price.trim());
+      cSet('service_name', ((card.querySelector('.service-name') || {}).textContent || '').trim());
+      cSet('service_price', ((card.querySelector('.price-num') || {}).textContent || '').trim());
     });
   });
 
-  /* ── 8. HOROSCOPE — zodiac sign selected ── */
   var signsWheel = document.getElementById('signsWheel');
   if (signsWheel) {
     signsWheel.addEventListener('click', function (e) {
       var tile = e.target.closest('.sign-tile');
       if (!tile) return;
-      var signName = (tile.querySelector('.sign-name-sm') || {}).textContent || '';
       cEvent('horoscope_sign_selected');
-      cSet('zodiac_sign', signName.trim());
+      cSet('zodiac_sign', ((tile.querySelector('.sign-name-sm') || {}).textContent || '').trim());
     });
   }
 
-  /* ── 9. LANGUAGE TOGGLE ── */
   var langBtn = document.getElementById('langBtn');
   if (langBtn) {
     langBtn.addEventListener('click', function () {
-      var switchingTo = langBtn.textContent.trim() === 'हिंदी' ? 'Hindi' : 'English';
       cEvent('language_switched');
-      cSet('language_selected', switchingTo);
+      cSet('language_selected', langBtn.textContent.trim() === 'हिंदी' ? 'Hindi' : 'English');
     });
   }
 
-  /* ── 10. BOOKING SECTION — scrolled into view ── */
-  var bookingSection = document.getElementById('booking');
-  if (bookingSection) {
-    var bookingObserver = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) {
-        cEvent('booking_section_viewed');
-        bookingObserver.disconnect();
-      }
+  function observeOnce(id, eventName) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var obs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { cEvent(eventName); obs.disconnect(); }
     }, { threshold: 0.3 });
-    bookingObserver.observe(bookingSection);
+    obs.observe(el);
   }
 
-  /* ── 11. CONTACT SECTION — scrolled into view ── */
-  var contactSection = document.getElementById('contact');
-  if (contactSection) {
-    var contactObserver = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) {
-        cEvent('contact_section_viewed');
-        contactObserver.disconnect();
-      }
-    }, { threshold: 0.3 });
-    contactObserver.observe(contactSection);
-  }
+  observeOnce('booking',      'booking_section_viewed');
+  observeOnce('contact',      'contact_section_viewed');
+  observeOnce('dakshina',     'dakshina_section_viewed');
+  observeOnce('about',        'section_viewed_about');
+  observeOnce('services',     'section_viewed_services');
+  observeOnce('horoscope',    'section_viewed_horoscope');
+  observeOnce('testimonials', 'section_viewed_testimonials');
+  observeOnce('videos',       'section_viewed_videos');
+  observeOnce('pujaGallery',  'section_viewed_gallery');
 
-  /* ── 12. DAKSHINA — amount button selected ── */
   document.querySelectorAll('.amt-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var amt = btn.getAttribute('data-val') || btn.textContent.trim();
       cEvent('dakshina_amount_selected');
-      cSet('dakshina_amount', amt);
+      cSet('dakshina_amount', (btn.getAttribute('data-val') || btn.textContent).trim());
     });
   });
 
-  /* ── 13. DAKSHINA — UPI copy button ── */
   document.querySelectorAll('[onclick*="copyUPI"]').forEach(function (el) {
-    el.addEventListener('click', function () {
-      cEvent('dakshina_upi_copied');
-    });
+    el.addEventListener('click', function () { cEvent('dakshina_upi_copied'); });
   });
 
-  /* ── 14. DAKSHINA SECTION — scrolled into view ── */
-  var dakshinaSection = document.getElementById('dakshina');
-  if (dakshinaSection) {
-    var dakshinaObserver = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) {
-        cEvent('dakshina_section_viewed');
-        dakshinaObserver.disconnect();
-      }
-    }, { threshold: 0.3 });
-    dakshinaObserver.observe(dakshinaSection);
-  }
-
-  /* ── 15. VIDEOS — YouTube video played (wrap loadVideo) ── */
   var _origLoadVideo = window.loadVideo;
   window.loadVideo = function (thumb, id) {
     cEvent('youtube_video_played');
@@ -2485,47 +2433,23 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
     if (typeof _origLoadVideo === 'function') _origLoadVideo(thumb, id);
   };
 
-  /* ── 16. YOUTUBE CHANNEL BUTTON ── */
   document.querySelectorAll('a[href*="youtube.com/@ShastriJiKashivale235"]').forEach(function (a) {
-    a.addEventListener('click', function () {
-      cEvent('youtube_channel_link_clicked');
-    });
+    a.addEventListener('click', function () { cEvent('youtube_channel_link_clicked'); });
   });
 
-  /* ── 17. GALLERY CAROUSEL — wrap navigation functions ── */
-  var _origCarouselNext = window.carouselNext;
-  var _origCarouselPrev = window.carouselPrev;
-  var _origGoToSlide    = window.goToSlide;
+  var _origNext = window.carouselNext, _origPrev = window.carouselPrev, _origGoto = window.goToSlide;
+  window.carouselNext = function () { cEvent('gallery_next'); if (_origNext) _origNext(); };
+  window.carouselPrev = function () { cEvent('gallery_prev'); if (_origPrev) _origPrev(); };
+  window.goToSlide = function (i) { cEvent('gallery_dot_clicked'); cSet('slide_index', String(i+1)); if (_origGoto) _origGoto(i); };
 
-  window.carouselNext = function () {
-    cEvent('gallery_carousel_next');
-    if (typeof _origCarouselNext === 'function') _origCarouselNext();
-  };
-  window.carouselPrev = function () {
-    cEvent('gallery_carousel_prev');
-    if (typeof _origCarouselPrev === 'function') _origCarouselPrev();
-  };
-  window.goToSlide = function (i) {
-    cEvent('gallery_carousel_dot_clicked');
-    cSet('carousel_slide_index', String(i + 1));
-    if (typeof _origGoToSlide === 'function') _origGoToSlide(i);
-  };
-
-  /* ── 18. EMAIL LINK — clicked ── */
   document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
-    a.addEventListener('click', function () {
-      cEvent('email_link_clicked');
-    });
+    a.addEventListener('click', function () { cEvent('email_link_clicked'); });
   });
 
-  /* ── 19. SOCIAL — YouTube icon clicked ── */
   document.querySelectorAll('.social-link').forEach(function (a) {
-    a.addEventListener('click', function () {
-      cEvent('social_youtube_clicked');
-    });
+    a.addEventListener('click', function () { cEvent('social_youtube_clicked'); });
   });
 
-  /* ── 20. FOOTER LINKS ── */
   document.querySelectorAll('footer a').forEach(function (a) {
     a.addEventListener('click', function () {
       cEvent('footer_link_clicked');
@@ -2533,39 +2457,16 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
     });
   });
 
-  /* ── 21. SCROLL DEPTH — 25 / 50 / 75 / 100% ── */
-  var scrollDepthFired = {};
+  var depthFired = {};
   window.addEventListener('scroll', function () {
-    var scrolled = window.scrollY + window.innerHeight;
-    var total = document.documentElement.scrollHeight;
-    var pct = Math.floor((scrolled / total) * 100);
-    [25, 50, 75, 100].forEach(function (depth) {
-      if (pct >= depth && !scrollDepthFired[depth]) {
-        scrollDepthFired[depth] = true;
-        cEvent('scroll_depth_' + depth + '_percent');
-      }
+    var pct = Math.floor(((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100);
+    [25, 50, 75, 100].forEach(function (d) {
+      if (pct >= d && !depthFired[d]) { depthFired[d] = true; cEvent('scroll_depth_' + d + 'pct'); }
     });
   }, { passive: true });
 
-  /* ── 22. TIME ON PAGE — 30s / 60s / 120s ── */
-  [30, 60, 120].forEach(function (sec) {
-    setTimeout(function () {
-      cEvent('time_on_page_' + sec + 's');
-    }, sec * 1000);
-  });
-
-  /* ── 23. KEY SECTION VIEWS ── */
-  ['about', 'services', 'horoscope', 'testimonials', 'videos', 'pujaGallery'].forEach(function (id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    var obs = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) {
-        cEvent('section_viewed');
-        cSet('section_name', id);
-        obs.disconnect();
-      }
-    }, { threshold: 0.3 });
-    obs.observe(el);
+  [30, 60, 120].forEach(function (s) {
+    setTimeout(function () { cEvent('time_on_page_' + s + 's'); }, s * 1000);
   });
 
 })();
