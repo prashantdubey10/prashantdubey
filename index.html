@@ -4,6 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+<!-- ═══ MICROSOFT CLARITY ═══ -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wshx3tacwn");
+</script>
+
 <!-- ═══ PRIMARY SEO ═══ -->
 <title>Pt. Prashant Dubey | Best Vedic Astrologer in India | Varanasi Jyotish Expert</title>
 <meta name="description" content="Pt. Prashant Dubey — India's most trusted Vedic astrologer in Varanasi with 26+ years experience. Expert in Jyotish, Numerology, Vastu Shastra, Palmistry & Kundli reading. Book an online or in-person astrology consultation today."/>
@@ -1971,46 +1980,26 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 </section>
 
 <!-- VIDEOS -->
-<!-- ── VIDEO SECTION STYLES ── -->
-<style>
-/* Shimmer skeleton animation */
-@keyframes ytShimmer {
-  0%   { background-position: -600px 0; }
-  100% { background-position:  600px 0; }
-}
-.yt-skeleton .video-wrapper {
-  background: linear-gradient(90deg,#e8e0d5 25%,#f5f0ea 50%,#e8e0d5 75%);
-  background-size: 600px 100%;
-  animation: ytShimmer 1.4s infinite linear;
-}
-.yt-skeleton .video-body { padding:1.3rem 1.4rem; }
-.yt-skeleton .skel-tag   { height:.65rem; width:5rem; background:#e0d8cf; border-radius:4px; margin-bottom:.6rem; }
-.yt-skeleton .skel-title { height:.95rem; width:85%;  background:#e0d8cf; border-radius:4px; margin-bottom:.4rem; }
-.yt-skeleton .skel-title2{ height:.95rem; width:60%;  background:#e0d8cf; border-radius:4px; }
-
-</style>
-
 <section id="videos">
   <div class="container">
     <p class="section-label" style="display:block;text-align:center;" data-i18n="videosLabel">Celestial Guidance</p>
     <h2 class="section-title" style="text-align:center;" data-i18n="videosTitle">Latest Astrology Videos</h2>
     <div class="divider-ornament"><span>✦</span></div>
     <p class="section-subtitle" data-i18n="videosSubtitle">Watch spiritual insights, horoscope guidance, remedies and cosmic wisdom directly from our YouTube channel.</p>
-
-    <!-- Latest videos — 3-column card grid, same layout as Most Viewed below -->
+    <!-- Videos auto-loaded from YouTube RSS — no manual work needed -->
     <div class="video-grid" id="yt-video-grid">
-      <!-- Shimmer skeletons shown while RSS fetches -->
-      <div class="video-card yt-skeleton" aria-hidden="true">
-        <div class="video-wrapper"></div>
-        <div class="video-body"><div class="skel-tag"></div><div class="skel-title"></div><div class="skel-title2"></div></div>
+      <!-- Skeleton loaders shown while fetching -->
+      <div class="video-card yt-skeleton" style="opacity:.5;pointer-events:none">
+        <div class="video-wrapper" style="background:#e8e0d5;"></div>
+        <div class="video-body"><p class="video-tag">लोड हो रहा है…</p><h3 class="video-title" style="color:#ccc;">━━━━━━━━━━━━</h3></div>
       </div>
-      <div class="video-card yt-skeleton" aria-hidden="true">
-        <div class="video-wrapper"></div>
-        <div class="video-body"><div class="skel-tag"></div><div class="skel-title"></div><div class="skel-title2"></div></div>
+      <div class="video-card yt-skeleton" style="opacity:.5;pointer-events:none">
+        <div class="video-wrapper" style="background:#e8e0d5;"></div>
+        <div class="video-body"><p class="video-tag">लोड हो रहा है…</p><h3 class="video-title" style="color:#ccc;">━━━━━━━━━━━━</h3></div>
       </div>
-      <div class="video-card yt-skeleton" aria-hidden="true">
-        <div class="video-wrapper"></div>
-        <div class="video-body"><div class="skel-tag"></div><div class="skel-title"></div><div class="skel-title2"></div></div>
+      <div class="video-card yt-skeleton" style="opacity:.5;pointer-events:none">
+        <div class="video-wrapper" style="background:#e8e0d5;"></div>
+        <div class="video-body"><p class="video-tag">लोड हो रहा है…</p><h3 class="video-title" style="color:#ccc;">━━━━━━━━━━━━</h3></div>
       </div>
     </div>
 
@@ -2020,12 +2009,58 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
       <p class="section-label" style="display:block;text-align:center;margin-top:1.5rem;" data-i18n="featuredLabel">Special Selection · Must Watch</p>
       <h2 class="section-title" style="text-align:center;" data-i18n="featuredTitle">Most Viewed Videos</h2>
       <p class="section-subtitle" style="text-align:center;margin-bottom:1.8rem;" data-i18n="featuredSubtitle">The most popular and important videos by Panditji — a must watch.</p>
-      <div class="video-grid" id="yt-featured-grid">
-        <!-- Rendered by JS below — thumbnails instant, titles via noembed -->
-      </div>
-    </div>
 
-    <!-- View all button -->
+      <div class="video-grid">
+
+        <!-- Featured Video 1 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <div class="video-thumb" onclick="loadVideo(this,'XWdm7wmb7OA')">
+              <img src="https://i.ytimg.com/vi/XWdm7wmb7OA/hqdefault.jpg" alt="Featured Video 1" loading="lazy"/>
+              <div class="play-btn"></div>
+            </div>
+          </div>
+          <div class="video-body">
+            <p class="video-tag">⭐ विशेष चयन</p>
+            <h3 class="video-title" id="feat-title-1">लोड हो रहा है…</h3>
+            <p class="video-desc" id="feat-desc-1"></p>
+          </div>
+        </div>
+
+        <!-- Featured Video 2 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <div class="video-thumb" onclick="loadVideo(this,'yn9tiJR_RsU')">
+              <img src="https://i.ytimg.com/vi/yn9tiJR_RsU/hqdefault.jpg" alt="Featured Video 2" loading="lazy"/>
+              <div class="play-btn"></div>
+            </div>
+          </div>
+          <div class="video-body">
+            <p class="video-tag">⭐ विशेष चयन</p>
+            <h3 class="video-title" id="feat-title-2">लोड हो रहा है…</h3>
+            <p class="video-desc" id="feat-desc-2"></p>
+          </div>
+        </div>
+
+        <!-- Featured Video 3 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <div class="video-thumb" onclick="loadVideo(this,'GWPDxZlUEtM')">
+              <img src="https://i.ytimg.com/vi/GWPDxZlUEtM/hqdefault.jpg" alt="Featured Video 3" loading="lazy"/>
+              <div class="play-btn"></div>
+            </div>
+          </div>
+          <div class="video-body">
+            <p class="video-tag">⭐ विशेष चयन</p>
+            <h3 class="video-title" id="feat-title-3">लोड हो रहा है…</h3>
+            <p class="video-desc" id="feat-desc-3"></p>
+          </div>
+        </div>
+
+      </div><!-- /.video-grid featured -->
+    </div><!-- /.featured wrapper -->
+
+    <!-- View all videos button -->
     <div style="text-align:center;margin-top:2.5rem;">
       <a href="https://www.youtube.com/@ShastriJiKashivale235" target="_blank" rel="noopener"
          style="display:inline-block;padding:.75rem 2rem;background:var(--crimson,#8B1A1A);color:#fff;border-radius:6px;font-weight:600;text-decoration:none;font-size:.95rem;letter-spacing:.04em;"
@@ -2035,188 +2070,146 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.75); padding: 4
 </section>
 
 <script>
-/* ════════════════════════════════════════════════════════════════════════════
-   YOUTUBE VIDEO LOADER
-   ─────────────────────────────────────────────────────────────────────────
-   PRIMARY   → YouTube "Uploads" playlist embed (UU… list) — always works,
-               served directly by YouTube, zero CORS, zero API key needed.
-               Auto-updates the moment a new video is published.
+/* ── FETCH TITLES FOR FEATURED VIDEOS via oEmbed (free, no API key) ─────────
+   YouTube's oEmbed endpoint returns title & author for any public video.
+   We call it 3 times (once per featured video) to fill in the titles.
+   ──────────────────────────────────────────────────────────────────────── */
+(function() {
+  var featured = [
+    { id: 'XWdm7wmb7OA', titleEl: 'feat-title-1', descEl: 'feat-desc-1' },
+    { id: 'yn9tiJR_RsU', titleEl: 'feat-title-2', descEl: 'feat-desc-2' },
+    { id: 'GWPDxZlUEtM', titleEl: 'feat-title-3', descEl: 'feat-desc-3' }
+  ];
+  featured.forEach(function(v) {
+    var url = 'https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=' + v.id + '&format=json';
+    fetch(url)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var t = document.getElementById(v.titleEl);
+        if (t && data.title) t.textContent = data.title;
+        var d = document.getElementById(v.descEl);
+        if (d) d.textContent = data.author_name || '';
+      })
+      .catch(function() {
+        /* oEmbed blocked by CORS in some browsers — title stays as-is from RSS or blank */
+        var t = document.getElementById(v.titleEl);
+        if (t && t.textContent === 'लोड हो रहा है…') t.textContent = '✦ पंडितजी का विशेष वीडियो';
+      });
+  });
+})();
+</script>
 
-   SECONDARY → Individual latest-video cards via RSS (3 parallel proxies,
-               Promise.any so the fastest one wins). Shown as clickable
-               thumbnail cards below the main player.
+<script>
+/* ── AUTO-FETCH LATEST YOUTUBE VIDEOS — mobile-optimised ────────────────────
+   Strategy (fastest & most reliable on slow mobile connections):
+   1. Check sessionStorage cache first — zero network if already fetched this session
+   2. Primary: rss2json.com — returns clean JSON, no XML parsing, very fast
+   3. Fallback: allorigins.win — parses XML only if rss2json fails
+   4. AbortController timeout (6 s) so it never hangs forever on slow networks
+   ──────────────────────────────────────────────────────────────────────── */
+(function() {
+  var CHANNEL_ID  = 'UCn2KdQE_QLShDXI-QT_NwWQ';
+  var RSS_URL     = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+  var CACHE_KEY   = 'yt_latest_videos_v1';
+  var CACHE_TTL   = 30 * 60 * 1000; /* 30 minutes — re-fetch if tab stays open long */
+  var MAX_VIDEOS  = 3;
 
-   FEATURED  → Hand-picked video IDs, thumbnails instant, titles via noembed.
-   ════════════════════════════════════════════════════════════════════════════ */
-(function () {
-  'use strict';
-
-  var CHANNEL_ID   = 'UCn2KdQE_QLShDXI-QT_NwWQ';
-  var FEATURED_IDS = ['XWdm7wmb7OA', 'yn9tiJR_RsU', 'GWPDxZlUEtM'];
-  var MAX_LATEST   = 3;
-  var CACHE_KEY    = 'yt_videos_v4';
-  var CACHE_TTL    = 15 * 60 * 1000;  /* 15 min */
-  var TIMEOUT_MS   = 8000;
-  var YT_HANDLE    = 'https://www.youtube.com/@ShastriJiKashivale235';
-  var RSS_URL      = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
-
-  /* ── tiny helpers ── */
-  function esc(s) {
-    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-  function thumbURL(id) { return 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; }
-
-  function fetchT(url) {
-    var ctrl = new AbortController();
-    var t = setTimeout(function(){ ctrl.abort(); }, TIMEOUT_MS);
-    return fetch(url, { signal: ctrl.signal }).finally(function(){ clearTimeout(t); });
-  }
-
-  /* ── build a clickable video card ── */
-  function makeCard(id, title, tag, date) {
-    var d = document.createElement('div');
-    d.className = 'video-card';
-    d.innerHTML =
-      '<div class="video-wrapper">' +
-        '<div class="video-thumb" onclick="loadVideo(this,\'' + id + '\')"' +
-             ' role="button" tabindex="0" onkeypress="if(event.key===\'Enter\')loadVideo(this,\'' + id + '\')">' +
-          '<img src="' + thumbURL(id) + '" alt="' + esc(title) + '"' +
-               ' loading="lazy" decoding="async" width="480" height="360"' +
-               ' onerror="this.src=\'https://i.ytimg.com/vi/' + id + '/mqdefault.jpg\'"/>' +
-          '<div class="play-btn" aria-hidden="true"></div>' +
-        '</div>' +
-      '</div>' +
-      '<div class="video-body">' +
-        '<p class="video-tag">' + esc(tag) + '</p>' +
-        '<h3 class="video-title">' + esc(title) + '</h3>' +
-        (date ? '<p class="video-desc" style="font-size:.78rem;margin-top:.3rem;">' + esc(date) + '</p>' : '') +
-      '</div>';
-    return d;
-  }
-
-  /* ── RSS parsing ── */
-  function parseXML(str) {
-    var NS = 'http://www.youtube.com/xml/schemas/2015';
-    var doc = new DOMParser().parseFromString(str, 'application/xml');
-    return Array.from(doc.querySelectorAll('entry')).map(function(e) {
-      var vid = (e.getElementsByTagNameNS(NS,'videoId')[0] || {}).textContent || '';
-      vid = vid.trim();
-      var title = (e.querySelector('title') || {}).textContent || '';
-      var pub   = (e.querySelector('published') || {}).textContent || '';
-      var date  = pub ? new Date(pub).toLocaleDateString('hi-IN',{day:'numeric',month:'long',year:'numeric'}) : '';
-      return { id: vid, title: title, date: date };
-    }).filter(function(v){ return v.id; });
-  }
-
-  /* ── 3 parallel proxy attempts ── */
-  function tryRss2Json() {
-    var u = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(RSS_URL) + '&count=' + MAX_LATEST;
-    return fetchT(u).then(function(r){ return r.json(); }).then(function(d){
-      if (!d.items || !d.items.length) throw new Error('empty');
-      return d.items.map(function(item){
-        var m = (item.link||'').match(/[?&]v=([^&]+)/);
-        var pub = item.pubDate || '';
-        var date = pub ? new Date(pub).toLocaleDateString('hi-IN',{day:'numeric',month:'long',year:'numeric'}) : '';
-        return { id: m ? m[1] : '', title: item.title || '', date: date };
-      }).filter(function(v){ return v.id; });
-    });
-  }
-  function tryAllOrigins() {
-    var u = 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS_URL);
-    return fetchT(u).then(function(r){ return r.json(); }).then(function(d){
-      if (!d.contents) throw new Error('empty');
-      var vs = parseXML(d.contents);
-      if (!vs.length) throw new Error('empty');
-      return vs;
-    });
-  }
-  function tryCorsproxy() {
-    var u = 'https://corsproxy.io/?' + encodeURIComponent(RSS_URL);
-    return fetchT(u).then(function(r){ return r.text(); }).then(function(t){
-      var vs = parseXML(t);
-      if (!vs.length) throw new Error('empty');
-      return vs;
-    });
-  }
-
-  /* ── Render latest cards ── */
-  function renderLatest(videos) {
+  /* ── Render cards from a plain array of {id, title} objects ── */
+  function renderVideos(videos) {
     var grid = document.getElementById('yt-video-grid');
     if (!grid) return;
     grid.innerHTML = '';
-    if (!videos || !videos.length) { showLatestFallback(grid); return; }
-    videos.slice(0, MAX_LATEST).forEach(function(v) {
-      grid.appendChild(makeCard(v.id, v.title, 'YouTube • नवीनतम', v.date));
+    videos.slice(0, MAX_VIDEOS).forEach(function(v) {
+      var card = document.createElement('div');
+      card.className = 'video-card';
+      card.innerHTML =
+        '<div class="video-wrapper">' +
+          '<div class="video-thumb" onclick="loadVideo(this,\'' + v.id + '\')">' +
+            '<img src="https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg"' +
+                 ' alt="' + v.title.replace(/"/g,'&quot;') + '" loading="lazy" decoding="async"/>' +
+            '<div class="play-btn"></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="video-body">' +
+          '<p class="video-tag">YouTube • नवीनतम</p>' +
+          '<h3 class="video-title">' + v.title + '</h3>' +
+        '</div>';
+      grid.appendChild(card);
     });
+    if (!grid.children.length) showError();
   }
 
-  function showLatestFallback(grid) {
-    /* Proxy failed — show thumbnails of channel's latest 3 using a
-       deterministic approach: embed a mini playlist as 3 direct links */
-    grid.innerHTML =
-      '<div style="grid-column:1/-1;text-align:center;padding:1.5rem 0;">' +
-        '<p style="color:var(--text-muted,#888);margin-bottom:1rem;font-size:.9rem;">' +
-          'ऊपर के प्लेयर में नवीनतम सभी वीडियो उपलब्ध हैं।</p>' +
-        '<a href="' + YT_HANDLE + '" target="_blank" rel="noopener"' +
-           ' style="color:var(--crimson,#8B1A1A);font-weight:600;">▶ YouTube पर सभी वीडियो देखें →</a>' +
-      '</div>';
+  function showError() {
+    var grid = document.getElementById('yt-video-grid');
+    if (grid) grid.innerHTML =
+      '<p style="text-align:center;padding:2rem;color:var(--text-muted,#888);">' +
+      'नवीनतम वीडियो लोड नहीं हो सके।<br>' +
+      '<a href="https://www.youtube.com/@ShastriJiKashivale235" target="_blank" ' +
+         'style="color:var(--crimson,#8B1A1A);">YouTube चैनल पर देखें →</a></p>';
   }
 
-  /* ── LOAD LATEST (cache → race proxies → fallback) ── */
-  (function loadLatest() {
-    /* Check localStorage cache */
-    try {
-      var raw = localStorage.getItem(CACHE_KEY);
-      if (raw) {
-        var obj = JSON.parse(raw);
-        if (Date.now() - obj.ts < CACHE_TTL && obj.videos && obj.videos.length) {
-          renderLatest(obj.videos);
-          /* Background refresh */
-          raceProxies().then(function(fresh){
-            try { localStorage.setItem(CACHE_KEY, JSON.stringify({ts:Date.now(),videos:fresh})); } catch(e){}
-            renderLatest(fresh);
-          }).catch(function(){});
-          return;
-        }
+  /* ── Fetch with timeout helper ── */
+  function fetchWithTimeout(url, ms) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function() { ctrl.abort(); }, ms);
+    return fetch(url, { signal: ctrl.signal })
+      .finally(function() { clearTimeout(timer); });
+  }
+
+  /* ── Try rss2json (returns JSON — fast, no XML parsing) ── */
+  function tryRssToJson() {
+    var url = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(RSS_URL) + '&count=' + MAX_VIDEOS;
+    return fetchWithTimeout(url, 6000)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data.items || !data.items.length) throw new Error('empty');
+        return data.items.map(function(item) {
+          /* rss2json gives us the full YouTube URL in item.link */
+          var m = item.link.match(/[?&]v=([^&]+)/);
+          return { id: m ? m[1] : '', title: item.title || '' };
+        }).filter(function(v) { return v.id; });
+      });
+  }
+
+  /* ── Fallback: allorigins proxy + XML parse ── */
+  function tryAllOrigins() {
+    var proxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS_URL);
+    return fetchWithTimeout(proxy, 6000)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var parser = new DOMParser();
+        var xml    = parser.parseFromString(data.contents, 'application/xml');
+        var entries = Array.from(xml.querySelectorAll('entry'));
+        if (!entries.length) throw new Error('empty');
+        return entries.map(function(e) {
+          var idEl = e.getElementsByTagNameNS('http://www.youtube.com/xml/schemas/2015','videoId')[0]
+                  || e.querySelector('videoId');
+          var id  = idEl ? idEl.textContent.trim() : '';
+          var title = (e.querySelector('title') || {}).textContent || '';
+          return { id: id, title: title };
+        }).filter(function(v) { return v.id; });
+      });
+  }
+
+  /* ── Main: cache → rss2json → allorigins ── */
+  try {
+    var cached = sessionStorage.getItem(CACHE_KEY);
+    if (cached) {
+      var obj = JSON.parse(cached);
+      if (Date.now() - obj.ts < CACHE_TTL) {
+        renderVideos(obj.videos);
+        return;
       }
-    } catch(e) {}
+    }
+  } catch(e) {}
 
-    raceProxies().then(function(videos){
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ts:Date.now(),videos:videos})); } catch(e){}
-      renderLatest(videos);
-    }).catch(function(){
-      var grid = document.getElementById('yt-video-grid');
-      if (grid) showLatestFallback(grid);
-    });
-  })();
-
-  function raceProxies() {
-    return (typeof Promise.any === 'function')
-      ? Promise.any([tryRss2Json(), tryAllOrigins(), tryCorsproxy()])
-      : tryRss2Json().catch(function(){ return tryAllOrigins(); }).catch(function(){ return tryCorsproxy(); });
-  }
-
-  /* ── FEATURED VIDEOS ── */
-  (function loadFeatured() {
-    var grid = document.getElementById('yt-featured-grid');
-    if (!grid) return;
-
-    FEATURED_IDS.forEach(function(id, i) {
-      /* Slot with placeholder title — updates when noembed responds */
-      var slot = makeCard(id, '✦ पंडितजी का विशेष वीडियो', '⭐ विशेष चयन', '');
-      slot.id = 'feat-' + i;
-      grid.appendChild(slot);
-
-      /* Fetch real title via noembed (has proper CORS headers) */
-      fetchT('https://noembed.com/embed?url=https://www.youtube.com/watch?v=' + id)
-        .then(function(r){ return r.json(); })
-        .then(function(d){
-          var el = document.querySelector('#feat-' + i + ' .video-title');
-          if (el && d.title) el.textContent = d.title;
-        }).catch(function(){/* placeholder stays */});
-    });
-  })();
-
+  tryRssToJson()
+    .catch(function() { return tryAllOrigins(); })
+    .then(function(videos) {
+      try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), videos: videos })); } catch(e) {}
+      renderVideos(videos);
+    })
+    .catch(function() { showError(); });
 })();
 </script>
 
