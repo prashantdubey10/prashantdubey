@@ -1,74 +1,16 @@
-# ═══════════════════════════════════════════════════════════════
-#  robots.txt — Pt. Prashant Dubey Astrology
-#  https://www.prashantdubey.co.in/
-#  Last updated: 2026-05-15
-# ═══════════════════════════════════════════════════════════════
+# robots.txt
+# https://www.prashantdubey.co.in/
 
-# ── Allow all well-behaved crawlers ────────────────────────────
 User-agent: *
 Allow: /
 
-# Block private / build artefacts
-Disallow: /node_modules/
+# Keep private folders hidden (harmless if not deployed)
 Disallow: /.git/
 Disallow: /.github/
-Disallow: /target/
-Disallow: /.travis/
-Disallow: /src/
-Disallow: /build/
-Disallow: /dist/
-Disallow: /tmp/
-Disallow: /logs/
-Disallow: /*.json$
-Disallow: /manifest.json
-Disallow: /pom.xml
-Disallow: /nbactions.xml
 Disallow: /.env
-Disallow: /.env.*
 
-# Block common admin / utility paths
-Disallow: /admin/
-Disallow: /login/
-Disallow: /dashboard/
-Disallow: /api/
-Disallow: /cgi-bin/
-
-# ── Googlebot — full access, large previews enabled ────────────
-User-agent: Googlebot
-Allow: /
-Allow: /images/
-Crawl-delay: 2
-
-# ── Google Image Bot ───────────────────────────────────────────
-User-agent: Googlebot-Image
-Allow: /images/
-
-# ── Bing / MSN ─────────────────────────────────────────────────
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 3
-
-# ── DuckDuckGo ─────────────────────────────────────────────────
-User-agent: DuckDuckBot
-Allow: /
-Crawl-delay: 3
-
-# ── Yandex ─────────────────────────────────────────────────────
-User-agent: YandexBot
-Allow: /
-Crawl-delay: 3
-
-# ── AI / LLM crawlers — allowed (AEO strategy) ─────────────────
+# AI Crawlers
 User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: anthropic-ai
 Allow: /
 
 User-agent: PerplexityBot
@@ -77,21 +19,5 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-# ── Aggressive scrapers / bad actors ───────────────────────────
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-User-agent: SemrushBot
-Crawl-delay: 10
-
-User-agent: PetalBot
-Disallow: /
-
-# ── Sitemap ────────────────────────────────────────────────────
+# Sitemap
 Sitemap: https://www.prashantdubey.co.in/sitemap.xml
